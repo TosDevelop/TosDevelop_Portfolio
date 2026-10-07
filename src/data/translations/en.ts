@@ -1,0 +1,202 @@
+import { SITE_NAME } from '@/config/site';
+import { TEAM_MEMBERS } from '@/data/teamData';
+
+const teamCount = TEAM_MEMBERS.length;
+
+export const en = {
+  brandName: SITE_NAME,
+  nav: {
+    home: 'Home',
+    about: 'About',
+    team: 'Team',
+    expertise: 'Expertise',
+    projects: 'Projects',
+    connect: "Let's Connect",
+  },
+  hero: {
+    badge: `#${SITE_NAME} • PNC STUDENT TECHNOLOGY TEAM`,
+    titlePart1: 'We learn by building ',
+    titleHighlight: 'real',
+    titlePart2: ' technology.',
+    subtitle: `Meet ${teamCount} PNC student professionals across full-stack development, web engineering, quality assurance, planning, data and roaming & interconnection.`,
+    viewProjects: 'View Our Projects',
+    meetTeam: 'Meet the Team',
+    teamCount: `${teamCount} Team members`,
+    teamSub: 'One shared learning journey',
+    centerBadgeTop: `MEET THE TEAM • ${teamCount} MEMBERS`,
+    centerBadgeTitle: 'PNC Team',
+    centerBadgeSub: `Meet ${teamCount} talented scholars`,
+  },
+  stats: {
+    headline: 'Different specialities. One team.',
+    sub: 'The portfolio brings together practical experience from development, QA, project planning, data work and technical operations.',
+    stat1Number: String(teamCount),
+    stat1Label: 'Team members',
+    stat2Number: '6',
+    stat2Label: 'Core expertise areas',
+    stat3Number: '7+',
+    stat3Label: 'Featured experiences',
+    stat4Number: '20+',
+    stat4Label: 'Technologies & tools',
+  },
+  whatWeDo: {
+    kicker: 'WHAT WE DO',
+    title: 'A practical technology skill set',
+    desc: 'Our backgrounds are different, but our work connects through one goal: solving real problems with dependable technology.',
+  },
+  howWeWork: {
+    kicker: 'HOW WE WORK',
+    title: 'A simple, disciplined delivery flow',
+    desc: 'Our process keeps teamwork visible from understanding the problem to validating and delivering the result.',
+    learnMore: 'About our approach',
+    steps: [
+      {
+        num: '01',
+        title: 'Understand',
+        desc: 'Clarify the goal, users and practical requirements.',
+      },
+      {
+        num: '02',
+        title: 'Plan',
+        desc: 'Break work into deliverable tasks and responsibilities.',
+      },
+      {
+        num: '03',
+        title: 'Build',
+        desc: 'Implement clean, maintainable and testable solutions.',
+      },
+      {
+        num: '04',
+        title: 'Validate',
+        desc: 'Test workflows, fix issues and review the user experience.',
+      },
+      {
+        num: '05',
+        title: 'Deliver',
+        desc: 'Deploy, document and learn from the results.',
+      },
+    ],
+  },
+  ctaBanner: {
+    kicker: 'READY TO EXPLORE',
+    title:
+      'See the people, skills and experiences behind the PNC student team.',
+    button: 'Meet the Team',
+  },
+  about: {
+    kicker: 'ABOUT THE TEAM',
+    title: 'A student team turning learning into practical experience.',
+    subtitle:
+      'We are a PNC student technology team with different professional directions but a shared commitment to learning by building, testing and improving real solutions.',
+    missionKicker: 'MISSION',
+    missionTitle: 'Build practical skills through real collaboration.',
+    missionDesc:
+      'Develop dependable technology skills, deliver useful team projects and strengthen professional habits through planning, development, QA, documentation and technical operations.',
+    visionKicker: 'VISION',
+    visionTitle: 'Grow into capable technology professionals.',
+    visionDesc:
+      'Use continuous learning, teamwork and disciplined delivery to become professionals who can contribute confidently to real organizations and technology products.',
+    valuesKicker: 'OUR VALUES',
+    valuesTitle: 'The habits behind our work',
+    valuesDesc:
+      'A professional portfolio is not only about tools. These values shape how we communicate, build and improve together.',
+  },
+  team: {
+    kicker: 'OUR TEAM',
+    title: `${teamCount} people. Different paths. One shared portfolio.`,
+    viewAllMembers: `View all ${teamCount} members`,
+    subtitle:
+      'Open any profile to see verified experience, education, technical skills, projects, contact information and CV access where supplied.',
+    filters: {
+      All: 'All',
+      Development: 'Development',
+      QA: 'QA',
+      Planning: 'Planning',
+      Infrastructure: 'Infrastructure',
+    },
+    viewProfile: 'View Profile',
+    backToTeam: 'Back to Team',
+    aboutMember: 'About',
+    contact: 'Contact',
+    languages: 'Languages & soft skills',
+    techSkills: 'Technical Skills',
+    experience: 'Experience',
+    education: 'Education',
+    selectedProjects: 'Selected Projects',
+    additionalLearning: 'Additional Learning',
+    downloadCv: 'Download CV',
+    openCv: 'Open CV',
+  },
+  expertise: {
+    kicker: 'EXPERTISE',
+    title: 'Skills connected to practical work.',
+    subtitle:
+      'We avoid fake percentage ratings. Instead, the site shows focus areas, tools actually documented in CVs and the people connected to each area.',
+    relatedTech: 'RELATED TECHNOLOGIES',
+    relatedMembers: 'RELATED MEMBERS',
+    techSystemKicker: 'TECHNOLOGY SYSTEM',
+    techSystemTitle: 'Visual technology badges, not text-only lists',
+    techSystemDesc:
+      'The MVP uses compact neutral Material UI tiles and recognizable brand icons, following the supplied visual reference while keeping the overall interface clean and professional.',
+  },
+  projects: {
+    kicker: 'PROJECTS & EXPERIENCE',
+    title: 'Work that turns learning into evidence.',
+    subtitle:
+      '7 curated case studies combine professional experience, internships and academic projects documented in the team CV pack.',
+    filters: {
+      All: 'All',
+      Web: 'Web',
+      Software: 'Software',
+      QA: 'QA',
+      Data: 'Data',
+      Telecom: 'Telecom',
+    },
+    viewCaseStudy: 'View case study',
+    backToProjects: 'Back to Projects',
+    problemGoal: 'PROBLEM / GOAL',
+    whatNeeded: 'What needed to improve',
+    solutionApproach: 'SOLUTION / APPROACH',
+    howApproached: 'How the work approached it',
+    keyFeatures: 'Key Features',
+    techStack: 'Technology Stack',
+    outcomeLearning: 'Outcome & Learning',
+    relatedMembers: 'Related Team Members',
+    openRepo: 'Open repository',
+  },
+  contact: {
+    kicker: 'CONTACT',
+    title: "Let's connect, learn and build together.",
+    subtitle:
+      'Use the form for a general conversation, or open an individual member profile to contact the right person directly.',
+    teamTitle: 'PNC Student Team',
+    teamDesc: `${teamCount} members across development, QA, planning, data and telecom.`,
+    generalContact: 'GENERAL CONTACT',
+    location: 'LOCATION',
+    locationVal: 'Phnom Penh, Cambodia',
+    contactSpecific: 'Contact a specific member',
+    sendMessage: 'Send a message',
+    formNote:
+      'Frontend-only MVP: submitting the form opens your default email app with the message prepared.',
+    fullName: 'Full Name',
+    email: 'Email',
+    subject: 'Subject',
+    message: 'Message',
+    promptText: 'Tell us what you would like to discuss.',
+    openEmailBtn: 'Open email to send',
+  },
+  footer: {
+    tagline: 'Learning, building and growing through technology.',
+    desc: 'A student technology team portfolio presenting practical experience across development, QA, planning, data and infrastructure.',
+    exploreTeam: 'Explore the Team',
+    copyright: `© 2026 ${SITE_NAME} • PNC Student Team Portfolio MVP.`,
+  },
+  theme: {
+    switchToDark: 'Switch to dark mode',
+    switchToLight: 'Switch to light mode',
+  },
+  lang: {
+    switchToKhmer: 'ប្ដូរទៅជាភាសាខ្មែរ',
+    switchToEnglish: 'Switch to English',
+  },
+};

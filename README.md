@@ -44,6 +44,9 @@ src/
 - Keep page-specific components alongside their page in `pages/<page>/`.
 - Put reusable UI in `components/ui/`, shared page sections in `components/sections/`, and the site shell in `components/layout/`.
 - Edit portfolio content and translations in `data/`; content contracts live in `types/`.
+- Team, project, and expertise content lives in `data/team/`, `data/projects/`, and `data/expertise/`. Each folder has `en.ts` for English content, `km.ts` for existing Khmer translations, and `shared.ts` for shared details such as images, contact information, technologies, and relationships. Entries use the same ID in all three files. The original `teamData.ts`, `projectsData.ts`, and `expertiseData.ts` combine them for the UI and SEO code.
+- Locale files use matching field names (such as `title` in both languages). The adapters restore the existing `title`/`titleKm` format. Optional Khmer translations remain optional so the existing English fallbacks continue to work; untranslated resume sections remain in the English content file.
+- Edit English UI text in `data/translations/en.ts` and Khmer UI text in `data/translations/km.ts`. The shared `index.ts` combines them for the language provider, and TypeScript checks that Khmer has the same translation keys as English. `km` is the language code used by the app for Khmer.
 - Use `@/` for imports across folders; it resolves to `src/` in TypeScript and Vite. Relative imports are fine within one page folder.
 - Add destinations in `config/navigation.ts`, then render the new page in `App.tsx`. Header/footer links derive from the shared definitions.
 - Keep navigation state in `hooks/useNavigation.ts` and provider composition in `providers/AppProviders.tsx`.
