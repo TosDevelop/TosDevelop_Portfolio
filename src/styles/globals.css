@@ -41,35 +41,3 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-
-@keyframes team-orbit {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes team-counter-orbit {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-.hero-team-orbit {
-  animation: team-orbit 40s linear infinite;
-}
-
-.hero-team-card {
-  animation: team-counter-orbit 40s linear infinite;
-}
-
-.hero-team-grid:focus-within .hero-team-orbit,
-.hero-team-grid:focus-within .hero-team-card {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-team-orbit,
-  .hero-team-card {
-    animation: none;
-  }
-}

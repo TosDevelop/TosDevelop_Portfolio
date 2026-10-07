@@ -92,7 +92,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Right Column: Floating Team Collage */}
+          {/* Right Column: Team Portrait Ribbon */}
           <div className="lg:col-span-5 flex justify-center">
             <HeroTeamGrid
               onSelectMember={(memberId) => onNavigate('team', memberId)}
