@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ArrowRight, Github, Linkedin, Send } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
   onNavigate: (tab: string) => void;
@@ -15,14 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-10 border-b border-slate-100 dark:border-slate-800/80">
           {/* Brand & Description */}
           <div className="max-w-md space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
-                <span>P</span>
-              </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-                PNC<span className="text-blue-600 dark:text-blue-400">Dev</span>
-              </span>
-            </div>
+            <BrandLogo compact className="items-center" />
             <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
               {t.footer.tagline}
             </p>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { Sun, Moon, ArrowUpRight, Menu, X } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
   currentTab: string;
@@ -33,15 +34,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2.5 focus:outline-none group text-left"
+            className="focus:outline-none group text-left"
           >
-            {/* KromDev stylized logo */}
-            <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-sm shadow-blue-500/20 group-hover:bg-blue-700 transition-colors">
-              <span className="font-extrabold tracking-tight">P</span>
-            </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-              PNC<span className="text-blue-600 dark:text-blue-400">Dev</span>
-            </span>
+            <BrandLogo compact className="items-center" />
           </button>
         </div>
 
