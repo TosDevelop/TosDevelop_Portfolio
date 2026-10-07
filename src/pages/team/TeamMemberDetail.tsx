@@ -73,7 +73,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {language === 'km' ? member.nameKm : member.name}
               {language !== 'km' && member.nameKm && (
-                <span className="ml-3 text-lg font-normal text-slate-400">
+                <span
+                  lang="km"
+                  className="ml-3 text-lg font-normal tracking-normal text-slate-400 [word-spacing:0.3em]"
+                >
                   ({member.nameKm})
                 </span>
               )}

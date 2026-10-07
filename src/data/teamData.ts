@@ -12,7 +12,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Scalable web applications, workflow automation and cloud-ready delivery.',
     taglineKm:
       'កម្មវិធីគេហទំព័រដែលអាចពង្រីកបាន ការស្វ័យប្រវត្តិកម្មការងារ និងការដាក់ឱ្យដំណើរការលើពពក។',
-    image: '/images/team/chhea_chhouy.jpg',
+    image: new URL('../assets/team/phorn_ya.jpg', import.meta.url).href,
     badge: 'Full Stack',
     badgeKm: 'Full Stack',
     bio: 'A full-stack developer who enjoys building efficient, user-friendly web applications and continuously exploring new tools and technologies. His experience spans CRM, education, internal management systems, workflow automation, reporting dashboards and role-based access control.',
@@ -206,7 +206,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Project planning, web development coordination and practical team delivery.',
     taglineKm:
       'ការរៀបចំផែនការគម្រោង ការសម្របសម្រួលអភិវឌ្ឍន៍វេបសាយ និងការដឹកនាំក្រុមជាក់ស្ដែង។',
-    image: '/images/team/kin_doung.jpg',
+    image: new URL('../assets/team/sat_vichet.jpg', import.meta.url).href,
     badge: 'Planning & Web',
     badgeKm: 'Planning & Web',
     bio: 'Passionate about bridging technical implementation with systematic planning and project management. Balances core web engineering principles with agile sprint roadmaps, ensuring collaborative milestone deliveries.',
@@ -291,7 +291,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Web applications, REST APIs, databases and practical software quality.',
     taglineKm:
       'កម្មវិធីគេហទំព័រ, REST APIs, មូលដ្ឋានទិន្នន័យ និងគុណភាពផ្នែកទន់ជាក់ស្តែង។',
-    image: '/images/team/sokchea_boy.jpg',
+    image: new URL('../assets/team/phem_serey.jpg', import.meta.url).href,
     badge: 'Web Developer',
     badgeKm: 'Web Developer',
     bio: 'Dedicated web developer specializing in clean client-server architecture, database modeling, responsive UI components, and reliable API services.',
@@ -359,23 +359,23 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'reaksmey-san',
     name: 'Reaksmey San',
-    nameKm: 'រស្មី សាន',
-    role: 'Quality Assurance Specialist',
-    roleKm: 'អ្នកជំនាញផ្នែកធានាគុណភាព (QA)',
-    category: ['QA'],
+    nameKm: 'សាន រស្មី',
+    role: 'Frontend Developer, UX/UI Designer & QA',
+    roleKm: 'អ្នកអភិវឌ្ឍ Frontend អ្នករចនា UX/UI និងអ្នកធានាគុណភាព (QA)',
+    category: ['Development', 'QA'],
     tagline:
-      'Functional testing, regression testing, UAT and reliable product workflows.',
+      'Frontend development, UX/UI design and quality assurance for reliable, user-friendly products.',
     taglineKm:
-      'ការធ្វើតេស្តមុខងារ, ការធ្វើតេស្តតប, UAT និងលំហូរការងារផលិតផលដែលអាចទុកចិត្តបាន។',
-    image: '/images/team/bunyoung_hean.jpg',
-    badge: 'QA Specialist',
-    badgeKm: 'QA Specialist',
-    bio: 'Detail-oriented QA specialist with strong expertise in manual test suites, regression test cases, user acceptance testing (UAT), defect lifecycle tracking, and API functional verification.',
+      'ការអភិវឌ្ឍ Frontend ការរចនា UX/UI និងការធានាគុណភាពសម្រាប់ផលិតផលដែលងាយស្រួលប្រើ និងអាចទុកចិត្តបាន។',
+    image: new URL('../assets/team/reaksmey_san.jpg', import.meta.url).href,
+    badge: 'Frontend · UX/UI · QA',
+    badgeKm: 'Frontend · UX/UI · QA',
+    bio: 'Works across frontend development, UX/UI design and quality assurance, with experience in manual test suites, regression test cases, user acceptance testing (UAT), defect lifecycle tracking, and API functional verification.',
     bioKm:
-      'អ្នកជំនាញ QA ដែលផ្តោតលើភាពលម្អិត មានជំនាញរឹងមាំក្នុងការរៀបចំកញ្ចប់ធ្វើតេស្តដោយដៃ UAT ការតាមដានកំហុស និងការផ្ទៀងផ្ទាត់ API។',
+      'ធ្វើការលើការអភិវឌ្ឍ Frontend ការរចនា UX/UI និងការធានាគុណភាព ដោយមានបទពិសោធន៍ក្នុងការរៀបចំកញ្ចប់ធ្វើតេស្តដោយដៃ UAT ការតាមដានកំហុស និងការផ្ទៀងផ្ទាត់ API។',
     contact: {
-      email: 'reaksmeysan99@gmail.com',
-      phone: '+855 70 345 678',
+      email: 'reaksmeysan.official@gmail.com',
+      phone: '+855 96 2557 286',
       location: 'Phnom Penh, Cambodia',
       linkedin: 'https://linkedin.com',
       github: 'https://github.com',
@@ -443,7 +443,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Web development, software fundamentals and practical data/IT support.',
     taglineKm:
       'ការអភិវឌ្ឍន៍គេហទំព័រ មូលដ្ឋានគ្រឹះផ្នែកទន់ និងការគាំទ្រទិន្នន័យ/IT ជាក់ស្តែង។',
-    image: '/images/team/darin_hoy.jpg',
+    image: new URL('../assets/team/sokha_rathana.jpg', import.meta.url).href,
     badge: 'Junior Developer',
     badgeKm: 'Junior Developer',
     bio: 'Enthusiastic software engineer equipped with solid algorithmic grounding, relational data queries, and clean code construction across client and server environments.',
@@ -507,122 +507,4 @@ export const TEAM_MEMBERS: TeamMember[] = [
       },
     ],
   },
-  // {
-  //   id: 'leader-din',
-  //   name: 'Leader Din',
-  //   nameKm: 'លីឌ័រ ឌីន',
-  //   role: 'Junior Roaming & Interconnection Administrator',
-  //   roleKm: 'អ្នកគ្រប់គ្រង Roaming & Interconnection កម្រិតដំបូង',
-  //   category: ['Infrastructure', 'Planning'],
-  //   tagline: 'Roaming operations, infrastructure automation, deployment and internal systems.',
-  //   taglineKm: 'ប្រតិបត្តិការ Roaming, ស្វ័យប្រវត្តិកម្មហេដ្ឋារចនាសម្ព័ន្ធ, ការដាក់ឱ្យដំណើរការ និងប្រព័ន្ធផ្ទៃក្នុង។',
-  //   image: '/images/team/leader_din.jpg',
-  //   badge: 'Roaming & Interconnection',
-  //   badgeKm: 'Roaming & Interconnection',
-  //   bio: 'Specialized in telecommunication operations, roaming file validation, TAP workflows, server administration, containerized deployments, and robust backend systems.',
-  //   bioKm: 'ជំនាញលើប្រតិបត្តិការទូរគមនាគមន៍ ការផ្ទៀងផ្ទាត់ឯកសារ Roaming លំហូរការងារ TAP ការគ្រប់គ្រងម៉ាស៊ីនបម្រើ និងប្រព័ន្ធ Backend រឹងមាំ។',
-  //   contact: {
-  //     email: 'dinleader2003@gmail.com',
-  //     phone: '+855 81 234 567',
-  //     location: 'Phnom Penh, Cambodia',
-  //     linkedin: 'https://linkedin.com',
-  //     github: 'https://github.com',
-  //     cvUrl: '#'
-  //   },
-  //   languages: [
-  //     { language: 'Khmer', level: 'Mother tongue' },
-  //     { language: 'English', level: 'Intermediate' }
-  //   ],
-  //   softSkills: ['Telecom Operations', 'Critical Analysis', 'Process Automation', 'Reliability'],
-  //   technicalSkills: [
-  //     {
-  //       category: 'Infrastructure & Telecom',
-  //       skills: [{ name: 'Linux' }, { name: 'Docker' }, { name: 'Kubernetes' }, { name: 'Automation' }, { name: 'Laravel' }, { name: 'Vue.js' }]
-  //     }
-  //   ],
-  //   experience: [
-  //     {
-  //       role: 'Junior Roaming & Interconnection Administrator',
-  //       company: 'Telecom Operations Partner',
-  //       period: 'Current role',
-  //       description: 'Operational automation and dashboards supporting roaming interconnection workflows, TAP processing and deployment infrastructure.',
-  //       technologies: ['Laravel', 'Vue.js', 'MariaDB', 'Linux', 'Docker']
-  //     }
-  //   ],
-  //   education: [
-  //     {
-  //       degree: 'Associate Degree – Web Programming & Systems',
-  //       institution: 'Passerelles numériques Cambodia (PNC)',
-  //       period: '2024 – 2026'
-  //     }
-  //   ],
-  //   selectedProjects: [
-  //     {
-  //       title: 'Roaming validation service',
-  //       role: 'Lead Administrator',
-  //       period: 'Current role',
-  //       description: 'Operational automation and dashboards supporting roaming interconnection workflows, TAP processing and deployment infrastructure.',
-  //       technologies: ['Laravel', 'Vue.js', 'MariaDB', 'Automation']
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: 'seang-meng-chheun',
-  //   name: 'Seang Meng Chheun',
-  //   nameKm: 'ស៊ាង ម៉េងឈឿន',
-  //   role: 'Web Developer',
-  //   roleKm: 'អ្នកអភិវឌ្ឍន៍គេហទំព័រ',
-  //   category: ['Development'],
-  //   tagline: 'Responsive web applications, APIs, databases and Telegram-integrated experiences.',
-  //   taglineKm: 'កម្មវិធីគេហទំព័រឆ្លើយតប, APIs, មូលដ្ឋានទិន្នន័យ និងបទពិសោធន៍តភ្ជាប់ Telegram។',
-  //   image: '/images/team/seang_meng_chheun.jpg',
-  //   badge: 'Web Developer',
-  //   badgeKm: 'Web Developer',
-  //   bio: 'Crafts dynamic modern web interfaces with full-stack connectivity, specializing in responsive web applications, Telegram bot automations, and interactive user flows.',
-  //   bioKm: 'បង្កើតផ្ទាំងកម្មវិធីគេហទំព័រទំនើបដែលមានទំនាក់ទំនងពេញលេញ ជំនាញលើកម្មវិធីគេហទំព័រឆ្លើយតប ស្វ័យប្រវត្តិកម្ម Telegram Bot និងលំហូរអ្នកប្រើប្រាស់អន្តរកម្ម។',
-  //   contact: {
-  //     email: 'seangmengchheun@gmail.com',
-  //     phone: '+855 96 345 678',
-  //     location: 'Phnom Penh, Cambodia',
-  //     linkedin: 'https://linkedin.com',
-  //     github: 'https://github.com',
-  //     cvUrl: '#'
-  //   },
-  //   languages: [
-  //     { language: 'Khmer', level: 'Mother tongue' },
-  //     { language: 'English', level: 'Intermediate' }
-  //   ],
-  //   softSkills: ['Creative Problem Solving', 'API Integration', 'UI Responsiveness', 'Agile Collaboration'],
-  //   technicalSkills: [
-  //     {
-  //       category: 'Web & Integrations',
-  //       skills: [{ name: 'JavaScript' }, { name: 'Node.js' }, { name: 'Express' }, { name: 'Telegram Bot API' }, { name: 'React.js' }, { name: 'MongoDB' }]
-  //     }
-  //   ],
-  //   experience: [
-  //     {
-  //       role: 'Web & Bot Developer',
-  //       company: 'Innovative Digital Projects',
-  //       period: '2025 – Present',
-  //       description: 'Created modern web experiences integrated with Telegram bot ecosystems, handling instant notifications, user authentication, and data workflows.',
-  //       technologies: ['JavaScript', 'Node.js', 'Telegram API', 'CSS']
-  //     }
-  //   ],
-  //   education: [
-  //     {
-  //       degree: 'Associate Degree – Web Programming',
-  //       institution: 'Passerelles numériques Cambodia (PNC)',
-  //       period: '2024 – 2026'
-  //     }
-  //   ],
-  //   selectedProjects: [
-  //     {
-  //       title: 'Telegram Mini App & Bot',
-  //       role: 'Lead Developer',
-  //       period: '2026',
-  //       description: 'Telegram-integrated web experience with authentication, bot commands, APIs, sessions and cloud deployment.',
-  //       technologies: ['JavaScript', 'Node.js', 'Telegram API']
-  //     }
-  //   ]
-  // }
 ];

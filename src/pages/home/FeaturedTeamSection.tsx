@@ -40,7 +40,7 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
             onClick={() => onNavigate('team')}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 self-start sm:self-auto cursor-pointer"
           >
-            <span>View all 7 members</span>
+            <span>{t.team.viewAllMembers}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </PageLink>
         </div>

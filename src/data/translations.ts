@@ -1,4 +1,8 @@
 import { SITE_NAME } from '@/config/site';
+import { TEAM_MEMBERS } from '@/data/teamData';
+
+const teamCount = TEAM_MEMBERS.length;
+const teamCountKm = new Intl.NumberFormat('km-KH-u-nu-khmr').format(teamCount);
 
 export const TRANSLATIONS = {
   en: {
@@ -16,20 +20,19 @@ export const TRANSLATIONS = {
       titlePart1: 'We learn by building ',
       titleHighlight: 'real',
       titlePart2: ' technology.',
-      subtitle:
-        'Meet seven PNC student professionals across full-stack development, web engineering, quality assurance, planning, data and roaming & interconnection.',
+      subtitle: `Meet ${teamCount} PNC student professionals across full-stack development, web engineering, quality assurance, planning, data and roaming & interconnection.`,
       viewProjects: 'View Our Projects',
       meetTeam: 'Meet the Team',
-      teamCount: '7 Team members',
+      teamCount: `${teamCount} Team members`,
       teamSub: 'One shared learning journey',
-      centerBadgeTop: 'MEET THE TEAM • 7 MEMBERS',
+      centerBadgeTop: `MEET THE TEAM • ${teamCount} MEMBERS`,
       centerBadgeTitle: 'PNC Team',
-      centerBadgeSub: 'Meet seven talent scholars',
+      centerBadgeSub: `Meet ${teamCount} talented scholars`,
     },
     stats: {
       headline: 'Different specialities. One team.',
       sub: 'The portfolio brings together practical experience from development, QA, project planning, data work and technical operations.',
-      stat1Number: '7',
+      stat1Number: String(teamCount),
       stat1Label: 'Team members',
       stat2Number: '6',
       stat2Label: 'Core expertise areas',
@@ -102,7 +105,8 @@ export const TRANSLATIONS = {
     },
     team: {
       kicker: 'OUR TEAM',
-      title: 'Seven people. Different paths. One shared portfolio.',
+      title: `${teamCount} people. Different paths. One shared portfolio.`,
+      viewAllMembers: `View all ${teamCount} members`,
       subtitle:
         'Open any profile to see verified experience, education, technical skills, projects, contact information and CV access where supplied.',
       filters: {
@@ -168,8 +172,7 @@ export const TRANSLATIONS = {
       subtitle:
         'Use the form for a general conversation, or open an individual member profile to contact the right person directly.',
       teamTitle: 'PNC Student Team',
-      teamDesc:
-        'Seven members across development, QA, planning, data and telecom.',
+      teamDesc: `${teamCount} members across development, QA, planning, data and telecom.`,
       generalContact: 'GENERAL CONTACT',
       location: 'LOCATION',
       locationVal: 'Phnom Penh, Cambodia',
@@ -214,20 +217,19 @@ export const TRANSLATIONS = {
       titlePart1: 'យើងរៀនតាមរយៈការបង្កើត ',
       titleHighlight: 'បច្ចេកវិទ្យាជាក់ស្ដែង',
       titlePart2: '។',
-      subtitle:
-        'ជួបជាមួយនិស្សិត PNC ទាំងប្រាំពីររូបដែលមានជំនាញវិជ្ជាជីវៈលើវិស័យ Full-stack development, web engineering, quality assurance, planning, data និង roaming & interconnection។',
+      subtitle: `ជួបជាមួយនិស្សិត PNC ទាំង ${teamCountKm} រូបដែលមានជំនាញវិជ្ជាជីវៈលើវិស័យ Full-stack development, web engineering, quality assurance, planning, data និង roaming & interconnection។`,
       viewProjects: 'មើលគម្រោងរបស់យើង',
       meetTeam: 'ជួបជាមួយសមាជិកក្រុម',
-      teamCount: 'សមាជិក ៧ នាក់',
+      teamCount: `សមាជិក ${teamCountKm} នាក់`,
       teamSub: 'ដំណើររៀនសូត្ររួមគ្នា',
-      centerBadgeTop: 'ជួបជាមួយក្រុម • ៧ នាក់',
+      centerBadgeTop: `ជួបជាមួយក្រុម • ${teamCountKm} នាក់`,
       centerBadgeTitle: 'ក្រុម PNC',
-      centerBadgeSub: 'និស្សិតអាហារូបករណ៍ឆ្នើមទាំង ៧',
+      centerBadgeSub: `និស្សិតអាហារូបករណ៍ឆ្នើមទាំង ${teamCountKm}`,
     },
     stats: {
       headline: 'ជំនាញផ្សេងៗគ្នា។ ក្រុមតែមួយ។',
       sub: 'ផលប័ត្រនេះប្រមូលផ្តុំបទពិសោធន៍ជាក់ស្តែងពីការអភិវឌ្ឍន៍ ការធានាគុណភាព ការរៀបចំផែនការទិន្នន័យ និងប្រតិបត្តិការបច្ចេកទេស។',
-      stat1Number: '៧',
+      stat1Number: teamCountKm,
       stat1Label: 'សមាជិកក្រុម',
       stat2Number: '៦',
       stat2Label: 'វិស័យជំនាញស្នូល',
@@ -299,7 +301,8 @@ export const TRANSLATIONS = {
     },
     team: {
       kicker: 'ក្រុមរបស់យើង',
-      title: 'មនុស្ស ៧ នាក់។ ផ្លូវខុសគ្នា។ ផលប័ត្ររួមតែមួយ។',
+      title: `មនុស្ស ${teamCountKm} នាក់។ ផ្លូវខុសគ្នា។ ផលប័ត្ររួមតែមួយ។`,
+      viewAllMembers: `មើលសមាជិកទាំង ${teamCountKm} នាក់`,
       subtitle:
         'បើកមើលប្រវត្តិរូបណាមួយ ដើម្បីពិនិត្យមើលបទពិសោធន៍ ការអប់រំ ជំនាញបច្ចេកទេស គម្រោង ព័ត៌មានទំនាក់ទំនង និង CV។',
       filters: {
@@ -365,8 +368,7 @@ export const TRANSLATIONS = {
       subtitle:
         'ប្រើប្រាស់ទម្រង់នេះសម្រាប់ការសន្ទនាទូទៅ ឬបើកប្រវត្តិរូបសមាជិកដើម្បីទាក់ទងបុគ្គលជាក់លាក់ដោយផ្ទាល់។',
       teamTitle: 'ក្រុមនិស្សិត PNC',
-      teamDesc:
-        'សមាជិក ៧ នាក់លើផ្នែក Development, QA, Planning, Data និង Telecom។',
+      teamDesc: `សមាជិក ${teamCountKm} នាក់លើផ្នែក Development, QA, Planning, Data និង Telecom។`,
       generalContact: 'ទំនាក់ទំនងទូទៅ',
       location: 'ទីតាំង',
       locationVal: 'រាជធានីភ្នំពេញ ប្រទេសកម្ពុជា',
