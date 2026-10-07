@@ -1,27 +1,30 @@
+import { SITE_NAME } from '@/config/site';
+
 export const TRANSLATIONS = {
   en: {
-    brandName: 'KromDev',
+    brandName: SITE_NAME,
     nav: {
       home: 'Home',
       about: 'About',
       team: 'Team',
       expertise: 'Expertise',
       projects: 'Projects',
-      connect: "Let's Connect"
+      connect: "Let's Connect",
     },
     hero: {
-      badge: '#PNC7TEAMSTARTUP • PNC STUDENT TECHNOLOGY TEAM',
+      badge: `#${SITE_NAME} • PNC STUDENT TECHNOLOGY TEAM`,
       titlePart1: 'We learn by building ',
       titleHighlight: 'real',
       titlePart2: ' technology.',
-      subtitle: 'Meet seven PNC student professionals across full-stack development, web engineering, quality assurance, planning, data and roaming & interconnection.',
+      subtitle:
+        'Meet seven PNC student professionals across full-stack development, web engineering, quality assurance, planning, data and roaming & interconnection.',
       viewProjects: 'View Our Projects',
       meetTeam: 'Meet the Team',
       teamCount: '7 Team members',
       teamSub: 'One shared learning journey',
       centerBadgeTop: 'MEET THE TEAM • 7 MEMBERS',
       centerBadgeTitle: 'PNC Team',
-      centerBadgeSub: 'Meet seven talent scholars'
+      centerBadgeSub: 'Meet seven talent scholars',
     },
     stats: {
       headline: 'Different specialities. One team.',
@@ -33,12 +36,12 @@ export const TRANSLATIONS = {
       stat3Number: '7+',
       stat3Label: 'Featured experiences',
       stat4Number: '20+',
-      stat4Label: 'Technologies & tools'
+      stat4Label: 'Technologies & tools',
     },
     whatWeDo: {
       kicker: 'WHAT WE DO',
       title: 'A practical technology skill set',
-      desc: 'Our backgrounds are different, but our work connects through one goal: solving real problems with dependable technology.'
+      desc: 'Our backgrounds are different, but our work connects through one goal: solving real problems with dependable technology.',
     },
     howWeWork: {
       kicker: 'HOW WE WORK',
@@ -46,42 +49,68 @@ export const TRANSLATIONS = {
       desc: 'Our process keeps teamwork visible from understanding the problem to validating and delivering the result.',
       learnMore: 'About our approach',
       steps: [
-        { num: '01', title: 'Understand', desc: 'Clarify the goal, users and practical requirements.' },
-        { num: '02', title: 'Plan', desc: 'Break work into deliverable tasks and responsibilities.' },
-        { num: '03', title: 'Build', desc: 'Implement clean, maintainable and testable solutions.' },
-        { num: '04', title: 'Validate', desc: 'Test workflows, fix issues and review the user experience.' },
-        { num: '05', title: 'Deliver', desc: 'Deploy, document and learn from the results.' }
-      ]
+        {
+          num: '01',
+          title: 'Understand',
+          desc: 'Clarify the goal, users and practical requirements.',
+        },
+        {
+          num: '02',
+          title: 'Plan',
+          desc: 'Break work into deliverable tasks and responsibilities.',
+        },
+        {
+          num: '03',
+          title: 'Build',
+          desc: 'Implement clean, maintainable and testable solutions.',
+        },
+        {
+          num: '04',
+          title: 'Validate',
+          desc: 'Test workflows, fix issues and review the user experience.',
+        },
+        {
+          num: '05',
+          title: 'Deliver',
+          desc: 'Deploy, document and learn from the results.',
+        },
+      ],
     },
     ctaBanner: {
       kicker: 'READY TO EXPLORE',
-      title: 'See the people, skills and experiences behind the PNC student team.',
-      button: 'Meet the Team'
+      title:
+        'See the people, skills and experiences behind the PNC student team.',
+      button: 'Meet the Team',
     },
     about: {
       kicker: 'ABOUT THE TEAM',
       title: 'A student team turning learning into practical experience.',
-      subtitle: 'We are a PNC student technology team with different professional directions but a shared commitment to learning by building, testing and improving real solutions.',
+      subtitle:
+        'We are a PNC student technology team with different professional directions but a shared commitment to learning by building, testing and improving real solutions.',
       missionKicker: 'MISSION',
       missionTitle: 'Build practical skills through real collaboration.',
-      missionDesc: 'Develop dependable technology skills, deliver useful team projects and strengthen professional habits through planning, development, QA, documentation and technical operations.',
+      missionDesc:
+        'Develop dependable technology skills, deliver useful team projects and strengthen professional habits through planning, development, QA, documentation and technical operations.',
       visionKicker: 'VISION',
       visionTitle: 'Grow into capable technology professionals.',
-      visionDesc: 'Use continuous learning, teamwork and disciplined delivery to become professionals who can contribute confidently to real organizations and technology products.',
+      visionDesc:
+        'Use continuous learning, teamwork and disciplined delivery to become professionals who can contribute confidently to real organizations and technology products.',
       valuesKicker: 'OUR VALUES',
       valuesTitle: 'The habits behind our work',
-      valuesDesc: 'A professional portfolio is not only about tools. These values shape how we communicate, build and improve together.'
+      valuesDesc:
+        'A professional portfolio is not only about tools. These values shape how we communicate, build and improve together.',
     },
     team: {
       kicker: 'OUR TEAM',
       title: 'Seven people. Different paths. One shared portfolio.',
-      subtitle: 'Open any profile to see verified experience, education, technical skills, projects, contact information and CV access where supplied.',
+      subtitle:
+        'Open any profile to see verified experience, education, technical skills, projects, contact information and CV access where supplied.',
       filters: {
         All: 'All',
         Development: 'Development',
         QA: 'QA',
         Planning: 'Planning',
-        Infrastructure: 'Infrastructure'
+        Infrastructure: 'Infrastructure',
       },
       viewProfile: 'View Profile',
       backToTeam: 'Back to Team',
@@ -94,29 +123,32 @@ export const TRANSLATIONS = {
       selectedProjects: 'Selected Projects',
       additionalLearning: 'Additional Learning',
       downloadCv: 'Download CV',
-      openCv: 'Open CV'
+      openCv: 'Open CV',
     },
     expertise: {
       kicker: 'EXPERTISE',
       title: 'Skills connected to practical work.',
-      subtitle: 'We avoid fake percentage ratings. Instead, the site shows focus areas, tools actually documented in CVs and the people connected to each area.',
+      subtitle:
+        'We avoid fake percentage ratings. Instead, the site shows focus areas, tools actually documented in CVs and the people connected to each area.',
       relatedTech: 'RELATED TECHNOLOGIES',
       relatedMembers: 'RELATED MEMBERS',
       techSystemKicker: 'TECHNOLOGY SYSTEM',
       techSystemTitle: 'Visual technology badges, not text-only lists',
-      techSystemDesc: 'The MVP uses compact neutral Material UI tiles and recognizable brand icons, following the supplied visual reference while keeping the overall interface clean and professional.'
+      techSystemDesc:
+        'The MVP uses compact neutral Material UI tiles and recognizable brand icons, following the supplied visual reference while keeping the overall interface clean and professional.',
     },
     projects: {
       kicker: 'PROJECTS & EXPERIENCE',
       title: 'Work that turns learning into evidence.',
-      subtitle: '7 curated case studies combine professional experience, internships and academic projects documented in the team CV pack.',
+      subtitle:
+        '7 curated case studies combine professional experience, internships and academic projects documented in the team CV pack.',
       filters: {
         All: 'All',
         Web: 'Web',
         Software: 'Software',
         QA: 'QA',
         Data: 'Data',
-        Telecom: 'Telecom'
+        Telecom: 'Telecom',
       },
       viewCaseStudy: 'View case study',
       backToProjects: 'Back to Projects',
@@ -128,65 +160,69 @@ export const TRANSLATIONS = {
       techStack: 'Technology Stack',
       outcomeLearning: 'Outcome & Learning',
       relatedMembers: 'Related Team Members',
-      openRepo: 'Open repository'
+      openRepo: 'Open repository',
     },
     contact: {
       kicker: 'CONTACT',
       title: "Let's connect, learn and build together.",
-      subtitle: 'Use the form for a general conversation, or open an individual member profile to contact the right person directly.',
+      subtitle:
+        'Use the form for a general conversation, or open an individual member profile to contact the right person directly.',
       teamTitle: 'PNC Student Team',
-      teamDesc: 'Seven members across development, QA, planning, data and telecom.',
+      teamDesc:
+        'Seven members across development, QA, planning, data and telecom.',
       generalContact: 'GENERAL CONTACT',
       location: 'LOCATION',
       locationVal: 'Phnom Penh, Cambodia',
       contactSpecific: 'Contact a specific member',
       sendMessage: 'Send a message',
-      formNote: 'Frontend-only MVP: submitting the form opens your default email app with the message prepared.',
+      formNote:
+        'Frontend-only MVP: submitting the form opens your default email app with the message prepared.',
       fullName: 'Full Name',
       email: 'Email',
       subject: 'Subject',
       message: 'Message',
       promptText: 'Tell us what you would like to discuss.',
-      openEmailBtn: 'Open email to send'
+      openEmailBtn: 'Open email to send',
     },
     footer: {
       tagline: 'Learning, building and growing through technology.',
       desc: 'A student technology team portfolio presenting practical experience across development, QA, planning, data and infrastructure.',
       exploreTeam: 'Explore the Team',
-      copyright: '© 2026 PNCTEAMDEV • PNC Student Team Portfolio MVP.'
+      copyright: `© 2026 ${SITE_NAME} • PNC Student Team Portfolio MVP.`,
     },
     theme: {
       switchToDark: 'Switch to dark mode',
-      switchToLight: 'Switch to light mode'
+      switchToLight: 'Switch to light mode',
     },
     lang: {
       switchToKhmer: 'ប្ដូរទៅជាភាសាខ្មែរ',
-      switchToEnglish: 'Switch to English'
-    }
+      switchToEnglish: 'Switch to English',
+    },
   },
   km: {
-    brandName: 'KromDev',
+    brandName: SITE_NAME,
     nav: {
       home: 'ទំព័រដើម',
       about: 'អំពីយើង',
       team: 'ក្រុម',
       expertise: 'ជំនាញ',
       projects: 'គម្រោង',
-      connect: 'ទំនាក់ទំនងយើង'
+      connect: 'ទំនាក់ទំនងយើង',
     },
     hero: {
-      badge: '#PNC7TEAMSTARTUP • ក្រុមបច្ចេកវិទ្យាសិស្ស PNC',
+      badge: `#${SITE_NAME} • ក្រុមបច្ចេកវិទ្យាសិស្ស PNC`,
       titlePart1: 'យើងរៀនតាមរយៈការបង្កើត ',
       titleHighlight: 'បច្ចេកវិទ្យាជាក់ស្ដែង',
       titlePart2: '។',
-      subtitle: 'ជួបជាមួយនិស្សិត PNC ទាំងប្រាំពីររូបដែលមានជំនាញវិជ្ជាជីវៈលើវិស័យ Full-stack development, web engineering, quality assurance, planning, data និង roaming & interconnection។',
+      subtitle:
+        'ជួបជាមួយនិស្សិត PNC ទាំងប្រាំពីររូបដែលមានជំនាញវិជ្ជាជីវៈលើវិស័យ Full-stack development, web engineering, quality assurance, planning, data និង roaming & interconnection។',
       viewProjects: 'មើលគម្រោងរបស់យើង',
       meetTeam: 'ជួបជាមួយសមាជិកក្រុម',
       teamCount: 'សមាជិក ៧ នាក់',
       teamSub: 'ដំណើររៀនសូត្ររួមគ្នា',
       centerBadgeTop: 'ជួបជាមួយក្រុម • ៧ នាក់',
       centerBadgeTitle: 'ក្រុម PNC',
-      centerBadgeSub: 'និស្សិតអាហារូបករណ៍ឆ្នើមទាំង ៧'
+      centerBadgeSub: 'និស្សិតអាហារូបករណ៍ឆ្នើមទាំង ៧',
     },
     stats: {
       headline: 'ជំនាញផ្សេងៗគ្នា។ ក្រុមតែមួយ។',
@@ -198,12 +234,12 @@ export const TRANSLATIONS = {
       stat3Number: '៧+',
       stat3Label: 'បទពិសោធន៍លេចធ្លោ',
       stat4Number: '២០+',
-      stat4Label: 'បច្ចេកវិទ្យា & ឧបករណ៍'
+      stat4Label: 'បច្ចេកវិទ្យា & ឧបករណ៍',
     },
     whatWeDo: {
       kicker: 'អ្វីដែលយើងធ្វើ',
       title: 'ជំនាញបច្ចេកវិទ្យាជាក់ស្តែង',
-      desc: 'ប្រវត្តិរបស់យើងខុសៗគ្នា ប៉ុន្តែការងាររបស់យើងផ្សារភ្ជាប់តាមរយៈគោលដៅតែមួយ៖ ដោះស្រាយបញ្ហាពិតដោយបច្ចេកវិទ្យាដែលអាចទុកចិត្តបាន។'
+      desc: 'ប្រវត្តិរបស់យើងខុសៗគ្នា ប៉ុន្តែការងាររបស់យើងផ្សារភ្ជាប់តាមរយៈគោលដៅតែមួយ៖ ដោះស្រាយបញ្ហាពិតដោយបច្ចេកវិទ្យាដែលអាចទុកចិត្តបាន។',
     },
     howWeWork: {
       kicker: 'របៀបដែលយើងធ្វើការ',
@@ -211,42 +247,67 @@ export const TRANSLATIONS = {
       desc: 'ដំណើរការរបស់យើងរក្សាការងារជាក្រុមឱ្យមានតម្លាភាព តាំងពីការស្វែងយល់បញ្ហារហូតដល់ការផ្ទៀងផ្ទាត់ និងប្រគល់លទ្ធផល។',
       learnMore: 'អំពីវិធីសាស្ត្ររបស់យើង',
       steps: [
-        { num: '០១', title: 'ស្វែងយល់', desc: 'បញ្ជាក់ឱ្យច្បាស់ពីគោលដៅ អ្នកប្រើប្រាស់ និងតម្រូវការជាក់ស្តែង។' },
-        { num: '០២', title: 'រៀបចំផែនការ', desc: 'បែងចែកការងារទៅជាភារកិច្ច និងទំនួលខុសត្រូវច្បាស់លាស់។' },
-        { num: '០៣', title: 'កសាង', desc: 'អនុវត្តដំណោះស្រាយដែលស្អាត ងាយថែទាំ និងអាចធ្វើតេស្តបាន។' },
-        { num: '០៤', title: 'ផ្ទៀងផ្ទាត់', desc: 'ធ្វើតេស្តលំហូរការងារ ដោះស្រាយបញ្ហាកំហុស និងពិនិត្យបទពិសោធន៍អ្នកប្រើ។' },
-        { num: '០៥', title: 'ប្រគល់លទ្ធផល', desc: 'ដាក់ឱ្យដំណើរការ ចងក្រងឯកសារ និងរៀនសូត្រពីលទ្ធផល។' }
-      ]
+        {
+          num: '០១',
+          title: 'ស្វែងយល់',
+          desc: 'បញ្ជាក់ឱ្យច្បាស់ពីគោលដៅ អ្នកប្រើប្រាស់ និងតម្រូវការជាក់ស្តែង។',
+        },
+        {
+          num: '០២',
+          title: 'រៀបចំផែនការ',
+          desc: 'បែងចែកការងារទៅជាភារកិច្ច និងទំនួលខុសត្រូវច្បាស់លាស់។',
+        },
+        {
+          num: '០៣',
+          title: 'កសាង',
+          desc: 'អនុវត្តដំណោះស្រាយដែលស្អាត ងាយថែទាំ និងអាចធ្វើតេស្តបាន។',
+        },
+        {
+          num: '០៤',
+          title: 'ផ្ទៀងផ្ទាត់',
+          desc: 'ធ្វើតេស្តលំហូរការងារ ដោះស្រាយបញ្ហាកំហុស និងពិនិត្យបទពិសោធន៍អ្នកប្រើ។',
+        },
+        {
+          num: '០៥',
+          title: 'ប្រគល់លទ្ធផល',
+          desc: 'ដាក់ឱ្យដំណើរការ ចងក្រងឯកសារ និងរៀនសូត្រពីលទ្ធផល។',
+        },
+      ],
     },
     ctaBanner: {
       kicker: 'ត្រៀមខ្លួនស្វែងយល់ហើយឬនៅ',
       title: 'ស្វែងយល់ពីសមាជិក ជំនាញ និងបទពិសោធន៍នៅពីក្រោយក្រុមសិស្ស PNC។',
-      button: 'ជួបជាមួយក្រុម'
+      button: 'ជួបជាមួយក្រុម',
     },
     about: {
       kicker: 'អំពីក្រុមយើង',
       title: 'ក្រុមសិស្សដែលប្រែក្លាយការសិក្សាទៅជាបទពិសោធន៍ជាក់ស្តែង។',
-      subtitle: 'យើងជាក្រុមបច្ចេកវិទ្យាសិស្ស PNC ដែលមានទិសដៅវិជ្ជាជីវៈខុសៗគ្នា ប៉ុន្តែមានការប្តេជ្ញាចិត្តរួមគ្នាក្នុងការរៀនតាមរយៈការបង្កើត ធ្វើតេស្ត និងកែលម្អដំណោះស្រាយពិតប្រាកដ។',
+      subtitle:
+        'យើងជាក្រុមបច្ចេកវិទ្យាសិស្ស PNC ដែលមានទិសដៅវិជ្ជាជីវៈខុសៗគ្នា ប៉ុន្តែមានការប្តេជ្ញាចិត្តរួមគ្នាក្នុងការរៀនតាមរយៈការបង្កើត ធ្វើតេស្ត និងកែលម្អដំណោះស្រាយពិតប្រាកដ។',
       missionKicker: 'បេសកកម្ម',
       missionTitle: 'កសាងជំនាញជាក់ស្តែងតាមរយៈការសហការគ្នាពិតប្រាកដ។',
-      missionDesc: 'អភិវឌ្ឍជំនាញបច្ចេកវិទ្យាដែលអាចទុកចិត្តបាន បញ្ចប់គម្រោងក្រុមដែលមានប្រយោជន៍ និងពង្រឹងទម្លាប់វិជ្ជាជីវៈ។',
+      missionDesc:
+        'អភិវឌ្ឍជំនាញបច្ចេកវិទ្យាដែលអាចទុកចិត្តបាន បញ្ចប់គម្រោងក្រុមដែលមានប្រយោជន៍ និងពង្រឹងទម្លាប់វិជ្ជាជីវៈ។',
       visionKicker: 'ចក្ខុវិស័យ',
       visionTitle: 'រីកចម្រើនក្លាយជាអ្នកជំនាញបច្ចេកវិទ្យាដែលមានសមត្ថភាព។',
-      visionDesc: 'ប្រើប្រាស់ការរៀនសូត្រជាបន្តបន្ទាប់ ការងារជាក្រុម និងវិន័យខ្ពស់ ដើម្បីក្លាយជាអ្នកជំនាញដែលរួមចំណែកប្រកបដោយទំនុកចិត្ត។',
+      visionDesc:
+        'ប្រើប្រាស់ការរៀនសូត្រជាបន្តបន្ទាប់ ការងារជាក្រុម និងវិន័យខ្ពស់ ដើម្បីក្លាយជាអ្នកជំនាញដែលរួមចំណែកប្រកបដោយទំនុកចិត្ត។',
       valuesKicker: 'គុណតម្លៃរបស់យើង',
       valuesTitle: 'ទម្លាប់នៅពីក្រោយការងាររបស់យើង',
-      valuesDesc: 'ផលប័ត្រវិជ្ជាជីវៈមិនមែនត្រឹមតែឧបករណ៍នោះទេ។ គុណតម្លៃទាំងនេះកំណត់ពីរបៀបដែលយើងប្រាស្រ័យទាក់ទង បង្កើត និងអភិវឌ្ឍជាមួយគ្នា។'
+      valuesDesc:
+        'ផលប័ត្រវិជ្ជាជីវៈមិនមែនត្រឹមតែឧបករណ៍នោះទេ។ គុណតម្លៃទាំងនេះកំណត់ពីរបៀបដែលយើងប្រាស្រ័យទាក់ទង បង្កើត និងអភិវឌ្ឍជាមួយគ្នា។',
     },
     team: {
       kicker: 'ក្រុមរបស់យើង',
       title: 'មនុស្ស ៧ នាក់។ ផ្លូវខុសគ្នា។ ផលប័ត្ររួមតែមួយ។',
-      subtitle: 'បើកមើលប្រវត្តិរូបណាមួយ ដើម្បីពិនិត្យមើលបទពិសោធន៍ ការអប់រំ ជំនាញបច្ចេកទេស គម្រោង ព័ត៌មានទំនាក់ទំនង និង CV។',
+      subtitle:
+        'បើកមើលប្រវត្តិរូបណាមួយ ដើម្បីពិនិត្យមើលបទពិសោធន៍ ការអប់រំ ជំនាញបច្ចេកទេស គម្រោង ព័ត៌មានទំនាក់ទំនង និង CV។',
       filters: {
         All: 'ទាំងអស់',
         Development: 'ការអភិវឌ្ឍន៍ (Dev)',
         QA: 'ការធានាគុណភាព (QA)',
         Planning: 'ការរៀបចំផែនការ',
-        Infrastructure: 'ហេដ្ឋារចនាសម្ព័ន្ធ'
+        Infrastructure: 'ហេដ្ឋារចនាសម្ព័ន្ធ',
       },
       viewProfile: 'មើលប្រវត្តិរូប',
       backToTeam: 'ត្រឡប់ទៅទំព័រក្រុម',
@@ -259,29 +320,32 @@ export const TRANSLATIONS = {
       selectedProjects: 'គម្រោងដែលបានជ្រើសរើស',
       additionalLearning: 'ការរៀនសូត្របន្ថែម',
       downloadCv: 'ទាញយក CV',
-      openCv: 'បើក CV'
+      openCv: 'បើក CV',
     },
     expertise: {
       kicker: 'ជំនាញឯកទេស',
       title: 'ជំនាញដែលផ្សារភ្ជាប់នឹងការងារជាក់ស្តែង។',
-      subtitle: 'យើងជៀសវាងការដាក់ពិន្ទុភាគរយក្លែងក្លាយ។ ផ្ទុយទៅវិញ គេហទំព័របង្ហាញពីវិស័យស្នូល ឧបករណ៍ដែលមានឯកសារយោងក្នុង CV និងសមាជិកដែលពាក់ព័ន្ធ។',
+      subtitle:
+        'យើងជៀសវាងការដាក់ពិន្ទុភាគរយក្លែងក្លាយ។ ផ្ទុយទៅវិញ គេហទំព័របង្ហាញពីវិស័យស្នូល ឧបករណ៍ដែលមានឯកសារយោងក្នុង CV និងសមាជិកដែលពាក់ព័ន្ធ។',
       relatedTech: 'បច្ចេកវិទ្យាពាក់ព័ន្ធ',
       relatedMembers: 'សមាជិកពាក់ព័ន្ធ',
       techSystemKicker: 'ប្រព័ន្ធបច្ចេកវិទ្យា',
       techSystemTitle: 'ផ្លាកបច្ចេកវិទ្យាដែលមើលឃើញ មិនមែនគ្រាន់តែជាបញ្ជីអត្ថបទ',
-      techSystemDesc: 'MVP ប្រើប្រាស់រូបសញ្ញាស្អាតតាម Material UI និងរូបតំណាងម៉ាកដែលងាយសម្គាល់ ដើម្បីរក្សាចំណុចប្រទាក់ឱ្យមានលក្ខណៈវិជ្ជាជីវៈ។'
+      techSystemDesc:
+        'MVP ប្រើប្រាស់រូបសញ្ញាស្អាតតាម Material UI និងរូបតំណាងម៉ាកដែលងាយសម្គាល់ ដើម្បីរក្សាចំណុចប្រទាក់ឱ្យមានលក្ខណៈវិជ្ជាជីវៈ។',
     },
     projects: {
       kicker: 'គម្រោង និងបទពិសោធន៍',
       title: 'ការងារដែលប្រែក្លាយការរៀនសូត្រទៅជាភស្តុតាងជាក់ស្តែង។',
-      subtitle: 'ករណីសិក្សាសម្រិតសម្រាំងចំនួន ៧ រួមបញ្ចូលបទពិសោធន៍ការងារ កម្មសិក្សា និងគម្រោងសិក្សាដែលមានឯកសារក្នុង CV របស់ក្រុម។',
+      subtitle:
+        'ករណីសិក្សាសម្រិតសម្រាំងចំនួន ៧ រួមបញ្ចូលបទពិសោធន៍ការងារ កម្មសិក្សា និងគម្រោងសិក្សាដែលមានឯកសារក្នុង CV របស់ក្រុម។',
       filters: {
         All: 'ទាំងអស់',
         Web: 'គេហទំព័រ (Web)',
         Software: 'សូហ្វវែរ (Software)',
         QA: 'ការធានាគុណភាព (QA)',
         Data: 'ទិន្នន័យ (Data)',
-        Telecom: 'ទូរគមនាគមន៍'
+        Telecom: 'ទូរគមនាគមន៍',
       },
       viewCaseStudy: 'មើលករណីសិក្សា',
       backToProjects: 'ត្រឡប់ទៅកាន់គម្រោង',
@@ -293,40 +357,43 @@ export const TRANSLATIONS = {
       techStack: 'បច្ចេកវិទ្យាដែលប្រើប្រាស់',
       outcomeLearning: 'លទ្ធផល និងការរៀនសូត្រ',
       relatedMembers: 'សមាជិកក្រុមដែលពាក់ព័ន្ធ',
-      openRepo: 'បើក Repository'
+      openRepo: 'បើក Repository',
     },
     contact: {
       kicker: 'ទំនាក់ទំនង',
       title: 'តោះភ្ជាប់ទំនាក់ទំនង រៀនសូត្រ និងសាងសង់ជាមួយគ្នា។',
-      subtitle: 'ប្រើប្រាស់ទម្រង់នេះសម្រាប់ការសន្ទនាទូទៅ ឬបើកប្រវត្តិរូបសមាជិកដើម្បីទាក់ទងបុគ្គលជាក់លាក់ដោយផ្ទាល់។',
+      subtitle:
+        'ប្រើប្រាស់ទម្រង់នេះសម្រាប់ការសន្ទនាទូទៅ ឬបើកប្រវត្តិរូបសមាជិកដើម្បីទាក់ទងបុគ្គលជាក់លាក់ដោយផ្ទាល់។',
       teamTitle: 'ក្រុមនិស្សិត PNC',
-      teamDesc: 'សមាជិក ៧ នាក់លើផ្នែក Development, QA, Planning, Data និង Telecom។',
+      teamDesc:
+        'សមាជិក ៧ នាក់លើផ្នែក Development, QA, Planning, Data និង Telecom។',
       generalContact: 'ទំនាក់ទំនងទូទៅ',
       location: 'ទីតាំង',
       locationVal: 'រាជធានីភ្នំពេញ ប្រទេសកម្ពុជា',
       contactSpecific: 'ទាក់ទងសមាជិកជាក់លាក់',
       sendMessage: 'ផ្ញើសារមកកាន់យើង',
-      formNote: 'Frontend MVP៖ ការដាក់ស្នើទម្រង់នឹងបើកកម្មវិធី Email របស់អ្នកជាមួយសារដែលបានរៀបចំទុកជាស្រេច។',
+      formNote:
+        'Frontend MVP៖ ការដាក់ស្នើទម្រង់នឹងបើកកម្មវិធី Email របស់អ្នកជាមួយសារដែលបានរៀបចំទុកជាស្រេច។',
       fullName: 'ឈ្មោះពេញ',
       email: 'អ៊ីមែល',
       subject: 'ប្រធានបទ',
       message: 'សារ',
       promptText: 'ប្រាប់យើងពីអ្វីដែលអ្នកចង់ពិភាក្សា។',
-      openEmailBtn: 'បើក Email ដើម្បីផ្ញើ'
+      openEmailBtn: 'បើក Email ដើម្បីផ្ញើ',
     },
     footer: {
       tagline: 'រៀនសូត្រ កសាង និងរីកចម្រើនតាមរយៈបច្ចេកវិទ្យា។',
       desc: 'ផលប័ត្រក្រុមបច្ចេកវិទ្យានិស្សិត បង្ហាញពីបទពិសោធន៍ជាក់ស្តែងលើការអភិវឌ្ឍន៍ QA ការរៀបចំផែនការ ទិន្នន័យ និងហេដ្ឋារចនាសម្ព័ន្ធ។',
       exploreTeam: 'ស្វែងយល់ពីក្រុម',
-      copyright: '© 2026 PNCTEAMSTARTUP • PNC Student Team Portfolio MVP.'
+      copyright: `© 2026 ${SITE_NAME} • PNC Student Team Portfolio MVP.`,
     },
     theme: {
       switchToDark: 'ប្ដូរទៅជារបៀបងងឹត (Dark mode)',
-      switchToLight: 'ប្ដូរទៅជារបៀបពន្លឺ (Light mode)'
+      switchToLight: 'ប្ដូរទៅជារបៀបពន្លឺ (Light mode)',
     },
     lang: {
       switchToKhmer: 'ប្ដូរទៅជាភាសាខ្មែរ',
-      switchToEnglish: 'Switch to English'
-    }
-  }
+      switchToEnglish: 'Switch to English',
+    },
+  },
 };

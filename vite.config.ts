@@ -1,13 +1,14 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
+import { seoPlugin } from './scripts/seoPlugin.ts';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), seoPlugin()],
     resolve: {
       alias: {
-        '@': import.meta.dirname,
+        '@': `${import.meta.dirname}/src`,
       },
     },
     server: {

@@ -1,176 +1,77 @@
-﻿# TosDevelop - PNC Student Team Portfolio
+# TosDevelop — PNC Student Team Portfolio
 
-A modern React + Vite portfolio website for the KromDev team at Passerelles Numériques Cambodia (PNC). This project showcases the team's profile, expertise, projects, and contact information in a clean, responsive experience with English and Khmer language support.
+A React + TypeScript portfolio for the TosDevelop team at Passerelles Numériques Cambodia, with English/Khmer content and light/dark themes. Built with Vite, Tailwind CSS, and Lucide icons.
 
-## Overview
+## Getting started
 
-TosDevelop is a student technology team portfolio designed to present:
+Use Node.js 22.12+ (or Node.js 20.19+ within the 20.x release line) and npm.
 
-- team members and their backgrounds
-- technical specialties and service areas
-- featured projects and achievements
-- company-style portfolio storytelling
-- contact and collaboration opportunities
+```bash
+npm ci
+npm run dev
+```
 
-The site is built as a single-page application with smooth navigation, theme switching, and multilingual interface support.
+The development server runs at http://localhost:3000. No environment variables are required by the current frontend. `.env.example` contains optional platform placeholders; the app does not currently consume them.
 
-## Features
-
-- Responsive portfolio layout for desktop and mobile
-- Multi-page style navigation within a single React app
-- Dark/light theme support
-- English and Khmer language toggle
-- Team member profile cards and detailed bio pages
-- Expertise and project showcase sections
-- Contact section for collaboration and inquiries
-- Modern visual design using Tailwind CSS and motion effects
-
-## Tech Stack
-
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS v4
-- Framer Motion / motion
-- Lucide React icons
-- Google GenAI integration support
-- Express and dotenv support for server-side utilities
-
-## Project Structure
+## Structure
 
 ```text
-Frontend/
-├── public/                 # Static assets and images
-├── src/
-│   ├── components/        # UI sections and page components
-│   ├── context/            # Theme and language providers
-│   ├── data/               # Team, projects, and content data
-│   ├── types/              # Shared TypeScript definitions
-│   ├── App.tsx             # Main app wrapper
-│   ├── index.css           # Global styling
-│   └── main.tsx            # App entry point
-├── .env.example            # Environment variable template
-├── index.html              # Vite HTML entry
-├── metadata.json           # App metadata used by the platform
-├── package.json            # Scripts and dependencies
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite config
-├── README.md               # Project documentation
-└── package-lock.json       # Lockfile
+src/
+├── App.tsx                 # Application composition and page rendering
+├── components/
+│   ├── layout/             # AppLayout, Navbar, Footer
+│   ├── sections/           # Sections reused across pages
+│   └── ui/                 # Avatar, BrandLogo, TechIcon, CategoryFilter
+├── config/                 # Site branding and shared navigation definitions
+├── data/                   # Team, projects, expertise, translations
+├── hooks/                  # Reusable hooks, including navigation state
+├── pages/
+│   ├── about/
+│   ├── contact/
+│   ├── expertise/
+│   ├── home/
+│   ├── projects/
+│   └── team/
+├── providers/              # Provider composition and language/theme contexts
+├── styles/                 # Global styles
+├── types/                  # Shared content models
+└── main.tsx                # React entry point
 ```
 
-## Prerequisites
+## Where to make changes
 
-Make sure you have the following installed:
+- Set the brand and public URL in `config/site.ts`. Edit page titles and descriptions in `config/seo.ts`; the build generates HTML metadata from this configuration.
+- Keep page-specific components alongside their page in `pages/<page>/`.
+- Put reusable UI in `components/ui/`, shared page sections in `components/sections/`, and the site shell in `components/layout/`.
+- Edit portfolio content and translations in `data/`; content contracts live in `types/`.
+- Use `@/` for imports across folders; it resolves to `src/` in TypeScript and Vite. Relative imports are fine within one page folder.
+- Add destinations in `config/navigation.ts`, then render the new page in `App.tsx`. Header/footer links derive from the shared definitions.
+- Keep navigation state in `hooks/useNavigation.ts` and provider composition in `providers/AppProviders.tsx`.
+- Reuse `CategoryFilter` for typed category selection.
 
-- Node.js 18+ or newer
-- npm (or pnpm/yarn if preferred)
+Navigation uses real page URLs and browser history. Refresh, direct links, and back/forward navigation preserve the selected page or profile. Use `PageLink` for internal navigation so links are crawlable and support opening in a new tab. Theme and language preferences persist in local storage. Contact submissions open the visitor's email client via `mailto:`; there is no backend email service.
 
-## Getting Started
+## SEO and hosting
 
-1. Clone the repository
+The public URL is `https://tos-develop-portfolio.vercel.app/`. The build generates an HTML entry for each page, team profile, and project with its own title, description, canonical URL, Open Graph/Twitter metadata, and organization structured data. It also generates `robots.txt`, `sitemap.xml`, and a `404.html` marked `noindex`.
 
-```bash
-git clone <your-repository-url>
-cd Frontend
-```
+`vercel.json` serves this static Vite output with consistent trailing-slash URLs. Keep the generated route directories when deploying; do not rewrite all URLs to the home page, because that would discard their individual metadata. If the domain changes, update `SITE_URL` and rebuild.
 
-2. Install dependencies
+Page bodies still render with React in the browser; the HTML metadata is generated at build time. English and Khmer currently share URLs, so no separate language alternates are advertised. After deployment, submit `/sitemap.xml` in Google Search Console and check representative URLs for indexing. SEO changes do not guarantee rankings.
 
-```bash
-npm install
-```
+Run `npm run build` followed by `npm run test:seo` to verify routes, metadata, sitemap coverage, and unknown-page handling.
 
-3. Start the development server
+## Commands
 
-```bash
-npm run dev
-```
+| Command                | Purpose                                                     |
+| ---------------------- | ----------------------------------------------------------- |
+| `npm run dev`          | Start the development server on port 3000                   |
+| `npm run typecheck`    | Check TypeScript without emitting files                     |
+| `npm run format`       | Format source and project files with Prettier               |
+| `npm run format:check` | Check formatting without changing files                     |
+| `npm run lint`         | Alias for type checking; no separate linter is configured   |
+| `npm run build`        | Create the production site in `dist/`                       |
+| `npm run preview`      | Preview the production build                                |
+| `npm run clean`        | Remove generated `dist/` output on Windows, macOS, or Linux |
 
-The app runs on:
-
-- http://localhost:3000
-
-## Available Scripts
-
-```bash
-npm run dev
-```
-Starts the Vite development server with the app exposed on port 3000.
-
-```bash
-npm run build
-```
-Builds the application for production.
-
-```bash
-npm run preview
-```
-Serves the production build locally for preview.
-
-```bash
-npm run lint
-```
-Runs TypeScript checks without emitting files.
-
-## Environment Variables
-
-The app includes a sample environment file at `.env.example`.
-
-Notes:
-
-- `APP_URL` is used for app-level links and runtime configuration.
-- Copy `.env.example` to `.env` and replace the placeholder values as needed.
-
-## Development Notes
-
-This project uses a component-based architecture with content separated into data files. This makes it easy to update:
-
-- team member information
-- project details
-- expertise categories
-- language labels and translations
-
-The content is centralized in `src/data/`, which is ideal for future reuse or CMS integration.
-
-## Production Build
-
-To create an optimized production build:
-
-```bash
-npm run build
-```
-
-Then preview it locally:
-
-```bash
-npm run preview
-```
-
-## Deployment
-
-This project is suitable for deployment on static hosting platforms such as:
-
-- Vercel
-- Netlify
-- Cloudflare Pages
-- any Node-based hosting environment with static asset support
-
-Ensure that your environment variables are configured correctly in your deployment platform.
-
-## Contributing
-
-If you want to improve the portfolio:
-
-1. Create a feature branch
-2. Make changes with clean, maintainable component structure
-3. Run the lint/build checks
-4. Submit a pull request with a clear summary of changes
-
-## Contact
-
-For questions or collaboration opportunities, use the contact section in the application or reach out through the project maintainers.
-
-## License
-
-This project does not appear to include a specific license file. Please check with the repository owner before reusing or redistributing the code in a production environment.
+Run type checking and a production build before submitting changes. Deploy the generated `dist/` directory to a static hosting service.

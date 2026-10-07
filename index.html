@@ -3,19 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TosDevelop - Team Portfolio</title>
-    <meta name="description" content="Showcase portfolio for the TosDevelop student technology team featuring talented developers, planners, and digital professionals." />
-    <meta property="og:title" content="TosDevelop - Student Team Portfolio" />
-    <meta property="og:description" content="Showcase portfolio for the TosDevelop student technology team featuring talented developers, planners, and digital professionals." />
+    <script>
+      (() => {
+        let theme;
+        try {
+          theme =
+            localStorage.getItem('tosdevelop_theme') ??
+            localStorage.getItem('kromdev_theme');
+        } catch {
+          // System preference still works when browser storage is unavailable.
+        }
+        const dark =
+          theme === 'dark' ||
+          (theme !== 'light' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+    <!-- seo:start -->
+    <title>TosDevelop | Student Developers &amp; Technology Portfolio</title>
+    <meta
+      name="description"
+      content="Showcase portfolio for the TosDevelop student technology team featuring talented developers, planners, and digital professionals."
+    />
+    <meta property="og:title" content="TosDevelop" />
+    <meta
+      property="og:description"
+      content="Showcase portfolio for the TosDevelop student technology team featuring talented developers, planners, and digital professionals."
+    />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- seo:end -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-blue-600 selection:text-white min-h-screen">
+  <body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-blue-600 selection:text-white min-h-screen"
+  >
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

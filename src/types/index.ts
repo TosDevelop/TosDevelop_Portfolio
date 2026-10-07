@@ -1,8 +1,10 @@
 export type Language = 'en' | 'km';
 export type Theme = 'light' | 'dark';
 
-export type TeamCategory = 'All' | 'Development' | 'QA' | 'Planning' | 'Infrastructure';
-export type ProjectCategory = 'All' | 'Web' | 'Software' | 'QA' | 'Data' | 'Telecom';
+export type TeamCategory =
+  'All' | 'Development' | 'QA' | 'Planning' | 'Infrastructure';
+export type ProjectCategory =
+  'All' | 'Web' | 'Software' | 'QA' | 'Data' | 'Telecom';
 
 export interface SocialLinks {
   email?: string;
