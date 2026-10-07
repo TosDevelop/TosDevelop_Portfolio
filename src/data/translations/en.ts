@@ -1,5 +1,5 @@
 import { SITE_NAME } from '@/config/site';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 
 const teamCount = TEAM_MEMBERS.length;
 
@@ -125,6 +125,9 @@ export const en = {
     experience: 'Experience',
     education: 'Education',
     selectedProjects: 'Selected Projects',
+    repository: 'Repository',
+    liveDemo: 'Live Demo',
+    linkUnavailable: 'Link not available yet',
     softSkills: 'Soft Skills',
     additionalLearning: 'Additional Learning',
     downloadCv: 'Download CV',

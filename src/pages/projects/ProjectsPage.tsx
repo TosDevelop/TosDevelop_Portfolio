@@ -1,11 +1,12 @@
 import { PageLink } from '@/components/ui/PageLink';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import React, { useState } from 'react';
-import { PROJECTS_DATA } from '@/data/projectsData';
+import { PROJECTS_DATA } from '@/data/projects';
 import { ProjectCategory } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
 import { ProjectDetail } from '@/pages/projects/ProjectDetail';
 import { TechIcon } from '@/components/ui/TechIcon';
+import { ProjectLinks } from '@/components/ui/ProjectLinks';
 import { ArrowRight, Calendar, Bookmark } from 'lucide-react';
 
 interface ProjectsPageProps {
@@ -119,6 +120,12 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   )}
                 </div>
 
+                <ProjectLinks
+                  title={language === 'km' ? project.titleKm : project.title}
+                  repoUrl={project.repoUrl}
+                  repositories={project.repositories}
+                  liveUrl={project.liveUrl}
+                />
                 <PageLink
                   tab="projects"
                   projectId={project.id}

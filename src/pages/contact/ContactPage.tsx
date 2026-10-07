@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SITE_NAME } from '@/config/site';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
 import { Mail, MapPin, Send, CheckCircle2, Users } from 'lucide-react';

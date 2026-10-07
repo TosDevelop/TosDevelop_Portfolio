@@ -1,3 +1,4 @@
+import { projects } from './projects/en.ts';
 import type { TeamMemberEnglish } from '../types.ts';
 
 export const en = {
@@ -41,14 +42,5 @@ export const en = {
       period: '2024 – 2026',
     },
   ],
-  selectedProjects: [
-    {
-      title: 'Farm Management System',
-      role: 'Planning & Web Developer',
-      period: 'Jul – Aug 2025',
-      description:
-        'Collaborative farm monitoring portal with crop cycles, task planning, and harvest analytics.',
-      technologies: ['React.js', 'Laravel', 'MySQL'],
-    },
-  ],
+  selectedProjects: projects,
 } satisfies TeamMemberEnglish;

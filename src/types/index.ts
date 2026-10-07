@@ -45,6 +45,8 @@ export interface MemberProjectSummary {
   description: string;
   technologies: string[];
   link?: string;
+  repoUrl?: string;
+  repositories?: { label: string; url: string }[];
 }
 
 export interface TeamMember {
@@ -102,6 +104,7 @@ export interface ProjectCaseStudy {
   outcomeLearning: string[];
   outcomeLearningKm?: string[];
   repoUrl?: string;
+  repositories?: { label: string; url: string }[];
   liveUrl?: string;
 }
 

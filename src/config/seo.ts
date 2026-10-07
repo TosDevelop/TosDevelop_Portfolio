@@ -1,5 +1,5 @@
-import { TEAM_MEMBERS } from '../data/teamData.ts';
-import { PROJECTS_DATA } from '../data/projectsData.ts';
+import { TEAM_MEMBERS } from '../data/team/index.ts';
+import { PROJECTS_DATA } from '../data/projects/index.ts';
 import { APP_TABS, getPagePath, type AppTab } from './navigation.ts';
 import { SITE_NAME } from './site.ts';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ALL_TECH_BADGES } from '@/data/expertiseData';
+import { ALL_TECH_BADGES } from '@/data/expertise';
 import { TechIcon } from '@/components/ui/TechIcon';
 
 export const TechMarquee: React.FC = () => {

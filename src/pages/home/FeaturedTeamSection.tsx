@@ -2,7 +2,7 @@ import { PageLink } from '@/components/ui/PageLink';
 import type { Navigate } from '@/config/navigation';
 import React from 'react';
 import { useLanguage } from '@/providers/LanguageContext';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 import { Avatar } from '@/components/ui/Avatar';
 import { ArrowRight, FileText } from 'lucide-react';
 

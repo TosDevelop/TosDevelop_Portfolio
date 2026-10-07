@@ -19,11 +19,14 @@ import php from '@/assets/technologies/php.svg';
 import python from '@/assets/technologies/python.svg';
 import nodejs from '@/assets/technologies/nodejs.svg';
 import mysql from '@/assets/technologies/mysql.svg';
+import sql from '@/assets/technologies/sql.svg';
 import postgresql from '@/assets/technologies/postgresql.svg';
 import microsoftsqlserver from '@/assets/technologies/microsoftsqlserver.svg';
 import figma from '@/assets/technologies/figma.svg';
 import github from '@/assets/technologies/github.svg';
 import postman from '@/assets/technologies/postman.svg';
+import playwright from '@/assets/technologies/playwright.svg';
+import jenkins from '@/assets/technologies/jenkins.svg';
 import amazonwebservices from '@/assets/technologies/amazonwebservices.svg';
 import docker from '@/assets/technologies/docker.svg';
 import kubernetes from '@/assets/technologies/kubernetes.svg';
@@ -60,11 +63,14 @@ export const TECHNOLOGY_LOGOS: Record<string, string> = {
   python: python,
   'node.js': nodejs,
   mysql: mysql,
+  sql,
   postgresql: postgresql,
   'sql server': microsoftsqlserver,
   figma: figma,
   github: github,
   postman: postman,
+  playwright,
+  jenkins,
   aws: amazonwebservices,
   docker: docker,
   kubernetes: kubernetes,

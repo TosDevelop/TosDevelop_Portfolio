@@ -1,5 +1,5 @@
 import { SITE_NAME } from '@/config/site';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 import type { en } from './en';
 
 const teamCountKm = new Intl.NumberFormat('km-KH-u-nu-khmr').format(
@@ -127,6 +127,9 @@ export const km = {
     experience: 'បទពិសោធន៍ការងារ',
     education: 'ការអប់រំ',
     selectedProjects: 'គម្រោងដែលបានជ្រើសរើស',
+    repository: 'កូដប្រភព',
+    liveDemo: 'មើលគម្រោងផ្ទាល់',
+    linkUnavailable: 'មិនទាន់មានតំណភ្ជាប់',
     softSkills: '????????',
     additionalLearning: 'ការរៀនសូត្របន្ថែម',
     downloadCv: 'ទាញយក CV',

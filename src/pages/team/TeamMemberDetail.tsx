@@ -1,3 +1,4 @@
+import { ProjectLinks } from '@/components/ui/ProjectLinks';
 import React from 'react';
 import { TeamMember } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
@@ -322,12 +323,12 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               </h2>
             </div>
 
-            <div className="space-y-5">
+            <div className="flex flex-col gap-6">
               {details.technicalSkills.map((cat, idx) => (
-                <div key={idx} className="space-y-2">
-                  <span className="text-[11px] font-bold tracking-wider uppercase text-slate-400 dark:text-slate-500">
+                <div key={idx} className="flex flex-col gap-3">
+                  <h3 className="text-[11px] font-bold tracking-wider uppercase text-slate-400 dark:text-slate-500">
                     {cat.category}
-                  </span>
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {cat.skills.map((skill, sIdx) => (
                       <TechIcon key={sIdx} name={skill.name} size="sm" />
@@ -443,7 +444,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                 {details.selectedProjects.map((p, idx) => (
                   <div
                     key={idx}
-                    className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs space-y-3"
+                    className="flex flex-col gap-3 p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -468,6 +469,13 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                         <TechIcon key={tIdx} name={tech} size="sm" />
                       ))}
                     </div>
+                    <ProjectLinks
+                      title={p.title}
+                      repoUrl={p.repoUrl}
+                      repositories={p.repositories}
+                      liveUrl={p.link}
+                      className="mt-auto border-t border-slate-100 pt-3 dark:border-slate-700"
+                    />
                   </div>
                 ))}
               </div>

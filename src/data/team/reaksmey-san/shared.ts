@@ -16,87 +16,59 @@ export const shared = {
   },
   technicalSkills: [
     {
-      category: 'Web Development',
+      category: 'Frontend Development',
       skills: [
-        {
-          name: 'PHP',
-        },
-        {
-          name: 'Laravel',
-        },
-        {
-          name: 'HTML5',
-        },
-        {
-          name: 'CSS3',
-        },
-        {
-          name: 'JavaScript',
-        },
-        {
-          name: 'Python',
-        },
-        {
-          name: 'MySQL',
-        },
-        {
-          name: 'SQL',
-        },
-        {
-          name: 'Firebase',
-        },
-        {
-          name: 'REST API Integration',
-        },
-        {
-          name: 'Postman',
-        },
-        {
-          name: 'Vue.js',
-        },
-        {
-          name: 'React.js',
-        },
-        {
-          name: 'Node.js',
-        },
-        {
-          name: 'Express.js',
-        },
-        {
-          name: 'Git',
-        },
-        {
-          name: 'GitHub',
-        },
-        {
-          name: 'Tailwind CSS',
-        },
-        {
-          name: 'Bootstrap',
-        },
-        {
-          name: 'Responsive Web Design',
-        },
-        {
-          name: 'Figma',
-        },
-        {
-          name: 'UI Design',
-        },
-        {
-          name: 'Prototyping',
-        },
-        {
-          name: 'ChatGPT',
-        },
-        {
-          name: 'Claude',
-        },
-        {
-          name: 'Gemini',
-        },
+        { name: 'HTML5' },
+        { name: 'CSS3' },
+        { name: 'JavaScript' },
+        { name: 'TypeScript' },
+        { name: 'Vue.js' },
+        { name: 'React.js' },
+        { name: 'Tailwind CSS' },
+        { name: 'Bootstrap' },
+        { name: 'Responsive Web Design' },
       ],
+    },
+    {
+      category: 'Backend & APIs',
+      skills: [
+        { name: 'PHP' },
+        { name: 'Laravel' },
+        { name: 'Python' },
+        { name: 'Node.js' },
+        { name: 'Express.js' },
+        { name: 'REST API Integration' },
+        { name: 'OAuth' },
+      ],
+    },
+    {
+      category: 'Databases',
+      skills: [{ name: 'MySQL' }, { name: 'SQL' }, { name: 'Firebase' }],
+    },
+    {
+      category: 'Development Tools',
+      skills: [
+        { name: 'Git' },
+        { name: 'GitHub' },
+        { name: 'Postman' },
+        { name: 'Jenkins' },
+      ],
+    },
+    {
+      category: 'Testing & QA',
+      skills: [{ name: 'Playwright' }],
+    },
+    {
+      category: 'UI/UX Design',
+      skills: [
+        { name: 'Figma' },
+        { name: 'UI Design' },
+        { name: 'Prototyping' },
+      ],
+    },
+    {
+      category: 'AI Tools',
+      skills: [{ name: 'ChatGPT' }, { name: 'Claude' }, { name: 'Gemini' }],
     },
   ],
 } satisfies SharedTeamMember;

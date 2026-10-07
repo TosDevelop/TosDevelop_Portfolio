@@ -1,4 +1,4 @@
-import { TECHNOLOGY_LOGOS } from '@/data/technologyLogos';
+import { TECHNOLOGY_LOGOS } from '@/data/technologies';
 import React from 'react';
 
 interface TechIconProps {

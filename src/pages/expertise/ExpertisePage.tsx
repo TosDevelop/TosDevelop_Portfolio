@@ -1,7 +1,7 @@
 import { PageLink } from '@/components/ui/PageLink';
 import React from 'react';
-import { EXPERTISE_DOMAINS, ALL_TECH_BADGES } from '@/data/expertiseData';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { EXPERTISE_DOMAINS, ALL_TECH_BADGES } from '@/data/expertise';
+import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import { TechIcon } from '@/components/ui/TechIcon';
 import { Avatar } from '@/components/ui/Avatar';

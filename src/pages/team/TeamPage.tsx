@@ -1,7 +1,7 @@
 import { PageLink } from '@/components/ui/PageLink';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import React, { useState } from 'react';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 import { TeamCategory, TeamMember } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';

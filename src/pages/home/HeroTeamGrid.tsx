@@ -2,7 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageLink } from '@/components/ui/PageLink';
 import { Avatar } from '@/components/ui/Avatar';
 import { SITE_NAME } from '@/config/site';
-import { TEAM_MEMBERS } from '@/data/teamData';
+import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import type { TeamMember } from '@/types/index';
 

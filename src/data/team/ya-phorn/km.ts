@@ -1,7 +1,9 @@
+import { projects } from './projects/km.ts';
 import type { TeamMember } from '../../../types/index.ts';
 import type { KhmerContent } from '../../localization.ts';
 
 export const km = {
+  selectedProjects: projects,
   name: 'ផន​ យ៉ា',
   role: 'អ្នកអភិវឌ្ឍន៍ Full Stack',
   tagline:

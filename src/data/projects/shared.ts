@@ -24,7 +24,6 @@ export const PROJECTS_SHARED = {
     technologies: ['React.js', 'Laravel', 'Python', 'MySQL'],
     leadMemberId: 'sokchea-boy',
     relatedMemberIds: ['sokchea-boy', 'kin-doung'],
-    repoUrl: 'https://github.com',
   },
   'leave-management-system': {
     category: 'Web',
