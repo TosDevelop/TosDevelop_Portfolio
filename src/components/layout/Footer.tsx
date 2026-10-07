@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-10 border-b border-slate-100 dark:border-slate-800/80">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 pb-10 border-b border-slate-100 dark:border-slate-800/80">
           {/* Brand & Description */}
           <div className="max-w-md space-y-3">
             <BrandLogo compact className="items-center" />
@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           {/* Navigation Links & Action */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
+          <div className="flex flex-col xl:flex-row items-start xl:items-center gap-6 xl:gap-10">
             <nav className="flex flex-wrap gap-5 text-xs font-medium text-slate-600 dark:text-slate-300">
               {NAVIGATION_LINKS.filter((link) => link.id !== 'home').map(
                 (link) => (

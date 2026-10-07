@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
 
   const controlStyle =
     'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-indigo-100 text-indigo-500 transition-colors hover:bg-indigo-50 hover:text-violet-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:border-indigo-900 dark:text-indigo-300 dark:hover:bg-indigo-950 dark:hover:text-violet-300';
-  const contactStyle = `${brandActionStyles} inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500`;
+  const contactStyle = `${brandActionStyles} min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500`;
   const languageSwitch = (
     <button
       type="button"
@@ -205,7 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
           <PageLink
             tab={'contact'}
             onClick={() => handleNavClick('contact')}
-            className={`${contactStyle} w-full mt-3`}
+            className={`${contactStyle} flex w-full mt-3`}
           >
             <span>{t.nav.connect}</span>
           </PageLink>

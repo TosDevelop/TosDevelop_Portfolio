@@ -26,13 +26,13 @@ export function HeroTeamGrid({
   ).format(members.length);
 
   return (
-    <div className="relative isolate mx-auto w-full max-w-[36rem] py-8 sm:py-12 lg:w-[112%] lg:max-w-none lg:shrink-0">
+    <div className="relative isolate mx-auto w-full min-w-0 max-w-[36rem] px-1 py-4 sm:py-8 lg:max-w-none">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute inset-x-[8%] inset-y-[15%] rounded-full bg-gradient-to-r from-sky-100 via-indigo-100 to-blue-100 blur-3xl dark:from-sky-950/60 dark:via-indigo-950/60 dark:to-blue-950/60" />
         <div className="absolute inset-x-[4%] bottom-[24%] h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent dark:via-blue-700" />
       </div>
 
-      <div className="relative mb-6 flex items-center justify-between gap-4">
+      <div className="relative mb-6 flex flex-wrap items-center justify-between gap-4">
         <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
           {t.hero.meetTeam}
         </span>

@@ -15,9 +15,6 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
 }) => {
   const { language, t } = useLanguage();
 
-  // Highlight first 4 members on home page
-  const featured = TEAM_MEMBERS.slice(0, 4);
-
   return (
     <section className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -45,9 +42,9 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
           </PageLink>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featured.map((member) => (
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-5">
+          {TEAM_MEMBERS.map((member) => (
             <div
               key={member.id}
               className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"

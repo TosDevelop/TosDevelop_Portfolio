@@ -18,17 +18,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
     <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-slate-200/60 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
           {/* Left Column: Headline & Action */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="min-w-0 lg:col-span-6 space-y-6 text-left">
             {/* Cohort Tag / Kicker */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200/70 dark:border-blue-800 text-xs font-semibold text-blue-700 dark:text-blue-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+              <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
               <span>{t.hero.badge}</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="max-w-2xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
+            <h1 className="max-w-2xl text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               {t.hero.titlePart1}
               <span className="text-blue-600 dark:text-blue-400">
                 {t.hero.titleHighlight}
@@ -46,7 +46,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <PageLink
                 tab={'projects'}
                 onClick={() => onNavigate('projects')}
-                className={buttonStyles('primary', 'group')}
+                className={buttonStyles(
+                  'primary',
+                  'group w-full min-[400px]:w-auto',
+                )}
               >
                 <span>{t.hero.viewProjects}</span>
                 <ArrowRight className="w-4 h-4 transition-transform motion-safe:group-hover:translate-x-1" />
@@ -55,7 +58,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <PageLink
                 tab={'team'}
                 onClick={() => onNavigate('team')}
-                className={buttonStyles('secondary')}
+                className={buttonStyles(
+                  'secondary',
+                  'w-full min-[400px]:w-auto',
+                )}
               >
                 <Users className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <span>{t.hero.meetTeam}</span>
@@ -63,8 +69,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
 
             {/* Team Members Avatar Stack Proof */}
-            <div className="pt-4 flex items-center gap-4">
-              <div className="flex -space-x-2.5 overflow-hidden">
+            <div className="pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="flex shrink-0 -space-x-2.5 overflow-hidden">
                 {TEAM_MEMBERS.map((member) => (
                   <div
                     key={member.id}
@@ -94,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           </div>
 
           {/* Right Column: Team Portrait Ribbon */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="min-w-0 lg:col-span-6 flex justify-center">
             <HeroTeamGrid
               onSelectMember={(memberId) => onNavigate('team', memberId)}
             />
