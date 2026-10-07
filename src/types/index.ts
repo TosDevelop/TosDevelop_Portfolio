@@ -2,11 +2,12 @@ export type Language = 'en' | 'km';
 export type Theme = 'light' | 'dark';
 
 export type TeamCategory =
-  'All' | 'Development' | 'QA' | 'Planning' | 'Infrastructure';
+  'All' | 'Development' | 'UI/UX' | 'QA' | 'Planning' | 'Infrastructure';
 export type ProjectCategory =
   'All' | 'Web' | 'Software' | 'QA' | 'Data' | 'Telecom';
 
 export interface SocialLinks {
+  portfolio?: string;
   email?: string;
   phone?: string;
   location?: string;
@@ -68,6 +69,13 @@ export interface TeamMember {
   education: EducationItem[];
   selectedProjects: MemberProjectSummary[];
   additionalLearning?: string[];
+  languagesKm?: TeamMember['languages'];
+  softSkillsKm?: string[];
+  technicalSkillsKm?: SkillCategory[];
+  experienceKm?: (Omit<ExperienceItem, 'type'> & { type?: string })[];
+  educationKm?: EducationItem[];
+  selectedProjectsKm?: MemberProjectSummary[];
+  additionalLearningKm?: string[];
 }
 
 export interface ProjectCaseStudy {

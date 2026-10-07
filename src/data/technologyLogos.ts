@@ -1,3 +1,12 @@
+import html5 from '@/assets/technologies/html5.svg';
+import css3 from '@/assets/technologies/css3.svg';
+import firebase from '@/assets/technologies/firebase.svg';
+import express from '@/assets/technologies/express.svg';
+import git from '@/assets/technologies/git.svg';
+import bootstrap from '@/assets/technologies/bootstrap.svg';
+import openai from '@/assets/technologies/openai.svg';
+import claude from '@/assets/technologies/claude.svg';
+import gemini from '@/assets/technologies/gemini.svg';
 import react from '@/assets/technologies/react.svg';
 import nextjs from '@/assets/technologies/nextjs.svg';
 import typescript from '@/assets/technologies/typescript.svg';
@@ -22,6 +31,23 @@ import linux from '@/assets/technologies/linux.svg';
 import tailwindcss from '@/assets/technologies/tailwindcss.svg';
 
 export const TECHNOLOGY_LOGOS: Record<string, string> = {
+  html: html5,
+  html5,
+  css: css3,
+  css3,
+  firebase,
+  express,
+  'express.js': express,
+  git,
+  bootstrap,
+  'bootstrap 5': bootstrap,
+  chatgpt: openai,
+  claude,
+  gemini,
+  react,
+  vue: vuejs,
+  nodejs,
+  tailwind: tailwindcss,
   'react.js': react,
   'next.js': nextjs,
   typescript: typescript,

@@ -41,6 +41,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({
   const filterTabs: TeamCategory[] = [
     'All',
     'Development',
+    'UI/UX',
     'QA',
     'Planning',
     'Infrastructure',

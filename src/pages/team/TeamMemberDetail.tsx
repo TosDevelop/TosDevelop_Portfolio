@@ -3,12 +3,21 @@ import { TeamMember } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
 import { TechIcon } from '@/components/ui/TechIcon';
+import githubLogo from '@/assets/technologies/github.svg';
+import linkedinLogo from '@/assets/technologies/linkedin.svg';
+import cambodiaFlag from '@/assets/flags/kh.svg';
+import englishFlag from '@/assets/flags/gb.svg';
+
+const languageFlags: Record<string, string> = {
+  Khmer: cambodiaFlag,
+  English: englishFlag,
+  ភាសាខ្មែរ: cambodiaFlag,
+  ភាសាអង់គ្លេស: englishFlag,
+};
 import {
   ArrowLeft,
   Download,
   ExternalLink,
-  Github,
-  Linkedin,
   Mail,
   Phone,
   MapPin,
@@ -30,14 +39,54 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
   onBack,
 }) => {
   const { language, t } = useLanguage();
+  const details = {
+    languages:
+      language === 'km'
+        ? (member.languagesKm ?? member.languages)
+        : member.languages,
+    softSkills:
+      language === 'km'
+        ? (member.softSkillsKm ?? member.softSkills)
+        : member.softSkills,
+    technicalSkills:
+      language === 'km'
+        ? (member.technicalSkillsKm ?? member.technicalSkills)
+        : member.technicalSkills,
+    experience:
+      language === 'km'
+        ? (member.experienceKm ?? member.experience)
+        : member.experience,
+    education:
+      language === 'km'
+        ? (member.educationKm ?? member.education)
+        : member.education,
+    selectedProjects:
+      language === 'km'
+        ? (member.selectedProjectsKm ?? member.selectedProjects)
+        : member.selectedProjects,
+    additionalLearning:
+      language === 'km'
+        ? (member.additionalLearningKm ?? member.additionalLearning)
+        : member.additionalLearning,
+  };
 
   const handleDownloadCv = () => {
-    // Generate a printable CV resume simulation / trigger print
+    if (member.contact.cvUrl && member.contact.cvUrl !== '#') {
+      const link = document.createElement('a');
+      link.href = member.contact.cvUrl;
+      link.download = `${member.id}-cv.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      return;
+    }
     window.print();
   };
 
   const handleOpenCv = () => {
-    window.open(member.contact.cvUrl || '#', '_blank');
+    if (member.contact.cvUrl && member.contact.cvUrl !== '#') {
+      window.open(member.contact.cvUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
@@ -99,13 +148,15 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               <span>{t.team.downloadCv}</span>
             </button>
 
-            <button
-              onClick={handleOpenCv}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
-            >
-              <FileText className="w-3.5 h-3.5 text-slate-500" />
-              <span>{t.team.openCv}</span>
-            </button>
+            {member.contact.cvUrl && member.contact.cvUrl !== '#' && (
+              <button
+                onClick={handleOpenCv}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+              >
+                <FileText className="w-3.5 h-3.5 text-slate-500" />
+                <span>{t.team.openCv}</span>
+              </button>
+            )}
 
             {member.contact.github && (
               <a
@@ -114,7 +165,13 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors"
               >
-                <Github className="w-3.5 h-3.5" />
+                <img
+                  src={githubLogo}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px] shrink-0 dark:invert"
+                />
                 <span>GitHub</span>
               </a>
             )}
@@ -126,7 +183,13 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors"
               >
-                <Linkedin className="w-3.5 h-3.5" />
+                <img
+                  src={linkedinLogo}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px] shrink-0"
+                />
                 <span>LinkedIn</span>
               </a>
             )}
@@ -155,6 +218,17 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
             </h2>
 
             <div className="space-y-3 text-xs">
+              {member.contact.portfolio && (
+                <a
+                  href={member.contact.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 break-all text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  <ExternalLink className="h-4 w-4 shrink-0" />
+                  <span>{member.contact.portfolio}</span>
+                </a>
+              )}
               {member.contact.email && (
                 <a
                   href={`mailto:${member.contact.email}`}
@@ -192,12 +266,23 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
 
             {/* Language proficiency */}
             <div className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
-              {member.languages.map((lang, idx) => (
+              {details.languages.map((lang, idx) => (
                 <div
                   key={idx}
                   className="flex justify-between items-center text-slate-700 dark:text-slate-300"
                 >
-                  <span className="font-semibold">{lang.language}</span>
+                  <span className="inline-flex items-center gap-2 font-semibold">
+                    {languageFlags[lang.language] && (
+                      <img
+                        src={languageFlags[lang.language]}
+                        alt=""
+                        width={24}
+                        height={16}
+                        className="h-4 w-6 shrink-0 rounded-sm object-cover"
+                      />
+                    )}
+                    {lang.language}
+                  </span>
                   <span className="text-slate-500 dark:text-slate-400 text-[11px]">
                     {lang.level}
                   </span>
@@ -208,10 +293,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
             {/* Soft Skills */}
             <div className="space-y-2">
               <span className="text-[10px] font-bold tracking-wider uppercase text-slate-400">
-                SOFT SKILLS
+                {t.team.softSkills}
               </span>
               <div className="flex flex-wrap gap-1.5">
-                {member.softSkills.map((skill, idx) => (
+                {details.softSkills.map((skill, idx) => (
                   <span
                     key={idx}
                     className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700"
@@ -238,7 +323,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
             </div>
 
             <div className="space-y-5">
-              {member.technicalSkills.map((cat, idx) => (
+              {details.technicalSkills.map((cat, idx) => (
                 <div key={idx} className="space-y-2">
                   <span className="text-[11px] font-bold tracking-wider uppercase text-slate-400 dark:text-slate-500">
                     {cat.category}
@@ -254,7 +339,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           </div>
 
           {/* Experience Timeline */}
-          {member.experience.length > 0 && (
+          {details.experience.length > 0 && (
             <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -266,7 +351,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               </div>
 
               <div className="space-y-6 divide-y divide-slate-100 dark:divide-slate-800">
-                {member.experience.map((exp, idx) => (
+                {details.experience.map((exp, idx) => (
                   <div
                     key={idx}
                     className={`space-y-2.5 ${idx > 0 ? 'pt-6' : ''}`}
@@ -308,7 +393,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           )}
 
           {/* Education Card */}
-          {member.education.length > 0 && (
+          {details.education.length > 0 && (
             <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -320,7 +405,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               </div>
 
               <div className="space-y-4">
-                {member.education.map((edu, idx) => (
+                {details.education.map((edu, idx) => (
                   <div
                     key={idx}
                     className="p-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
@@ -343,7 +428,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           )}
 
           {/* Selected Projects */}
-          {member.selectedProjects.length > 0 && (
+          {details.selectedProjects.length > 0 && (
             <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -355,7 +440,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {member.selectedProjects.map((p, idx) => (
+                {details.selectedProjects.map((p, idx) => (
                   <div
                     key={idx}
                     className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs space-y-3"
@@ -390,8 +475,8 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           )}
 
           {/* Additional Learning */}
-          {member.additionalLearning &&
-            member.additionalLearning.length > 0 && (
+          {details.additionalLearning &&
+            details.additionalLearning.length > 0 && (
               <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -403,7 +488,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                 </div>
 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300">
-                  {member.additionalLearning.map((item, idx) => (
+                  {details.additionalLearning.map((item, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <CheckCircle className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
                       <span>{item}</span>

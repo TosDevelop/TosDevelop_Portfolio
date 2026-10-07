@@ -1,14 +1,15 @@
 import type { TeamMember } from '../types/index.ts';
-import { withKhmerSuffix } from './localization.ts';
-import { TEAM_EN } from './team/en.ts';
-import { TEAM_KM } from './team/km.ts';
-import { TEAM_SHARED } from './team/shared.ts';
+import { yaPhorn } from './team/ya-phorn/index.ts';
+import { vichetSat } from './team/vichet-sat/index.ts';
+import { sereyPhem } from './team/serey-phem/index.ts';
+import { reaksmeySan } from './team/reaksmey-san/index.ts';
+import { sokhaRathana } from './team/sokha-rathana/index.ts';
 
-const ids = Object.keys(TEAM_EN) as (keyof typeof TEAM_EN)[];
-
-export const TEAM_MEMBERS: TeamMember[] = ids.map((id) => ({
-  id,
-  ...TEAM_SHARED[id],
-  ...TEAM_EN[id],
-  ...withKhmerSuffix(TEAM_KM[id]),
-}));
+// Member order used throughout the website.
+export const TEAM_MEMBERS: TeamMember[] = [
+  yaPhorn,
+  vichetSat,
+  sereyPhem,
+  reaksmeySan,
+  sokhaRathana,
+];
