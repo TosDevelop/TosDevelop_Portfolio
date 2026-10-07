@@ -10,7 +10,7 @@ export const en = {
   languages: [
     {
       language: 'Khmer',
-      level: 'Mother tongue',
+      level: 'Mother tongues',
     },
     {
       language: 'English',
