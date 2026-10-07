@@ -1,3 +1,4 @@
+import { TECHNOLOGY_LOGOS } from '@/data/technologyLogos';
 import React from 'react';
 import {
   Code,
@@ -27,6 +28,24 @@ export const TechIcon: React.FC<TechIconProps> = ({
   showLabel = true,
   className = '',
 }) => {
+  const logo = TECHNOLOGY_LOGOS[name.toLowerCase()];
+  if (logo) {
+    return (
+      <span
+        className={`inline-flex shrink-0 items-center gap-1.5 ${showLabel ? 'rounded border border-slate-200 bg-white px-2 py-0.5 text-xs font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200' : ''} ${className}`}
+      >
+        <img
+          src={logo}
+          alt={showLabel ? '' : name}
+          width={size === 'sm' ? 20 : 24}
+          height={size === 'sm' ? 20 : 24}
+          className={`shrink-0 object-contain ${size === 'sm' ? 'h-5 w-5' : 'h-6 w-6'} ${['next.js', 'github', 'framer motion'].includes(name.toLowerCase()) ? 'dark:invert' : ''}`}
+        />
+        {showLabel && <span>{name}</span>}
+      </span>
+    );
+  }
+
   const getIconAndColor = (techName: string) => {
     const lower = techName.toLowerCase();
     if (lower.includes('react'))

@@ -23,7 +23,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         role="img"
         aria-label={SITE_NAME}
         focusable="false"
-        className={`block h-auto overflow-hidden dark:brightness-0 dark:invert ${compact ? 'w-36 sm:w-44' : 'w-56 sm:w-72'}`}
+        className={`block h-auto overflow-hidden dark:brightness-0 dark:invert ${compact ? 'w-28 min-[375px]:w-36 sm:w-44' : 'w-56 sm:w-72'}`}
       >
         <image href={logoUrl} width="1254" height="1254" />
       </svg>

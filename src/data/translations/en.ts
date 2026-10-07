@@ -4,6 +4,7 @@ import { TEAM_MEMBERS } from '@/data/teamData';
 const teamCount = TEAM_MEMBERS.length;
 
 export const en = {
+  backToTop: 'Back to top',
   brandName: SITE_NAME,
   nav: {
     home: 'Home',

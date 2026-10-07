@@ -7,6 +7,7 @@ const teamCountKm = new Intl.NumberFormat('km-KH-u-nu-khmr').format(
 );
 
 export const km = {
+  backToTop: 'ត្រឡប់ទៅខាងលើ',
   brandName: SITE_NAME,
   nav: {
     home: 'ទំព័រដើម',

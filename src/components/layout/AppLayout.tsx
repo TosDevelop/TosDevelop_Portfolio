@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react';
 import type { AppTab, Navigate } from '@/config/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { BackToTop } from '@/components/ui/BackToTop';
 
 type AppLayoutProps = PropsWithChildren<{
   currentTab: AppTab;
@@ -18,6 +19,7 @@ export function AppLayout({
       <Navbar currentTab={currentTab} onNavigate={onNavigate} />
       <main className="flex-1">{children}</main>
       <Footer onNavigate={onNavigate} />
+      <BackToTop />
     </div>
   );
 }

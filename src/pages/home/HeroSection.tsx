@@ -1,3 +1,4 @@
+import { buttonStyles } from '@/components/ui/buttonStyles';
 import { PageLink } from '@/components/ui/PageLink';
 import type { Navigate } from '@/config/navigation';
 import React from 'react';
@@ -45,16 +46,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <PageLink
                 tab={'projects'}
                 onClick={() => onNavigate('projects')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-sm font-semibold shadow-md shadow-blue-500/20 transition-all whitespace-nowrap cursor-pointer"
+                className={buttonStyles('primary', 'group')}
               >
                 <span>{t.hero.viewProjects}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform motion-safe:group-hover:translate-x-1" />
               </PageLink>
 
               <PageLink
                 tab={'team'}
                 onClick={() => onNavigate('team')}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 text-sm font-semibold transition-all whitespace-nowrap cursor-pointer"
+                className={buttonStyles('secondary')}
               >
                 <Users className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <span>{t.hero.meetTeam}</span>
