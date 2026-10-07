@@ -1,7 +1,7 @@
 import type { TeamMemberEnglish } from '../types.ts';
 
 export const en = {
-  name: 'Sat Vichet',
+  name: 'Vichet Sat',
   role: 'Planning & Web Developer',
   tagline:
     'Project planning, web development coordination and practical team delivery.',
