@@ -14,7 +14,7 @@ const skillCategories: Record<string, string> = {
     'ការភ្ជាប់ប្រព័ន្ធ និងសេវាពេលវេលាជាក់ស្តែង',
 };
 export const km = {
-  name: 'សាត​ វិចិត្រ',
+  name: 'សាត​ វិចិត្ដ',
   role: 'អ្នកអភិវឌ្ឍ Full-Stack',
   badge: 'អ្នកអភិវឌ្ឍ Full-Stack កម្រិតដំបូង',
   tagline:
