@@ -2,42 +2,40 @@ import type { MemberProjectSummary } from '../../../../types/index.ts';
 
 export const projects = [
   {
-    title: 'Leave Management System',
-    role: 'Developer',
-    period: 'Jul – Aug 2025',
-    description:
-      'Laravel-based system for staff attendance, leave and permission tracking with real-time team visibility and AWS EC2 deployment.',
-    technologies: ['Laravel', 'MySQL', 'Vue.js', 'AWS EC2', 'Ubuntu'],
+    title: 'E-Commerce System',
+    role: '',
+    period: '',
+    description: '',
+    technologies: [],
   },
   {
-    title: 'POS System',
-    role: 'Scrum Master & Developer',
-    period: 'Mar – Apr 2025',
+    title: 'Student Follow-Up Meeting System',
+    role: '',
+    period: '',
+    description: '',
+    technologies: [],
+  },
+  {
+    title: 'Kompie E-Library System',
+    role: 'Frontend Developer / QA',
+    period: '',
     description:
-      'Full-featured POS system with inventory management, financial tracking, barcode scanning and Telegram chatbot integration.',
+      'Developed React.js interfaces, integrated Laravel APIs, implemented CRUD operations and performed functional testing.',
+    technologies: ['React.js', 'Laravel', 'REST API', 'Functional Testing'],
+  },
+  {
+    title: 'WordPress Deployment Project',
+    role: 'Junior DevOps',
+    period: '',
+    description:
+      'Deployed WordPress on AWS EC2, configured Apache, Ubuntu and MySQL, and managed DNS.',
     technologies: [
-      'PHP',
-      'MySQL',
-      'Bootstrap',
-      'jQuery',
-      'Chart.js',
+      'WordPress',
       'AWS EC2',
+      'Apache',
+      'Ubuntu',
+      'MySQL',
+      'DNS Management',
     ],
-  },
-  {
-    title: 'Task Management App',
-    role: 'Team Lead',
-    period: 'Jan 2025',
-    description:
-      'Task organization application with status tracking and calendar integration.',
-    technologies: ['Express', 'Firebase', 'SASS', 'Bootstrap', 'Chart.js'],
-  },
-  {
-    title: 'Web Scraping Automation',
-    role: 'Team Lead',
-    period: 'Nov 2024',
-    description:
-      'Desktop tool for collecting and organizing website data with a user-friendly interface.',
-    technologies: ['Python', 'Requests', 'BeautifulSoup', 'Tkinter', 'JSON'],
   },
 ] satisfies MemberProjectSummary[];

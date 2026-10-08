@@ -1,160 +1,137 @@
 import type { SharedTeamMember } from '../types.ts';
 
 export const shared = {
-  category: ['Development'],
-  image: new URL('../../../assets/team/phorn_ya.jpg', import.meta.url).href,
+  category: ['Development', 'QA', 'Infrastructure'],
   contact: {
     email: 'phornya26@gmail.com',
     phone: '+855 71 815 1315',
-    location: 'Phnom Penh, Cambodia',
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    cvUrl: '#',
+    location: 'Sen Sok, Phnom Penh, Cambodia',
+    portfolio: 'https://ya-server.site/',
+    github: 'https://github.com/phorn-ya',
   },
   technicalSkills: [
     {
-      category: 'Frontend',
+      category: 'Frontend Development',
       skills: [
         {
-          name: 'Vue.js',
-          color: 'emerald',
-        },
-        {
-          name: 'Nuxt.js',
-          color: 'teal',
-        },
-        {
-          name: 'React.js',
-          color: 'sky',
-        },
-        {
-          name: 'JavaScript',
-          color: 'amber',
-        },
-        {
-          name: 'Bootstrap 5',
-          color: 'indigo',
-        },
-        {
-          name: 'Tailwind CSS',
-          color: 'cyan',
-        },
-        {
           name: 'HTML',
-          color: 'orange',
         },
         {
           name: 'CSS',
-          color: 'blue',
         },
         {
-          name: 'SASS',
-          color: 'pink',
+          name: 'JavaScript',
+        },
+        {
+          name: 'Vue.js',
+        },
+        {
+          name: 'React.js',
+        },
+        {
+          name: 'Tailwind CSS',
+        },
+        {
+          name: 'Bootstrap',
         },
       ],
     },
     {
-      category: 'Backend',
+      category: 'Backend & APIs',
       skills: [
         {
+          name: 'PHP',
+        },
+        {
           name: 'Laravel',
-          color: 'red',
         },
         {
           name: 'Node.js',
-          color: 'green',
         },
         {
-          name: 'Python',
-          color: 'amber',
+          name: 'REST API',
         },
         {
-          name: 'Flask',
-          color: 'slate',
-        },
-        {
-          name: 'Django',
-          color: 'emerald',
-        },
-        {
-          name: 'PHP',
-          color: 'indigo',
-        },
-        {
-          name: 'TypeScript OOP',
-          color: 'blue',
+          name: 'TypeScript',
         },
       ],
     },
     {
-      category: 'Data & Services',
+      category: 'Databases & Services',
       skills: [
         {
           name: 'MySQL',
-          color: 'sky',
-        },
-        {
-          name: 'SQLite',
-          color: 'blue',
         },
         {
           name: 'PostgreSQL',
-          color: 'indigo',
+        },
+        {
+          name: 'MongoDB',
         },
         {
           name: 'Firebase',
-          color: 'amber',
-        },
-        {
-          name: 'Power BI',
-          color: 'yellow',
         },
       ],
     },
     {
-      category: 'Cloud & Tools',
+      category: 'Development & Collaboration Tools',
       skills: [
         {
-          name: 'GitHub',
-          color: 'slate',
+          name: 'Git',
         },
         {
-          name: 'Git',
-          color: 'orange',
+          name: 'GitHub',
         },
         {
           name: 'Jira',
-          color: 'blue',
         },
         {
           name: 'Postman',
-          color: 'orange',
         },
         {
-          name: 'AWS EC2',
-          color: 'amber',
+          name: 'Microsoft 365',
         },
-        {
-          name: 'Linux',
-          color: 'yellow',
-        },
-        {
-          name: 'CloudFlare',
-          color: 'orange',
-        },
+      ],
+    },
+    {
+      category: 'Design Tools',
+      skills: [
         {
           name: 'Figma',
-          color: 'purple',
+        },
+      ],
+    },
+    {
+      category: 'Testing & QA',
+      skills: [
+        {
+          name: 'Functional Testing',
         },
         {
-          name: 'Netlify',
-          color: 'teal',
+          name: 'API Testing',
         },
         {
-          name: 'Vercel',
-          color: 'slate',
+          name: 'Debugging',
+        },
+      ],
+    },
+    {
+      category: 'Cloud & DevOps',
+      skills: [
+        {
+          name: 'AWS EC2',
+        },
+        {
+          name: 'Apache',
+        },
+        {
+          name: 'Ubuntu',
+        },
+        {
+          name: 'DNS Management',
         },
       ],
     },
   ],
+  image: new URL('../../../assets/team/phorn_ya.jpg', import.meta.url).href,
 } satisfies SharedTeamMember;

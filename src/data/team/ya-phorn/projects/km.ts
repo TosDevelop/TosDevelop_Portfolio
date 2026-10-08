@@ -2,42 +2,40 @@ import type { MemberProjectSummary } from '../../../../types/index.ts';
 
 export const projects = [
   {
-    title: 'ប្រព័ន្ធគ្រប់គ្រងការសុំច្បាប់',
-    role: 'អ្នកអភិវឌ្ឍ',
-    period: 'កក្កដា – សីហា ២០២៥',
-    description:
-      'ប្រព័ន្ធដែលបង្កើតដោយ Laravel សម្រាប់តាមដានវត្តមានបុគ្គលិក ការឈប់សម្រាក និងការសុំច្បាប់ ដោយក្រុមអាចមើលព័ត៌មានភ្លាមៗ និងដាក់ឱ្យដំណើរការលើ AWS EC2។',
-    technologies: ['Laravel', 'MySQL', 'Vue.js', 'AWS EC2', 'Ubuntu'],
+    title: 'ប្រព័ន្ធពាណិជ្ជកម្មអេឡិចត្រូនិក',
+    role: '',
+    period: '',
+    description: '',
+    technologies: [],
   },
   {
-    title: 'ប្រព័ន្ធលក់ POS',
-    role: 'Scrum Master និងអ្នកអភិវឌ្ឍ',
-    period: 'មីនា – មេសា ២០២៥',
+    title: 'ប្រព័ន្ធគ្រប់គ្រងកិច្ចប្រជុំតាមដានសិស្ស',
+    role: '',
+    period: '',
+    description: '',
+    technologies: [],
+  },
+  {
+    title: 'ប្រព័ន្ធបណ្ណាល័យអេឡិចត្រូនិក Kompie',
+    role: 'អ្នកអភិវឌ្ឍ Frontend / អ្នកធានាគុណភាព',
+    period: '',
     description:
-      'ប្រព័ន្ធ POS ដែលមានមុខងារគ្រប់គ្រងស្តុក តាមដានហិរញ្ញវត្ថុ ស្កេនបាកូដ និងការភ្ជាប់ជាមួយ chatbot របស់ Telegram។',
+      'បង្កើតចំណុចប្រទាក់ដោយ React.js ភ្ជាប់ Laravel APIs អនុវត្តមុខងារ CRUD និងធ្វើតេស្តមុខងារ។',
+    technologies: ['React.js', 'Laravel', 'REST API', 'Functional Testing'],
+  },
+  {
+    title: 'គម្រោងដាក់ WordPress ឱ្យដំណើរការ',
+    role: 'អ្នកអនុវត្ត DevOps កម្រិតដំបូង',
+    period: '',
+    description:
+      'ដាក់ WordPress ឱ្យដំណើរការលើ AWS EC2 កំណត់រចនាសម្ព័ន្ធ Apache, Ubuntu និង MySQL និងគ្រប់គ្រង DNS។',
     technologies: [
-      'PHP',
-      'MySQL',
-      'Bootstrap',
-      'jQuery',
-      'Chart.js',
+      'WordPress',
       'AWS EC2',
+      'Apache',
+      'Ubuntu',
+      'MySQL',
+      'DNS Management',
     ],
-  },
-  {
-    title: 'កម្មវិធីគ្រប់គ្រងការងារ',
-    role: 'ប្រធានក្រុម',
-    period: 'មករា ២០២៥',
-    description:
-      'កម្មវិធីរៀបចំការងារដែលមានការតាមដានស្ថានភាព និងការភ្ជាប់ប្រតិទិន។',
-    technologies: ['Express', 'Firebase', 'SASS', 'Bootstrap', 'Chart.js'],
-  },
-  {
-    title: 'ការប្រមូលទិន្នន័យពីគេហទំព័រដោយស្វ័យប្រវត្តិ',
-    role: 'ប្រធានក្រុម',
-    period: 'វិច្ឆិកា ២០២៤',
-    description:
-      'ឧបករណ៍លើកុំព្យូទ័រសម្រាប់ប្រមូល និងរៀបចំទិន្នន័យគេហទំព័រ ជាមួយផ្ទៃប្រទាក់ងាយស្រួលប្រើ។',
-    technologies: ['Python', 'Requests', 'BeautifulSoup', 'Tkinter', 'JSON'],
   },
 ] satisfies MemberProjectSummary[];
