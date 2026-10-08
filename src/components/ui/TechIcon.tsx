@@ -1,4 +1,4 @@
-import { TECHNOLOGY_LOGOS } from '@/data/technologies';
+import { getTechnologyLogoKey, TECHNOLOGY_LOGOS } from '@/data/technologies';
 import React from 'react';
 import {
   Blocks,
@@ -6,6 +6,9 @@ import {
   KeyRound,
   Palette,
   Workflow,
+  ListChecks,
+  Bug,
+  TestTubeDiagonal,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -16,6 +19,10 @@ const SKILL_ICONS: Record<string, LucideIcon> = {
   oauth: KeyRound,
   'ui design': Palette,
   prototyping: Workflow,
+  'functional testing': ListChecks,
+  'api testing': Cable,
+  'automated testing': TestTubeDiagonal,
+  debugging: Bug,
 };
 
 interface TechIconProps {
@@ -31,7 +38,8 @@ export const TechIcon: React.FC<TechIconProps> = ({
   showLabel = true,
   className = '',
 }) => {
-  const logo = TECHNOLOGY_LOGOS[name.trim().toLowerCase()];
+  const logoKey = getTechnologyLogoKey(name);
+  const logo = TECHNOLOGY_LOGOS[logoKey];
   if (logo) {
     return (
       <span
@@ -42,7 +50,7 @@ export const TechIcon: React.FC<TechIconProps> = ({
           alt={showLabel ? '' : name}
           width={size === 'sm' ? 20 : 24}
           height={size === 'sm' ? 20 : 24}
-          className={`shrink-0 object-contain ${size === 'sm' ? 'h-5 w-5' : 'h-6 w-6'} ${['next.js', 'github', 'framer motion', 'express', 'express.js', 'chatgpt', 'flask', 'django', 'vercel'].includes(name.trim().toLowerCase()) ? 'dark:invert' : ''}`}
+          className={`shrink-0 object-contain ${size === 'sm' ? 'h-5 w-5' : 'h-6 w-6'} ${['next.js', 'github', 'framer motion', 'express', 'express.js', 'chatgpt', 'flask', 'django', 'vercel'].includes(logoKey) ? 'dark:invert' : ''}`}
         />
         {showLabel && <span>{name}</span>}
       </span>

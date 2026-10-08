@@ -1,45 +1,49 @@
 import { projects } from './projects/en.ts';
 import type { TeamMemberEnglish } from '../types.ts';
-
 export const en = {
   name: 'Vichet Sat',
-  role: 'Planning & Web Developer',
+  role: 'Full-Stack Developer',
+  badge: 'Junior Full-Stack Developer | Web Developer',
   tagline:
-    'Project planning, web development coordination and practical team delivery.',
-  badge: 'Planning & Web',
-  bio: 'Passionate about bridging technical implementation with systematic planning and project management. Balances core web engineering principles with agile sprint roadmaps, ensuring collaborative milestone deliveries.',
+    'Passionate about building modern web applications with Vue.js, Laravel and Node.js, alongside DevOps and AI-assisted coding.',
+  bio: 'Junior Web Developer with experience in full-stack web application development, REST APIs, databases, AWS deployment, testing and debugging.',
   languages: [
-    {
-      language: 'Khmer',
-      level: 'Mother tongues',
-    },
-    {
-      language: 'English',
-      level: 'Intermediate',
-    },
+    { language: 'Khmer', level: 'Native' },
+    { language: 'English', level: 'Intermediate' },
   ],
   softSkills: [
-    'Sprint Planning',
-    'Agile / Scrum',
-    'Team Leadership',
-    'Documentation',
-    'Clear Communication',
+    'Problem Solving',
+    'Communication',
+    'Teamwork',
+    'Adaptability',
+    'In-depth Research',
   ],
   experience: [
     {
-      role: 'Planning Lead & Developer',
-      company: 'PNC Startup Team Projects',
-      period: '2024 – Present',
+      role: 'Web Developer',
+      company: 'PUC Academic System',
+      period: '',
       description:
-        'Led requirement scoping, milestone planning, and coordinated feature delivery across 7-member cross-functional cohort projects.',
-      technologies: ['Jira', 'Laravel', 'React.js', 'Git'],
+        'Developed React.js and Vue.js interfaces, integrated Laravel APIs, implemented CRUD operations and performed functional testing. Worked on enrollment, cashier and teacher and student attendance modules, including location tracking for attendance.',
+      technologies: [
+        'React.js',
+        'Vue.js',
+        'Laravel',
+        'REST API',
+        'Functional Testing',
+      ],
     },
   ],
   education: [
     {
-      degree: 'Associate Degree – Web Programming',
-      institution: 'Passerelles numériques Cambodia (PNC)',
-      period: '2024 – 2026',
+      degree: 'Associate Degree in Web Programming',
+      institution: 'Passerelles Numériques Cambodia (PNC)',
+      period: '2025 – Present',
+    },
+    {
+      degree: 'High School Diploma',
+      institution: 'Rovieng High School',
+      period: '2022 – 2024',
     },
   ],
   selectedProjects: projects,

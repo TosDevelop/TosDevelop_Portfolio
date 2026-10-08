@@ -1,53 +1,53 @@
 import type { SharedTeamMember } from '../types.ts';
-
 export const shared = {
-  category: ['Planning', 'Development'],
+  category: ['Development', 'QA', 'Infrastructure'],
   image: new URL('../../../assets/team/sat_vichet.jpg', import.meta.url).href,
   contact: {
     email: 'satvichetnice1@gmail.com',
-    phone: '+855 88 912 345',
-    location: 'Phnom Penh, Cambodia',
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    cvUrl: '#',
+    phone: '+855 97 242 6374',
+    location: 'Sen Sok, Phnom Penh, Cambodia',
+    portfolio: 'https://chetdeveloper.me',
+    github: 'https://github.com/ChetDevelopment',
   },
   technicalSkills: [
     {
-      category: 'Planning & Management',
+      category: 'Frontend Development',
       skills: [
-        {
-          name: 'Jira',
-        },
-        {
-          name: 'Trello',
-        },
-        {
-          name: 'Figma',
-        },
-        {
-          name: 'Git Workflow',
-        },
-      ],
+        'HTML',
+        'CSS',
+        'JavaScript',
+        'Vue.js',
+        'Tailwind CSS',
+        'Bootstrap',
+      ].map((name) => ({ name })),
     },
     {
-      category: 'Web Development',
+      category: 'Backend & APIs',
+      skills: ['PHP', 'Laravel', 'Node.js', 'REST API', 'TypeScript'].map(
+        (name) => ({ name }),
+      ),
+    },
+    {
+      category: 'Databases',
+      skills: ['MySQL', 'MongoDB'].map((name) => ({ name })),
+    },
+    {
+      category: 'Development & Collaboration Tools',
+      skills: ['Git', 'GitHub', 'Jira', 'Postman'].map((name) => ({ name })),
+    },
+    { category: 'Design Tools', skills: [{ name: 'Figma' }] },
+    {
+      category: 'Testing & QA',
       skills: [
-        {
-          name: 'React.js',
-        },
-        {
-          name: 'Laravel',
-        },
-        {
-          name: 'PHP',
-        },
-        {
-          name: 'JavaScript',
-        },
-        {
-          name: 'MySQL',
-        },
-      ],
+        'Functional Testing',
+        'API Testing',
+        'Debugging',
+        'Automated Testing',
+      ].map((name) => ({ name })),
+    },
+    {
+      category: 'Cloud & DevOps',
+      skills: ['AWS EC2', 'Apache', 'Ubuntu'].map((name) => ({ name })),
     },
   ],
 } satisfies SharedTeamMember;

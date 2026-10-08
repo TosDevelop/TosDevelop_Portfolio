@@ -1,4 +1,7 @@
 import html5 from '@/assets/technologies/html5.svg';
+import redis from '@/assets/technologies/redis.svg';
+import githubactions from '@/assets/technologies/githubactions.svg';
+import telegram from '@/assets/technologies/telegram.svg';
 import nuxtjs from '@/assets/technologies/nuxtjs.svg';
 import sass from '@/assets/technologies/sass.svg';
 import flask from '@/assets/technologies/flask.svg';
@@ -46,6 +49,10 @@ import linux from '@/assets/technologies/linux.svg';
 import tailwindcss from '@/assets/technologies/tailwindcss.svg';
 
 export const TECHNOLOGY_LOGOS: Record<string, string> = {
+  redis,
+  'github actions': githubactions,
+  telegram,
+  'telegram bot api': telegram,
   nuxt: nuxtjs,
   'nuxt.js': nuxtjs,
   sass,
@@ -103,3 +110,10 @@ export const TECHNOLOGY_LOGOS: Record<string, string> = {
   linux: linux,
   'tailwind css': tailwindcss,
 };
+
+export function getTechnologyLogoKey(name: string): string {
+  const key = name.trim().toLowerCase();
+  if (TECHNOLOGY_LOGOS[key]) return key;
+  // Keep version numbers in labels while using the underlying technology logo.
+  return key.replace(/\s+v?\d+(?:\.\d+)*$/i, '');
+}
