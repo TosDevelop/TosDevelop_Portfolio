@@ -27,7 +27,7 @@ const pageContent: Record<AppTab, [string, string]> = {
   ],
   expertise: [
     'Our Technology Expertise',
-    'Explore TosDevelop expertise in full-stack development, web engineering, quality assurance, project planning, data, and technical operations.',
+    'Explore TosDevelop expertise in frontend and backend development, databases, UI/UX design, testing, project planning, cloud deployment, and AI-assisted development.',
   ],
   projects: [
     'Projects & Case Studies',

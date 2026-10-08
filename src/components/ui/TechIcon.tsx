@@ -1,5 +1,22 @@
 import { TECHNOLOGY_LOGOS } from '@/data/technologies';
 import React from 'react';
+import {
+  Blocks,
+  Cable,
+  KeyRound,
+  Palette,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
+
+const SKILL_ICONS: Record<string, LucideIcon> = {
+  'rest api': Cable,
+  'rest apis': Cable,
+  'rest api integration': Cable,
+  oauth: KeyRound,
+  'ui design': Palette,
+  prototyping: Workflow,
+};
 
 interface TechIconProps {
   name: string;
@@ -25,18 +42,26 @@ export const TechIcon: React.FC<TechIconProps> = ({
           alt={showLabel ? '' : name}
           width={size === 'sm' ? 20 : 24}
           height={size === 'sm' ? 20 : 24}
-          className={`shrink-0 object-contain ${size === 'sm' ? 'h-5 w-5' : 'h-6 w-6'} ${['next.js', 'github', 'framer motion', 'express', 'express.js', 'chatgpt'].includes(name.trim().toLowerCase()) ? 'dark:invert' : ''}`}
+          className={`shrink-0 object-contain ${size === 'sm' ? 'h-5 w-5' : 'h-6 w-6'} ${['next.js', 'github', 'framer motion', 'express', 'express.js', 'chatgpt', 'flask', 'django', 'vercel'].includes(name.trim().toLowerCase()) ? 'dark:invert' : ''}`}
         />
         {showLabel && <span>{name}</span>}
       </span>
     );
   }
 
+  const Icon = SKILL_ICONS[name.trim().toLowerCase()] ?? Blocks;
+
   return (
     <span
-      className={`inline-flex max-w-full items-center rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 ${className}`}
+      className={`inline-flex max-w-full items-center gap-1.5 text-slate-600 dark:text-slate-300 ${showLabel ? 'rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium dark:border-slate-700 dark:bg-slate-800' : 'shrink-0'} ${className}`}
     >
-      <span className="break-words">{name}</span>
+      <Icon
+        size={size === 'sm' ? 20 : 24}
+        className="shrink-0"
+        aria-hidden={showLabel ? true : undefined}
+        aria-label={showLabel ? undefined : name}
+      />
+      {showLabel && <span className="break-words">{name}</span>}
     </span>
   );
 };

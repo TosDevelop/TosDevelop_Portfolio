@@ -1,36 +1,46 @@
-import type { ExpertiseDomain } from '../../types/index.ts';
+﻿import type { ExpertiseDomain } from '../../types/index.ts';
 import type { KhmerContent } from '../localization.ts';
 import type { EXPERTISE_EN } from './en.ts';
 
 export const EXPERTISE_KM = {
-  'full-stack-development': {
-    title: 'ការអភិវឌ្ឍន៍ Full Stack',
+  'frontend-development': {
+    title: 'ការអភិវឌ្ឍ Frontend',
     description:
-      'Frontend, backend, APIs, ការផ្ទៀងផ្ទាត់សិទ្ធិ, មូលដ្ឋានទិន្នន័យ និងការដាក់ឱ្យដំណើរការសម្រាប់ប្រព័ន្ធគេហទំព័រជាក់ស្តែង។',
+      'ការបង្កើតចំណុចប្រទាក់គេហទំព័រដែលឆ្លើយតបតាមទំហំអេក្រង់ ដោយប្រើ HTML, CSS, JavaScript និង Frontend frameworks។',
+  },
+  'backend-apis': {
+    title: 'ការអភិវឌ្ឍ Backend និង APIs',
+    description:
+      'ការបង្កើតកម្មវិធីផ្នែកម៉ាស៊ីនមេ REST APIs ការផ្ទៀងផ្ទាត់សិទ្ធិ និងតក្កវិជ្ជាកម្មវិធី។',
+  },
+  'databases-data': {
+    title: 'មូលដ្ឋានទិន្នន័យ និងសេវាទិន្នន័យ',
+    description:
+      'មូលដ្ឋានទិន្នន័យទំនាក់ទំនង សំណួរ SQL សេវា Backend និងឧបករណ៍រាយការណ៍ទិន្នន័យ។',
+  },
+  'ui-ux-design': {
+    title: 'ការរចនា UI/UX',
+    description:
+      'ការរចនាចំណុចប្រទាក់ សមាសភាគដែលអាចប្រើឡើងវិញ និងគំរូអន្តរកម្មសម្រាប់បទពិសោធន៍អ្នកប្រើប្រាស់។',
   },
   'quality-assurance': {
-    title: 'ការធានាគុណភាព (QA)',
+    title: 'ការធ្វើតេស្ត និងការធានាគុណភាព',
     description:
-      'ការធ្វើតេស្តដោយដៃ, ការធ្វើតេស្តមុខងារ, ការធ្វើតេស្តតប, UAT, ករណីធ្វើតេស្ត និងការផ្ទៀងផ្ទាត់បញ្ហាកំហុស។',
+      'ការធ្វើតេស្តស្វ័យប្រវត្តិកម្មលើកម្មវិធីរុករក និងការធ្វើតេស្ត API ដើម្បីផ្ទៀងផ្ទាត់ដំណើរការកម្មវិធី។',
   },
-  'planning-team-delivery': {
-    title: 'ការរៀបចំផែនការ និងការដឹកនាំក្រុម',
+  'collaboration-planning': {
+    title: 'ការគ្រប់គ្រងកំណែកូដ និងផែនការគម្រោង',
     description:
-      'ការគាំទ្រតម្រូវការ, ការរៀបចំផែនការគម្រោង, ការសម្របសម្រួលភារកិច្ច និងការអនុវត្តការងារជាក្រុម។',
+      'ការគ្រប់គ្រងកំណែកូដ ឃ្លាំងកូដរួម ការតាមដានភារកិច្ច និងលំហូរការងារជាក្រុម។',
   },
-  'data-reporting': {
-    title: 'ទិន្នន័យ និងរបាយការណ៍',
+  'deployment-delivery': {
+    title: 'Cloud និងការដាក់ឱ្យដំណើរការ',
     description:
-      'របាយការណ៍ SQL, មូលដ្ឋានទិន្នន័យទំនាក់ទំនង, ផ្ទាំងគ្រប់គ្រង និងឧបករណ៍វិភាគទិន្នន័យ។',
+      'ការបង្ហោះកម្មវិធី បរិស្ថាន Linux និងឧបករណ៍ CI សម្រាប់បង្កើត និងដាក់កម្មវិធីគេហទំព័រឱ្យដំណើរការ។',
   },
-  'cloud-infrastructure': {
-    title: 'ពពក (Cloud) និងហេដ្ឋារចនាសម្ព័ន្ធ',
+  'ai-assisted-development': {
+    title: 'ការអភិវឌ្ឍដោយមានជំនួយពី AI',
     description:
-      'ការដាក់ឱ្យដំណើរការលើ Linux, cloud hosting, CI/CD និងការប្រើប្រាស់ container infrastructure។',
-  },
-  'roaming-interconnection': {
-    title: 'Roaming & Interconnection',
-    description:
-      'ការផ្ទៀងផ្ទាត់សេវា Roaming, លំហូរការងារ TAP, ស្វ័យប្រវត្តិកម្មប្រតិបត្តិការ និងប្រព័ន្ធទូរគមនាគមន៍ផ្ទៃក្នុង។',
+      'ការប្រើជំនួយការ AI ដើម្បីគាំទ្រការរៀនសូត្រ ស្វែងរកគំនិត និងជួយការងារអភិវឌ្ឍប្រចាំថ្ងៃ។',
   },
 } satisfies Record<keyof typeof EXPERTISE_EN, KhmerContent<ExpertiseDomain>>;

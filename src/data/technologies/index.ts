@@ -1,4 +1,16 @@
 import html5 from '@/assets/technologies/html5.svg';
+import nuxtjs from '@/assets/technologies/nuxtjs.svg';
+import sass from '@/assets/technologies/sass.svg';
+import flask from '@/assets/technologies/flask.svg';
+import django from '@/assets/technologies/django.svg';
+import sqlite from '@/assets/technologies/sqlite.svg';
+import powerbi from '@/assets/technologies/powerbi.svg';
+import jira from '@/assets/technologies/jira.svg';
+import trello from '@/assets/technologies/trello.svg';
+import cloudflare from '@/assets/technologies/cloudflare.svg';
+import netlify from '@/assets/technologies/netlify.svg';
+import vercel from '@/assets/technologies/vercel.svg';
+import amazonec2 from '@/assets/technologies/amazonec2.svg';
 import css3 from '@/assets/technologies/css3.svg';
 import firebase from '@/assets/technologies/firebase.svg';
 import express from '@/assets/technologies/express.svg';
@@ -34,6 +46,20 @@ import linux from '@/assets/technologies/linux.svg';
 import tailwindcss from '@/assets/technologies/tailwindcss.svg';
 
 export const TECHNOLOGY_LOGOS: Record<string, string> = {
+  nuxt: nuxtjs,
+  'nuxt.js': nuxtjs,
+  sass,
+  scss: sass,
+  flask,
+  django,
+  sqlite,
+  'power bi': powerbi,
+  jira,
+  trello,
+  cloudflare,
+  netlify,
+  vercel,
+  'aws ec2': amazonec2,
   html: html5,
   html5,
   css: css3,

@@ -33,7 +33,7 @@ export const en = {
     sub: 'The portfolio brings together practical experience from development, QA, project planning, data work and technical operations.',
     stat1Number: String(teamCount),
     stat1Label: 'Team members',
-    stat2Number: '6',
+    stat2Number: '8',
     stat2Label: 'Core expertise areas',
     stat3Number: '7+',
     stat3Label: 'Featured experiences',
@@ -137,13 +137,14 @@ export const en = {
     kicker: 'EXPERTISE',
     title: 'Skills connected to practical work.',
     subtitle:
-      'We avoid fake percentage ratings. Instead, the site shows focus areas, tools actually documented in CVs and the people connected to each area.',
+      'Explore our skills by discipline, with technologies and team members connected to each area.',
     relatedTech: 'RELATED TECHNOLOGIES',
     relatedMembers: 'RELATED MEMBERS',
-    techSystemKicker: 'TECHNOLOGY SYSTEM',
-    techSystemTitle: 'Visual technology badges, not text-only lists',
+    viewProfile: 'View profile',
+    techSystemKicker: 'SKILLS & TOOLS',
+    techSystemTitle: 'Our technology toolkit, organized by discipline',
     techSystemDesc:
-      'The MVP uses compact neutral Material UI tiles and recognizable brand icons, following the supplied visual reference while keeping the overall interface clean and professional.',
+      'Browse the languages, frameworks, platforms and tools used across our team’s work.',
   },
   projects: {
     kicker: 'PROJECTS & EXPERIENCE',

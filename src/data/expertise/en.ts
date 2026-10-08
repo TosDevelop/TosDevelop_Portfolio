@@ -1,4 +1,4 @@
-import type { ExpertiseDomain } from '../../types/index.ts';
+﻿import type { ExpertiseDomain } from '../../types/index.ts';
 
 export type ExpertiseDomainEnglish = Pick<
   ExpertiseDomain,
@@ -6,34 +6,44 @@ export type ExpertiseDomainEnglish = Pick<
 >;
 
 export const EXPERTISE_EN = {
-  'full-stack-development': {
-    title: 'Full Stack Development',
+  'frontend-development': {
+    title: 'Frontend Development',
     description:
-      'Frontend, backend, APIs, authentication, databases and deployment for practical web systems.',
+      'Responsive interfaces and interactive web experiences using HTML, CSS, JavaScript and modern frontend frameworks.',
+  },
+  'backend-apis': {
+    title: 'Backend Development & APIs',
+    description:
+      'Server-side applications, REST APIs, authentication and application logic using backend languages, runtimes and frameworks.',
+  },
+  'databases-data': {
+    title: 'Databases & Data Services',
+    description:
+      'Relational databases, SQL queries, managed backend services and data reporting tools.',
+  },
+  'ui-ux-design': {
+    title: 'UI/UX Design',
+    description:
+      'Interface design, reusable visual components and interactive prototypes for clear user experiences.',
   },
   'quality-assurance': {
-    title: 'Quality Assurance',
+    title: 'Testing & Quality Assurance',
     description:
-      'Manual testing, functional testing, regression, UAT, test cases and defect validation.',
+      'Browser automation and API testing to check application behavior and validate integrations.',
   },
-  'planning-team-delivery': {
-    title: 'Planning & Team Delivery',
+  'collaboration-planning': {
+    title: 'Version Control & Project Planning',
     description:
-      'Requirements support, project planning, task coordination and collaborative delivery practices.',
+      'Source control, shared repositories, task tracking and team workflows for coordinating development work.',
   },
-  'data-reporting': {
-    title: 'Data & Reporting',
+  'deployment-delivery': {
+    title: 'Cloud & Deployment',
     description:
-      'SQL reporting, relational databases, dashboards and data analysis tooling.',
+      'Application hosting, Linux environments and continuous integration tools for building and delivering web applications.',
   },
-  'cloud-infrastructure': {
-    title: 'Cloud & Infrastructure',
+  'ai-assisted-development': {
+    title: 'AI-Assisted Development',
     description:
-      'Linux-based deployment, cloud hosting, CI/CD and container infrastructure exposure.',
-  },
-  'roaming-interconnection': {
-    title: 'Roaming & Interconnection',
-    description:
-      'Roaming service validation, TAP workflows, operations automation and internal telecom systems.',
+      'AI assistants that support learning, exploring implementation ideas and everyday development tasks.',
   },
 } satisfies Record<string, ExpertiseDomainEnglish>;

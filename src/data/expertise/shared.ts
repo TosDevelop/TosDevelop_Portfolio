@@ -1,93 +1,122 @@
-import type { ExpertiseDomain } from '../../types/index.ts';
-import type { EXPERTISE_EN, ExpertiseDomainEnglish } from './en.ts';
+﻿import type { ExpertiseDomain } from '../../types/index.ts';
+import { EXPERTISE_EN } from './en.ts';
 
-type SharedExpertiseDomain = Omit<
+type SharedExpertiseDomain = Pick<
   ExpertiseDomain,
-  'id' | keyof ExpertiseDomainEnglish | `${string}Km`
+  'iconName' | 'technologies' | 'relatedMemberIds'
 >;
 
 export const EXPERTISE_SHARED = {
-  'full-stack-development': {
-    iconName: 'Layers',
+  'frontend-development': {
+    iconName: 'Layout',
     technologies: [
+      'HTML5',
+      'CSS3',
+      'JavaScript',
+      'TypeScript',
       'React.js',
       'Vue.js',
-      'Next.js',
-      'Laravel',
-      'Node.js',
-      'MySQL',
-      'PostgreSQL',
+      'Nuxt.js',
+      'Tailwind CSS',
+      'Bootstrap',
+      'SASS',
     ],
     relatedMemberIds: [
-      'chhea-chhouy',
-      'sokchea-boy',
-      'seang-meng-chheun',
-      'kin-doung',
+      'ya-phorn',
+      'vichet-sat',
+      'serey-phem',
+      'reaksmey-san',
+      'sokha-rathana',
     ],
+  },
+  'backend-apis': {
+    iconName: 'Server',
+    technologies: [
+      'PHP',
+      'Python',
+      'Node.js',
+      'Laravel',
+      'Express.js',
+      'Flask',
+      'Django',
+      'REST API',
+      'OAuth',
+    ],
+    relatedMemberIds: [
+      'ya-phorn',
+      'vichet-sat',
+      'serey-phem',
+      'reaksmey-san',
+      'sokha-rathana',
+    ],
+  },
+  'databases-data': {
+    iconName: 'Database',
+    technologies: [
+      'SQL',
+      'MySQL',
+      'PostgreSQL',
+      'SQLite',
+      'SQL Server',
+      'Firebase',
+      'Power BI',
+    ],
+    relatedMemberIds: [
+      'ya-phorn',
+      'vichet-sat',
+      'serey-phem',
+      'reaksmey-san',
+      'sokha-rathana',
+    ],
+  },
+  'ui-ux-design': {
+    iconName: 'Palette',
+    technologies: ['Figma', 'UI Design', 'Prototyping'],
+    relatedMemberIds: ['reaksmey-san', 'ya-phorn', 'vichet-sat'],
   },
   'quality-assurance': {
     iconName: 'ShieldCheck',
-    technologies: ['Manual Testing', 'POS', 'Figma', 'Git'],
-    relatedMemberIds: ['bunyoung-hean'],
+    technologies: ['Playwright', 'Postman'],
+    relatedMemberIds: ['reaksmey-san', 'ya-phorn'],
   },
-  'planning-team-delivery': {
+  'collaboration-planning': {
     iconName: 'CalendarCheck',
-    technologies: ['Jira', 'GitHub', 'Figma'],
-    relatedMemberIds: ['kin-doung', 'chhea-chhouy'],
+    technologies: ['Git', 'GitHub', 'Jira', 'Trello'],
+    relatedMemberIds: ['vichet-sat', 'ya-phorn', 'reaksmey-san'],
   },
-  'data-reporting': {
-    iconName: 'BarChart3',
-    technologies: ['SQL Server', 'MySQL', 'PostgreSQL', 'Power BI'],
-    relatedMemberIds: ['darin-hoy', 'chhea-chhouy'],
-  },
-  'cloud-infrastructure': {
+  'deployment-delivery': {
     iconName: 'Cloud',
-    technologies: ['AWS', 'Linux', 'Docker', 'Kubernetes', 'Git'],
-    relatedMemberIds: ['leader-din', 'chhea-chhouy'],
+    technologies: [
+      'AWS EC2',
+      'Linux',
+      'Cloudflare',
+      'Netlify',
+      'Vercel',
+      'Jenkins',
+    ],
+    relatedMemberIds: ['ya-phorn', 'reaksmey-san'],
   },
-  'roaming-interconnection': {
-    iconName: 'Radio',
-    technologies: ['Automation', 'Linux', 'Docker', 'Kubernetes'],
-    relatedMemberIds: ['leader-din'],
+  'ai-assisted-development': {
+    iconName: 'Sparkles',
+    technologies: ['ChatGPT', 'Claude', 'Gemini'],
+    relatedMemberIds: ['reaksmey-san'],
   },
 } satisfies Record<keyof typeof EXPERTISE_EN, SharedExpertiseDomain>;
 
 export interface TechBadgeItem {
   name: string;
-  category: 'Frontend' | 'Backend' | 'Database' | 'DevOps' | 'Tooling';
+  category: string;
   color: string;
   icon?: string;
 }
 
-export const ALL_TECH_BADGES: TechBadgeItem[] = [
-  { name: 'React.js', category: 'Frontend', color: 'text-sky-500' },
-  {
-    name: 'Next.js',
-    category: 'Frontend',
-    color: 'text-slate-900 dark:text-white',
-  },
-  { name: 'TypeScript', category: 'Frontend', color: 'text-blue-500' },
-  { name: 'JavaScript', category: 'Frontend', color: 'text-amber-500' },
-  { name: 'Material UI', category: 'Frontend', color: 'text-blue-600' },
-  { name: 'Framer Motion', category: 'Frontend', color: 'text-purple-500' },
-  { name: 'Vue.js', category: 'Frontend', color: 'text-emerald-500' },
-  { name: 'Laravel', category: 'Backend', color: 'text-red-500' },
-  { name: 'PHP', category: 'Backend', color: 'text-indigo-500' },
-  { name: 'Python', category: 'Backend', color: 'text-amber-600' },
-  { name: 'Node.js', category: 'Backend', color: 'text-green-600' },
-  { name: 'MySQL', category: 'Database', color: 'text-sky-600' },
-  { name: 'PostgreSQL', category: 'Database', color: 'text-indigo-600' },
-  { name: 'SQL Server', category: 'Database', color: 'text-red-600' },
-  { name: 'Figma', category: 'Tooling', color: 'text-rose-500' },
-  {
-    name: 'GitHub',
-    category: 'Tooling',
-    color: 'text-slate-800 dark:text-slate-200',
-  },
-  { name: 'Postman', category: 'Tooling', color: 'text-orange-500' },
-  { name: 'AWS', category: 'DevOps', color: 'text-amber-500' },
-  { name: 'Docker', category: 'DevOps', color: 'text-blue-500' },
-  { name: 'Kubernetes', category: 'DevOps', color: 'text-blue-600' },
-  { name: 'Linux', category: 'DevOps', color: 'text-yellow-600' },
-  { name: 'Tailwind CSS', category: 'Frontend', color: 'text-cyan-500' },
-];
+// Keep the homepage technology strip consistent with the expertise categories.
+export const ALL_TECH_BADGES: TechBadgeItem[] = Object.entries(
+  EXPERTISE_SHARED,
+).flatMap(([id, domain]) =>
+  domain.technologies.map((name) => ({
+    name,
+    category: EXPERTISE_EN[id as keyof typeof EXPERTISE_EN].title,
+    color: 'text-blue-600 dark:text-blue-400',
+  })),
+);
