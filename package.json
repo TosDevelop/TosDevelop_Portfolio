@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "telegram:poll": "tsx scripts/telegramBot.ts poll",
+    "telegram:webhook": "tsx scripts/telegramBot.ts webhook",
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",

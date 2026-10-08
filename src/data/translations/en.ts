@@ -171,16 +171,16 @@ export const en = {
     kicker: 'CONTACT',
     title: "Let's connect, learn and build together.",
     subtitle:
-      'Get in touch about internships, job opportunities, web projects or collaboration. Choose a recipient below, or explore a member’s profile to learn more about their work.',
+      'Get in touch about internships, job opportunities, web projects or collaboration. Choose our team inbox or an individual member below.',
     teamTitle: 'PNC Student Team',
     teamDesc: `${teamCount} developers with skills in web development, UI/UX design, testing, project planning, databases and deployment.`,
     generalContact: 'GENERAL CONTACT',
     location: 'LOCATION',
     locationVal: 'Phnom Penh, Cambodia',
-    contactSpecific: 'Meet your contact',
+    contactSpecific: 'Meet the team',
     sendMessage: 'Start a conversation',
     formNote:
-      'Choose a recipient and send your message directly from this form. Replies go to the email address you provide.',
+      'Send an email to the team or a member. Only messages to the team inbox also notify our Telegram group. Replies go to the email address you provide.',
     recipient: 'Send to',
     teamRecipient: 'General inquiry',
     generalContactNote:

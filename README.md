@@ -11,7 +11,43 @@ npm ci
 npm run dev
 ```
 
-The development server runs at http://localhost:3000. No environment variables are required by the current frontend. `.env.example` contains optional platform placeholders; the app does not currently consume them.
+The development server runs at http://localhost:3000. Copy `.env.example` to `.env` and fill in the EmailJS public configuration to enable contact email sending. Restart the development server after changing these values.
+
+### Telegram contact alerts
+
+Visitors can email the team inbox (`tosdevelop2026@gmail.com`) or any individual member using the recipient selector. Set the EmailJS template's **To Email** field to `{{to_email}}` and **Reply-To** to `{{email}}`. Only team-inbox submissions trigger a Telegram group notification through `/api/telegram-alert`, after EmailJS accepts the email. Individual member messages are not forwarded to Telegram. Alerts include the sender name and email, subject, and a message preview. Telegram failures do not change email success or cause automatic email retries.
+
+1. Create a bot with [BotFather](https://t.me/BotFather) using `/newbot`.
+2. Add the bot to your team group and send a command addressed to it, or open the bot privately and press Start.
+3. Obtain that chat's ID from the Telegram Bot API `getUpdates` result (`message.chat.id`). Do not share the bot token or commit it.
+4. Fill in `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `.env`. Add the same server-only variables to the Vercel project and redeploy. Never use a `VITE_` prefix for these settings.
+5. Invite all team members to the Telegram group. All alerts use the one `TELEGRAM_CHAT_ID`; no per-member bots or chat IDs are needed. The bot needs permission to send messages in that group.
+
+`npm run dev` serves the Telegram endpoint through a development middleware using the same handler as Vercel. Keep the server-only Telegram settings in `.env` and restart the dev server after changes. On Vercel, configure the variables in the project settings and deploy the `api/` and `server/` files. Missing Telegram configuration disables alerts without disabling email.
+
+This is a public contact-notification endpoint. It validates fields and rejects cross-origin browser requests; an Origin header is not authentication, and the endpoint cannot independently verify EmailJS delivery. Enable a Vercel Firewall rate-limit rule for `/api/telegram-alert` before exposing alerts publicly. Automated tests mock Telegram and do not send messages.
+
+References: [Telegram Bot API](https://core.telegram.org/bots/api#sendmessage), [Vercel Node.js Functions](https://vercel.com/docs/functions/runtimes/node-js).
+
+### Choose an alert's language in the group
+
+New alerts include **🇰🇭 ភាសាខ្មែរ** and **🇬🇧 English** buttons. Any group member can switch that alert's labels for everyone. Sender names, subjects and message text stay in their original language. This does not set a default for future alerts. Old alerts without buttons are unchanged.
+
+For local development, leave `npm run dev` running and open a second terminal:
+
+```bash
+npm run telegram:poll
+```
+
+Keep that terminal running to handle button clicks. Run only one poller for the bot. It refuses to start if a deployed webhook is already active and never removes an existing webhook automatically.
+
+For Vercel, set `TELEGRAM_WEBHOOK_SECRET` to a random secret in both `.env` and Vercel (alongside the bot token and group ID), deploy the updated code, stop any local poller, then run:
+
+```bash
+npm run telegram:webhook -- https://tos-develop-portfolio.vercel.app/api/telegram-webhook
+```
+
+This registers the deployed endpoint with Telegram. The server authenticates Telegram callbacks using the secret header and only edits alerts from this bot in the configured group. No database is needed: Telegram includes the existing message in each button callback. See [Telegram webhooks](https://core.telegram.org/bots/api#setwebhook).
 
 ## Structure
 
@@ -55,7 +91,7 @@ src/
 - Keep navigation state in `hooks/useNavigation.ts` and provider composition in `providers/AppProviders.tsx`.
 - Reuse `CategoryFilter` for typed category selection.
 
-Navigation uses real page URLs and browser history. Refresh, direct links, and back/forward navigation preserve the selected page or profile. Use `PageLink` for internal navigation so links are crawlable and support opening in a new tab. Theme and language preferences persist in local storage. Contact submissions open the visitor's email client via `mailto:`; there is no backend email service.
+Navigation uses real page URLs and browser history. Refresh, direct links, and back/forward navigation preserve the selected page or profile. Use `PageLink` for internal navigation so links are crawlable and support opening in a new tab. Theme and language preferences persist in local storage. Contact submissions use EmailJS with optional server-side Telegram alerts; direct email links still use `mailto:`.
 
 ## SEO and hosting
 

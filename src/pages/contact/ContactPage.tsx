@@ -5,6 +5,7 @@ import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
 import { PageLink } from '@/components/ui/PageLink';
 import { isEmailConfigured, sendContactEmail } from '@/services/contactEmail';
+import { notifyTelegram } from '@/services/contactTelegram';
 import { Mail, MapPin, Send, Info, Users, CheckCircle2, X } from 'lucide-react';
 
 const generalContactEmail = 'tosdevelop2026@gmail.com';
@@ -25,7 +26,7 @@ interface ContactPageProps {
 export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
   const { language, t } = useLanguage();
 
-  const [selectedRecipient, setSelectedRecipient] = useState<string>('team');
+  const [selectedRecipient, setSelectedRecipient] = useState('team');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -56,6 +57,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
       setStatus('success');
       setSubject('');
       setMessage('');
+      await notifyTelegram({
+        recipientId: selectedRecipient,
+        fullName: fullName.trim(),
+        email: email.trim(),
+        subject: subject.trim(),
+        message: message.trim(),
+      });
     } catch {
       setStatus('error');
     } finally {
@@ -141,11 +149,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                   tab="team"
                   memberId={member.id}
                   onClick={() => onSelectMember(member.id)}
-                  className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${
-                    selectedRecipient === member.id
-                      ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 ring-1 ring-blue-500'
-                      : 'border-slate-100 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30'
-                  }`}
+                  className="flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer border-slate-100 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <Avatar
@@ -299,6 +303,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                     required
                     autoComplete="name"
                     id="contact-name"
+                    maxLength={120}
                     name="fullName"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
@@ -319,6 +324,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                     required
                     autoComplete="email"
                     id="contact-email"
+                    maxLength={254}
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -338,6 +344,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                     type="text"
                     required
                     id="contact-subject"
+                    maxLength={200}
                     name="subject"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -357,6 +364,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                     rows={5}
                     required
                     id="contact-message"
+                    maxLength={10000}
                     name="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
