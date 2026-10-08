@@ -28,6 +28,7 @@ import {
   BookOpen,
   CheckCircle,
   FileText,
+  Facebook,
 } from 'lucide-react';
 
 interface TeamMemberDetailProps {
@@ -192,6 +193,20 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                   className="h-[18px] w-[18px] shrink-0"
                 />
                 <span>LinkedIn</span>
+              </a>
+            )}
+            {member.contact.facebook && (
+              <a
+                href={member.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors"
+              >
+                <Facebook
+                  className="h-[18px] w-[18px] text-blue-600"
+                  aria-hidden="true"
+                />
+                <span>Facebook</span>
               </a>
             )}
           </div>
@@ -474,6 +489,8 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                       repoUrl={p.repoUrl}
                       repositories={p.repositories}
                       liveUrl={p.link}
+                      caseStudyUrl={p.caseStudyUrl}
+                      showCaseStudy
                       className="mt-auto border-t border-slate-100 pt-3 dark:border-slate-700"
                     />
                   </div>

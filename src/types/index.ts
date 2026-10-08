@@ -13,6 +13,7 @@ export interface SocialLinks {
   location?: string;
   github?: string;
   linkedin?: string;
+  facebook?: string;
   telegram?: string;
   cvUrl?: string;
 }
@@ -46,6 +47,7 @@ export interface MemberProjectSummary {
   technologies: string[];
   link?: string;
   repoUrl?: string;
+  caseStudyUrl?: string;
   repositories?: { label: string; url: string }[];
 }
 

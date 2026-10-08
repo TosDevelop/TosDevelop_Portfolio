@@ -4,7 +4,7 @@ import type { TeamMemberEnglish } from '../types.ts';
 export const en = {
   name: 'Phorn Ya',
   role: 'Full-Stack Developer',
-  badge: 'Junior Full-Stack Developer | Web Developer',
+  badge: 'Junior Full-Stack',
   tagline:
     'Passionate about building modern web applications using Vue.js, React.js, Laravel, Node.js and cloud technologies.',
   bio: 'Junior Web Developer with experience in full-stack web application development, REST APIs, databases, AWS deployment, testing and debugging.',

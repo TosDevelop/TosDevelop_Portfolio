@@ -16,7 +16,7 @@ const skillCategories: Record<string, string> = {
 export const km = {
   name: 'ផន យ៉ា',
   role: 'អ្នកអភិវឌ្ឍ Full-Stack',
-  badge: 'អ្នកអភិវឌ្ឍ Full-Stack កម្រិតដំបូង | អ្នកអភិវឌ្ឍគេហទំព័រ',
+  badge: 'អ្នកអភិវឌ្ឍ Full-Stack កម្រិតដំបូង',
   tagline:
     'ចូលចិត្តបង្កើតកម្មវិធីគេហទំព័រទំនើបដោយប្រើ Vue.js, React.js, Laravel, Node.js និងបច្ចេកវិទ្យា Cloud។',
   bio: 'អ្នកអភិវឌ្ឍគេហទំព័រកម្រិតដំបូងដែលមានបទពិសោធន៍ក្នុងការអភិវឌ្ឍកម្មវិធីគេហទំព័រ Full-stack, REST APIs, មូលដ្ឋានទិន្នន័យ ការដាក់ឱ្យដំណើរការលើ AWS ការធ្វើតេស្ត និងការកែកំហុស។',

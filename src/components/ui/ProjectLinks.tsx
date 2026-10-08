@@ -6,6 +6,8 @@ interface ProjectLinksProps {
   repoUrl?: string;
   repositories?: { label: string; url: string }[];
   liveUrl?: string;
+  caseStudyUrl?: string;
+  showCaseStudy?: boolean;
   className?: string;
 }
 
@@ -14,6 +16,8 @@ export function ProjectLinks({
   repoUrl,
   repositories,
   liveUrl,
+  caseStudyUrl,
+  showCaseStudy = false,
   className = '',
 }: ProjectLinksProps) {
   const { t } = useLanguage();
@@ -22,6 +26,15 @@ export function ProjectLinks({
       ? repositories.map(({ label, url }) => ({ label, url, Icon: FolderGit2 }))
       : [{ label: t.team.repository, url: repoUrl, Icon: FolderGit2 }]),
     { label: t.team.liveDemo, url: liveUrl, Icon: ExternalLink },
+    ...(showCaseStudy || caseStudyUrl
+      ? [
+          {
+            label: t.projects.viewCaseStudy,
+            url: caseStudyUrl,
+            Icon: ExternalLink,
+          },
+        ]
+      : []),
   ];
 
   return (
