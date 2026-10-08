@@ -5,7 +5,7 @@ export const shared = {
   image: new URL('../../../assets/team/sokha_rathana.jpg', import.meta.url)
     .href,
   contact: {
-    email: 'rathana.sokha011@gmail.com',
+    email: 'rathanasokha26@gmail.com',
     phone: '+855 97 123 456',
     location: 'Phnom Penh, Cambodia',
     linkedin: 'https://linkedin.com',

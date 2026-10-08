@@ -26,7 +26,7 @@ const pageContent: Record<AppTab, [string, string]> = {
     'Meet the TosDevelop team. Explore student developer profiles, technical skills, professional experience, and projects from Passerelles Numériques Cambodia.',
   ],
   expertise: [
-    'Our Technology Expertise',
+    'Our Skills',
     'Explore TosDevelop expertise in frontend and backend development, databases, UI/UX design, testing, project planning, cloud deployment, and AI-assisted development.',
   ],
   projects: [

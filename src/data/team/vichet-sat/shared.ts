@@ -4,7 +4,7 @@ export const shared = {
   category: ['Planning', 'Development'],
   image: new URL('../../../assets/team/sat_vichet.jpg', import.meta.url).href,
   contact: {
-    email: 'vichet77@gmail.com',
+    email: 'satvichetnice1@gmail.com',
     phone: '+855 88 912 345',
     location: 'Phnom Penh, Cambodia',
     linkedin: 'https://linkedin.com',

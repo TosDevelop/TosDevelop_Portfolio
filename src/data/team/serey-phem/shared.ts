@@ -4,7 +4,7 @@ export const shared = {
   category: ['Development'],
   image: new URL('../../../assets/team/phem_serey.jpg', import.meta.url).href,
   contact: {
-    email: 'serey.phem1800@gmail.com',
+    email: 'sereyphem02@gmail.com',
     phone: '+855 96 789 012',
     location: 'Phnom Penh, Cambodia',
     linkedin: 'https://linkedin.com',

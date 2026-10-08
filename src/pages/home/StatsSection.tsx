@@ -1,14 +1,30 @@
 import React from 'react';
 import { useLanguage } from '@/providers/LanguageContext';
+import { TEAM_MEMBERS } from '@/data/team';
+import { EXPERTISE_DOMAINS, ALL_TECH_BADGES } from '@/data/expertise';
+import { PROJECTS_DATA } from '@/data/projects';
 
 export const StatsSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const formatCount = (count: number) =>
+    new Intl.NumberFormat(
+      language === 'km' ? 'km-KH-u-nu-khmr' : 'en-US',
+    ).format(count);
 
   const stats = [
-    { number: t.stats.stat1Number, label: t.stats.stat1Label },
-    { number: t.stats.stat2Number, label: t.stats.stat2Label },
-    { number: t.stats.stat3Number, label: t.stats.stat3Label },
-    { number: t.stats.stat4Number, label: t.stats.stat4Label },
+    { number: formatCount(TEAM_MEMBERS.length), label: t.stats.stat1Label },
+    {
+      number: formatCount(EXPERTISE_DOMAINS.length),
+      label: t.stats.stat2Label,
+    },
+    { number: formatCount(PROJECTS_DATA.length), label: t.stats.stat3Label },
+    {
+      number: formatCount(
+        new Set(ALL_TECH_BADGES.map((badge) => badge.name.trim().toLowerCase()))
+          .size,
+      ),
+      label: t.stats.stat4Label,
+    },
   ];
 
   return (

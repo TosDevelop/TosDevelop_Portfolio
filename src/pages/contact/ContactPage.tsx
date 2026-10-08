@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { SITE_NAME } from '@/config/site';
 import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
-import { Mail, MapPin, Send, CheckCircle2, Users } from 'lucide-react';
+import { PageLink } from '@/components/ui/PageLink';
+import { isEmailConfigured, sendContactEmail } from '@/services/contactEmail';
+import { Mail, MapPin, Send, Info, Users, CheckCircle2, X } from 'lucide-react';
+
+const generalContactEmail = 'tosdevelop2026@gmail.com';
+const emailConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '',
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '',
+  templateId:
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+    import.meta.env.VITE_EMAILJS_TEMPLATE ||
+    '',
+};
+const emailReady = isEmailConfigured(emailConfig);
 
 interface ContactPageProps {
   onSelectMember: (memberId: string) => void;
@@ -17,29 +30,37 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    'idle' | 'sending' | 'success' | 'error'
+  >('idle');
+  const sending = useRef(false);
+  const recipient = TEAM_MEMBERS.find(
+    (member) => member.id === selectedRecipient,
+  );
+  const targetEmail = recipient?.contact.email || generalContactEmail;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Determine target recipient email
-    let targetEmail = 'phornya26@gmail.com';
-    if (selectedRecipient !== 'team') {
-      const member = TEAM_MEMBERS.find((m) => m.id === selectedRecipient);
-      if (member?.contact.email) {
-        targetEmail = member.contact.email;
-      }
+    if (sending.current || !emailReady) return;
+    sending.current = true;
+    setStatus('sending');
+    try {
+      await sendContactEmail(emailConfig, {
+        to_email: targetEmail,
+        to_name: recipient?.name ?? SITE_NAME,
+        full_name: fullName.trim(),
+        email: email.trim(),
+        subject: subject.trim(),
+        message: message.trim(),
+      });
+      setStatus('success');
+      setSubject('');
+      setMessage('');
+    } catch {
+      setStatus('error');
+    } finally {
+      sending.current = false;
     }
-
-    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(
-      subject || `Inquiry from ${SITE_NAME} Portfolio`,
-    )}&body=${encodeURIComponent(
-      `From: ${fullName} (${email})\n\n${message}`,
-    )}`;
-
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
@@ -84,12 +105,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                   {t.contact.generalContact}
                 </span>
                 <a
-                  href="mailto:phornya26@gmail.com"
+                  href={`mailto:${generalContactEmail}`}
                   className="font-medium text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-2"
                 >
                   <Mail className="w-3.5 h-3.5" />
-                  <span>phornya26@gmail.com</span>
+                  <span className="break-all">{generalContactEmail}</span>
                 </a>
+                <p className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  {t.contact.generalContactNote}
+                </p>
               </div>
 
               <div>
@@ -112,12 +136,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
 
             <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
               {TEAM_MEMBERS.map((member) => (
-                <div
+                <PageLink
                   key={member.id}
-                  onClick={() => {
-                    setSelectedRecipient(member.id);
-                    setSubject(`Inquiry for ${member.name}`);
-                  }}
+                  tab="team"
+                  memberId={member.id}
+                  onClick={() => onSelectMember(member.id)}
                   className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${
                     selectedRecipient === member.id
                       ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 ring-1 ring-blue-500'
@@ -137,15 +160,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
                         {language === 'km' ? member.nameKm : member.name}
                       </p>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-                        {member.contact.email}
+                        {language === 'km' ? member.roleKm : member.role}
                       </p>
                     </div>
                   </div>
 
                   <span className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold flex-shrink-0 ml-2">
-                    {selectedRecipient === member.id ? 'Selected' : 'Direct'}
+                    {t.team.viewProfile}
                   </span>
-                </div>
+                </PageLink>
               ))}
             </div>
           </div>
@@ -163,79 +186,198 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
               </p>
             </div>
 
-            {submitted && (
-              <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+            {status === 'success' && (
+              <div
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+                className="relative flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 pr-12 text-emerald-950 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-100"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/60 dark:text-emerald-400">
+                  <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <div className="min-w-0 space-y-1">
+                  <h3 className="text-sm font-semibold">
+                    {t.contact.sentNotice}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-emerald-800 dark:text-emerald-200">
+                    {t.contact.sentTo}{' '}
+                    <strong>
+                      {recipient
+                        ? language === 'km'
+                          ? recipient.nameKm
+                          : recipient.name
+                        : SITE_NAME}
+                    </strong>
+                    .
+                  </p>
+                  <p className="break-words text-xs leading-relaxed text-emerald-800 dark:text-emerald-200">
+                    {t.contact.replyNotice}{' '}
+                    <span className="font-medium break-all">
+                      {email.trim()}
+                    </span>
+                    .
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  aria-label={t.contact.dismissNotice}
+                  className="absolute right-2 top-2 rounded-lg p-2 text-emerald-700 hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:text-emerald-300 dark:hover:bg-emerald-900"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            )}
+
+            {(!emailReady || status === 'error') && (
+              <div
+                role={status === 'error' ? 'alert' : 'status'}
+                className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300 text-xs flex items-center gap-2"
+              >
+                <Info className="w-4 h-4 flex-shrink-0" />
                 <span>
-                  Default mail client opened. Thank you for connecting!
+                  {!emailReady
+                    ? t.contact.emailUnavailable
+                    : t.contact.sendError}
                 </span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  {t.contact.fullName}
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="e.g. Sok Piseth"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  {t.contact.email}
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  {t.contact.subject}
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  placeholder="Internship / Project Collaboration / Inquiry"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  {t.contact.message}
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder={t.contact.promptText}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-98 text-white text-xs font-semibold shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+            <form
+              onSubmit={handleSubmit}
+              aria-busy={status === 'sending'}
+              onChange={() => {
+                if (status !== 'sending') setStatus('idle');
+              }}
+            >
+              <fieldset
+                disabled={status === 'sending'}
+                className="space-y-4 disabled:opacity-70"
               >
-                <Send className="w-3.5 h-3.5" />
-                <span>{t.contact.openEmailBtn}</span>
-              </button>
+                <div>
+                  <label
+                    htmlFor="contact-recipient"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    {t.contact.recipient}
+                  </label>
+                  <select
+                    id="contact-recipient"
+                    value={selectedRecipient}
+                    onChange={(e) => {
+                      setSelectedRecipient(e.target.value);
+                      setStatus('idle');
+                    }}
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="team">
+                      {t.contact.teamRecipient} — {SITE_NAME}
+                    </option>
+                    {TEAM_MEMBERS.map((member) => (
+                      <option key={member.id} value={member.id}>
+                        {language === 'km' ? member.nameKm : member.name}
+                      </option>
+                    ))}
+                  </select>
+                  <a
+                    href={`mailto:${targetEmail}`}
+                    className="mt-2 inline-block break-all text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {targetEmail}
+                  </a>
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    {t.contact.fullName}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    autoComplete="name"
+                    id="contact-name"
+                    name="fullName"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder={t.contact.namePlaceholder}
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    {t.contact.email}
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    autoComplete="email"
+                    id="contact-email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-subject"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    {t.contact.subject}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    id="contact-subject"
+                    name="subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    placeholder={t.contact.subjectPlaceholder}
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1"
+                  >
+                    {t.contact.message}
+                  </label>
+                  <textarea
+                    rows={5}
+                    required
+                    id="contact-message"
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder={t.contact.promptText}
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={!emailReady || status === 'sending'}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-98 text-white text-xs font-semibold shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span aria-live="polite">
+                    {status === 'sending'
+                      ? t.contact.sending
+                      : t.contact.sendEmailBtn}
+                  </span>
+                </button>
+              </fieldset>
             </form>
           </div>
         </div>
