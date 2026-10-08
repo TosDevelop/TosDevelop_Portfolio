@@ -3,11 +3,11 @@ import type { TeamMemberEnglish } from '../types.ts';
 
 export const en = {
   name: 'Serey Phem',
-  role: 'Web Developer',
+  role: 'Junior Software Engineer',
   tagline:
-    'Web applications, REST APIs, databases and practical software quality.',
-  badge: 'Web Developer',
-  bio: 'Dedicated web developer specializing in clean client-server architecture, database modeling, responsive UI components, and reliable API services.',
+    'Sow applications, REST APIs, databases and practical software quality.',
+  badge: 'Software Engineer',
+  bio: 'Dedicated software developer specializing in clean client-server architecture, database modeling, responsive UI components, and reliable API services.',
   languages: [
     {
       language: 'Khmer',
@@ -26,19 +26,19 @@ export const en = {
   ],
   experience: [
     {
-      role: 'Web Developer',
-      company: 'Academic & Client Initiatives',
-      period: '2024 – Present',
+      role: 'Software Engineer Intern',
+      company: 'IG Tech Group',
+      period: '2026 – Present',
       description:
         'Engineered web platforms, integrated authenticated REST endpoints, and managed database schemas.',
-      technologies: ['React.js', 'Laravel', 'MySQL', 'Git'],
+      technologies: ['Kotlin', 'Spring Boot', 'Postgresql', 'Git'],
     },
   ],
   education: [
     {
       degree: 'Associate Degree – Web Programming',
       institution: 'Passerelles numériques Cambodia (PNC)',
-      period: '2024 – 2026',
+      period: '2025 – 2026',
     },
   ],
   selectedProjects: projects,
