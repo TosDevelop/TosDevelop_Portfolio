@@ -4,7 +4,7 @@ import { vichetSat } from './vichet-sat/index.ts';
 import { sereyPhem } from './serey-phem/index.ts';
 import { reaksmeySan } from './reaksmey-san/index.ts';
 import { sokhaRathana } from './sokha-rathana/index.ts';
-import { exampleMember } from './example-member/index.ts';
+import { daneMiok } from './dane-miok/index.ts';
 
 // Member order used throughout the website.
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -13,5 +13,5 @@ export const TEAM_MEMBERS: TeamMember[] = [
   sereyPhem,
   reaksmeySan,
   sokhaRathana,
-  exampleMember,
+  daneMiok,
 ];
