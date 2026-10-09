@@ -1,6 +1,7 @@
 import type { SharedTeamMember } from '../types.ts';
 
 export const shared = {
+  lookingFor: ['Full-time', 'Part-time', 'Contract'],
   category: ['Development'],
   image: new URL('../../../assets/team/sokha_rathana.jpg', import.meta.url)
     .href,

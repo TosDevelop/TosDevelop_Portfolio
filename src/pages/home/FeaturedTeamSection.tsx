@@ -4,6 +4,7 @@ import React from 'react';
 import { useLanguage } from '@/providers/LanguageContext';
 import { TEAM_MEMBERS } from '@/data/team';
 import { Avatar } from '@/components/ui/Avatar';
+import { JobAvailability } from '@/components/ui/JobAvailability';
 import { ArrowRight, FileText } from 'lucide-react';
 
 interface FeaturedTeamSectionProps {
@@ -43,7 +44,7 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
         </div>
 
         {/* Team Members Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 lg:gap-5">
           {TEAM_MEMBERS.map((member) => (
             <div
               key={member.id}
@@ -80,6 +81,8 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
                     {language === 'km' ? member.taglineKm : member.tagline}
                   </p>
                 </div>
+
+                <JobAvailability lookingFor={member.lookingFor} />
 
                 <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
                   <PageLink

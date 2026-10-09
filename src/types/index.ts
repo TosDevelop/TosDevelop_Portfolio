@@ -1,5 +1,6 @@
 export type Language = 'en' | 'km';
 export type Theme = 'light' | 'dark';
+export type JobType = 'Full-time' | 'Part-time' | 'Contract';
 
 export type TeamCategory =
   'All' | 'Development' | 'UI/UX' | 'QA' | 'Planning' | 'Infrastructure';
@@ -66,6 +67,7 @@ export interface TeamMember {
   bio: string;
   bioKm: string;
   contact: SocialLinks;
+  lookingFor: JobType[];
   languages: { language: string; level: string }[];
   softSkills: string[];
   technicalSkills: SkillCategory[];

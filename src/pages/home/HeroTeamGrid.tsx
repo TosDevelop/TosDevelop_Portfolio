@@ -16,7 +16,7 @@ export function HeroTeamGrid({
   members = TEAM_MEMBERS,
 }: HeroTeamGridProps) {
   const { language, t } = useLanguage();
-  const rowCount = Math.ceil(members.length / 5);
+  const rowCount = Math.ceil(members.length / 6);
   const membersPerRow = Math.ceil(members.length / Math.max(rowCount, 1));
   const rows = Array.from({ length: rowCount }, (_, index) =>
     members.slice(index * membersPerRow, (index + 1) * membersPerRow),
@@ -63,7 +63,7 @@ export function HeroTeamGrid({
                   style={{
                     marginTop: Math.abs(index - (row.length - 1) / 2) * 24,
                   }}
-                  className="group min-w-0 basis-[calc((100%-2rem)/5)] rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3 sm:basis-[calc((100%-3rem)/5)]"
+                  className="group min-w-0 flex-1 basis-0 max-w-[6.5rem] rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3"
                 >
                   <div className="relative aspect-[1/3] lg:aspect-[3/8]">
                     <div className="absolute inset-y-0 -inset-x-0.5 overflow-hidden rounded-full border-[3px] border-white bg-slate-200 shadow-lg shadow-slate-900/10 transition-shadow duration-300 group-hover:shadow-xl sm:-inset-x-1 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/25">

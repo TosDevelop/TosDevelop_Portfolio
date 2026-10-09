@@ -5,9 +5,9 @@ export const en = {
   name: 'Serey Phem',
   role: 'Junior Software Engineer',
   tagline:
-    'Sow applications, REST APIs, databases and practical software quality.',
+    'Web Programming student building responsive, user-friendly web applications.',
   badge: 'Software Engineer',
-  bio: 'Dedicated software developer specializing in clean client-server architecture, database modeling, responsive UI components, and reliable API services.',
+  bio: 'Web Programming student with hands-on experience building responsive web applications using Angular, Vue.js, JavaScript, HTML, CSS, and Tailwind CSS. Experienced with REST APIs, CRUD operations, MySQL, Node.js, Laravel, Spring Boot, Git/GitHub, and Postman. Interested in UI/UX design and learning modern web technologies.',
   languages: [
     {
       language: 'Khmer',

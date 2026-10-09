@@ -5,6 +5,7 @@ import { TEAM_MEMBERS } from '@/data/team';
 import { TeamCategory, TeamMember } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
+import { JobAvailability } from '@/components/ui/JobAvailability';
 import { TeamMemberDetail } from '@/pages/team/TeamMemberDetail';
 import { ArrowRight, FileText } from 'lucide-react';
 
@@ -73,7 +74,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({
       />
 
       {/* Member Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredMembers.map((member) => (
           <div
             key={member.id}
@@ -110,6 +111,8 @@ export const TeamPage: React.FC<TeamPageProps> = ({
                   {language === 'km' ? member.taglineKm : member.tagline}
                 </p>
               </div>
+
+              <JobAvailability lookingFor={member.lookingFor} />
 
               {/* Action Buttons */}
               <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">

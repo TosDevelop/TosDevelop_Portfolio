@@ -14,7 +14,7 @@ export interface SeoPage {
 
 const pageContent: Record<AppTab, [string, string]> = {
   home: [
-    'Student Developers & Technology Portfolio',
+    'Student Developers in Cambodia',
     'Meet TosDevelop, a PNC student technology team in Cambodia. Explore our developers, projects, and skills in web development, QA, data, and technical operations.',
   ],
   about: [
@@ -67,12 +67,95 @@ export function findSeoPage(pathname: string) {
   return SEO_PAGES.find((page) => page.path === normalized);
 }
 
-export function getStructuredData(siteUrl: string) {
+export function getStructuredData(siteUrl: string, page?: SeoPage) {
+  const baseUrl = siteUrl.replace(/\/+$/, '');
+  const organizationId = `${baseUrl}/#organization`;
+  const websiteId = `${baseUrl}/#website`;
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: SITE_NAME,
+      url: `${baseUrl}/`,
+      logo: `${baseUrl}/tosdevelop-logo.png`,
+      description: pageContent.home[1],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: `${baseUrl}/`,
+      name: SITE_NAME,
+      publisher: { '@id': organizationId },
+    },
+  ];
+  if (page) {
+    const url = `${baseUrl}${page.path}`;
+    const member = TEAM_MEMBERS.find((item) => item.id === page.memberId);
+    const project = PROJECTS_DATA.find((item) => item.id === page.projectId);
+    graph.push({
+      '@type': member
+        ? 'ProfilePage'
+        : page.tab === 'about'
+          ? 'AboutPage'
+          : page.tab === 'contact'
+            ? 'ContactPage'
+            : 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: page.title,
+      description: page.description,
+      isPartOf: { '@id': websiteId },
+      ...(member || project ? { mainEntity: { '@id': `${url}#entity` } } : {}),
+      ...(page.path !== '/'
+        ? { breadcrumb: { '@id': `${url}#breadcrumb` } }
+        : {}),
+    });
+    if (member) {
+      graph.push({
+        '@type': 'Person',
+        '@id': `${url}#entity`,
+        name: member.name,
+        url,
+        jobTitle: member.role,
+        description: member.bio,
+        memberOf: { '@id': organizationId },
+      });
+    }
+    if (project) {
+      graph.push({
+        '@type': 'CreativeWork',
+        '@id': `${url}#entity`,
+        name: project.title,
+        url,
+        description: project.tagline,
+        keywords: project.technologies.join(', '),
+      });
+    }
+    if (page.path !== '/') {
+      const crumbs = [{ name: 'Home', item: `${baseUrl}/` }];
+      if (member || project) {
+        crumbs.push({
+          name: member ? 'Team' : 'Projects',
+          item: `${baseUrl}${getPagePath(page.tab)}`,
+        });
+      }
+      crumbs.push({
+        name: member?.name ?? project?.title ?? page.title.split(' | ')[0],
+        item: url,
+      });
+      graph.push({
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: crumbs.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          ...crumb,
+        })),
+      });
+    }
+  }
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
-    description: pageContent.home[1],
-    ...(siteUrl ? { url: `${siteUrl}/` } : {}),
+    '@graph': graph,
   };
 }

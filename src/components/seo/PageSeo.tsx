@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SITE_NAME, SITE_URL } from '@/config/site';
-import type { SeoPage } from '@/config/seo';
+import { getStructuredData, type SeoPage } from '@/config/seo';
 
 export function PageSeo({ page }: { page: SeoPage | undefined }) {
   useEffect(() => {
@@ -8,6 +8,18 @@ export function PageSeo({ page }: { page: SeoPage | undefined }) {
     const description =
       page?.description ?? 'The requested TosDevelop page could not be found.';
     document.title = title;
+    let structuredData = document.head.querySelector<HTMLScriptElement>(
+      '#page-structured-data',
+    );
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.id = 'page-structured-data';
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify(
+      getStructuredData(SITE_URL, page),
+    );
     const updateMeta = (key: string, content: string, property = false) => {
       const attribute = property ? 'property' : 'name';
       let element = document.head.querySelector<HTMLMetaElement>(

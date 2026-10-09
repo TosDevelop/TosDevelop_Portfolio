@@ -99,7 +99,9 @@ The public URL is `https://tos-develop-portfolio.vercel.app/`. The build generat
 
 `vercel.json` serves this static Vite output with consistent trailing-slash URLs. Keep the generated route directories when deploying; do not rewrite all URLs to the home page, because that would discard their individual metadata. If the domain changes, update `SITE_URL` and rebuild.
 
-Page bodies still render with React in the browser; the HTML metadata is generated at build time. English and Khmer currently share URLs, so no separate language alternates are advertised. After deployment, submit `/sitemap.xml` in Google Search Console and check representative URLs for indexing. SEO changes do not guarantee rankings.
+Each generated HTML body includes a visible English content summary and crawlable navigation, using the same member and project data as the interactive pages. React replaces this initial content when it starts; the summary remains readable if JavaScript is unavailable. Structured data describes the organization, website, current page, member or project, and breadcrumbs, and updates during client navigation. English and Khmer currently share URLs, so no separate language alternates are advertised.
+
+After deploying, verify the public URL in Google Search Console, submit `/sitemap.xml`, and use URL Inspection on the homepage and a member page. Check the live rendered content and request indexing. The local build cannot submit indexing requests or confirm Google's indexing status. SEO changes do not guarantee rankings.
 
 Run `npm run build` followed by `npm run test:seo` to verify routes, metadata, sitemap coverage, and unknown-page handling.
 

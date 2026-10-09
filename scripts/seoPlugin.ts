@@ -7,15 +7,7 @@ import {
   type SeoPage,
 } from '../src/config/seo.ts';
 import { SITE_NAME, SITE_URL } from '../src/config/site.ts';
-
-const escapeHtml = (value: string) =>
-  value.replace(
-    /[&<>"']/g,
-    (char) =>
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
-        char
-      ]!,
-  );
+import { escapeHtml, renderSeoContent } from './seoContent.ts';
 
 export function renderSeoHead(page?: SeoPage) {
   const title = page?.title ?? `Page Not Found | ${SITE_NAME}`;
@@ -41,7 +33,7 @@ export function renderSeoHead(page?: SeoPage) {
     <meta name="twitter:image" content="${image}" />
     <meta name="twitter:image:alt" content="${SITE_NAME} logo" />
     ${url ? `<link rel="canonical" href="${escapeHtml(url)}" /><meta property="og:url" content="${escapeHtml(url)}" />` : ''}
-    <script type="application/ld+json">${JSON.stringify(getStructuredData(SITE_URL)).replace(/</g, '\\u003c')}</script>
+    <script id="page-structured-data" type="application/ld+json">${JSON.stringify(getStructuredData(SITE_URL, page)).replace(/</g, '\\u003c')}</script>
     <!-- seo:end -->`;
 }
 
@@ -70,17 +62,22 @@ export function seoPlugin(): Plugin {
         if (!entry || entry.type !== 'asset')
           throw new Error('Missing built index.html');
         const html = String(entry.source);
+        const withContent = (page?: SeoPage) =>
+          withSeo(html, page).replace('<div id="root"></div>', () =>
+            renderSeoContent(page),
+          );
+        entry.source = withContent(findSeoPage('/'));
         for (const page of SEO_PAGES.filter((page) => page.path !== '/')) {
           this.emitFile({
             type: 'asset',
             fileName: `${page.path.slice(1)}index.html`,
-            source: withSeo(html, page),
+            source: withContent(page),
           });
         }
         this.emitFile({
           type: 'asset',
           fileName: '404.html',
-          source: withSeo(html),
+          source: withContent(),
         });
         this.emitFile({
           type: 'asset',

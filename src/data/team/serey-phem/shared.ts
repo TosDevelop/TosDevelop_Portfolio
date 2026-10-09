@@ -1,15 +1,21 @@
 import type { SharedTeamMember } from '../types.ts';
 
 export const shared = {
-  category: ['Development'],
+  lookingFor: ['Full-time', 'Part-time', 'Contract'],
+  category: ['Development', 'UI/UX'],
   image: new URL('../../../assets/team/phem_serey.jpg', import.meta.url).href,
   contact: {
+    portfolio: 'https://sereyhub.online',
+    telegram: 'https://t.me/sereyphem',
     email: 'sereyphem02@gmail.com',
     phone: '+855 97 327 2951',
     location: 'Phnom Penh, Cambodia',
     linkedin: 'https://www.linkedin.com/in/serey-phem/',
     github: 'https://github.com/Serey002',
-    cvUrl: '/src/assets/cv/Serey-PHEM-Web-Developer-Intern.pdf',
+    cvUrl: new URL(
+      '../../../assets/cv/Serey-PHEM-Web-Developer-Intern.pdf',
+      import.meta.url,
+    ).href,
   },
   technicalSkills: [
     {
@@ -48,10 +54,10 @@ export const shared = {
       category: 'Backend & APIs',
       skills: [
         {
-          name: "Kotlin"
+          name: 'Kotlin',
         },
         {
-          name: "Spring Boot"
+          name: 'Spring Boot',
         },
         {
           name: 'PHP',
