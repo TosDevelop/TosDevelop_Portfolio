@@ -4,6 +4,7 @@ export const shared = {
   lookingFor: ['Full-time', 'Part-time', 'Contract'],
   category: ['Development', 'QA', 'Infrastructure'],
   contact: {
+    cvUrl: new URL('../../../assets/cv/ya-phorn-cv.pdf', import.meta.url).href,
     email: 'phornya26@gmail.com',
     phone: '+855 71 815 1315',
     location: 'Sen Sok, Phnom Penh, Cambodia',

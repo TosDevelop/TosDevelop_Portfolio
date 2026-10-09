@@ -11,7 +11,6 @@ export const shared = {
     location: 'Phnom Penh, Cambodia',
     linkedin: 'https://linkedin.com',
     github: 'https://github.com',
-    cvUrl: '#',
   },
   technicalSkills: [
     {

@@ -134,6 +134,7 @@ export const en = {
     additionalLearning: 'Additional Learning',
     downloadCv: 'Download CV',
     openCv: 'Open CV',
+    cvUnavailable: 'CV not available yet',
   },
   expertise: {
     kicker: 'OUR SKILLS',

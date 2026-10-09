@@ -5,6 +5,7 @@ export const shared = {
   category: ['Development'],
   image: new URL('../../../assets/team/miok_dane.png', import.meta.url).href,
   contact: {
+    cvUrl: new URL('../../../assets/cv/miok-dane-cv.pdf', import.meta.url).href,
     email: 'miokdane2006@gmail.com',
     phone: '+855 81 634 649',
     location: 'Sangkat Tek Thla, Khan Sen Sok, Phnom Penh, Cambodia',

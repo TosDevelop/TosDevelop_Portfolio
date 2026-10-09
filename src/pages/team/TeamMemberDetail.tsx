@@ -72,24 +72,8 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
         : member.additionalLearning,
   };
 
-  const handleDownloadCv = () => {
-    if (member.contact.cvUrl && member.contact.cvUrl !== '#') {
-      const link = document.createElement('a');
-      link.href = member.contact.cvUrl;
-      link.download = `${member.id}-cv.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      return;
-    }
-    window.print();
-  };
-
-  const handleOpenCv = () => {
-    if (member.contact.cvUrl && member.contact.cvUrl !== '#') {
-      window.open(member.contact.cvUrl, '_blank', 'noopener,noreferrer');
-    }
-  };
+  const cvUrl = member.contact.cvUrl;
+  const hasCv = Boolean(cvUrl && cvUrl !== '#');
 
   return (
     <div className="py-8 md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -164,21 +148,37 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
 
           {/* Action Buttons Row */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-2">
-            <button
-              onClick={handleDownloadCv}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>{t.team.downloadCv}</span>
-            </button>
+            {hasCv ? (
+              <>
+                <a
+                  href={cvUrl}
+                  download={`${member.id}-cv.pdf`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-semibold shadow-xs transition-all cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>{t.team.downloadCv}</span>
+                </a>
 
-            {member.contact.cvUrl && member.contact.cvUrl !== '#' && (
+                <a
+                  href={cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+                >
+                  <FileText className="w-3.5 h-3.5 text-slate-500" />
+                  <span>{t.team.openCv}</span>
+                </a>
+              </>
+            ) : (
               <button
-                onClick={handleOpenCv}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
+                type="button"
+                disabled
+                title={t.team.cvUnavailable}
+                aria-label={`${t.team.downloadCv}: ${t.team.cvUnavailable}`}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-semibold cursor-not-allowed"
               >
-                <FileText className="w-3.5 h-3.5 text-slate-500" />
-                <span>{t.team.openCv}</span>
+                <Download className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>{t.team.downloadCv}</span>
               </button>
             )}
 

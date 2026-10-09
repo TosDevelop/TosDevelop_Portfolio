@@ -10,7 +10,8 @@ export const shared = {
     github: 'https://github.com/ChetDevelopment',
     linkedin: 'https://www.linkedin.com/in/vichet-sat/',
     facebook: 'https://www.facebook.com/khun.chet.588786',
-    cvUrl: 'https://chetdeveloper.me/Vichet-Sat-CV.pdf',
+    cvUrl: new URL('../../../assets/cv/vichet-sat-cv.pdf', import.meta.url)
+      .href,
   },
   technicalSkills: [
     {

@@ -136,6 +136,7 @@ export const km = {
     additionalLearning: 'ការរៀនសូត្របន្ថែម',
     downloadCv: 'ទាញយក CV',
     openCv: 'បើក CV',
+    cvUnavailable: 'មិនទាន់មាន CV',
   },
   expertise: {
     kicker: 'ជំនាញឯកទេស',
