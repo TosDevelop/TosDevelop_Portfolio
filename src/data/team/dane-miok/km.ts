@@ -4,8 +4,7 @@ import type { KhmerContent } from '../../localization.ts';
 
 export const km = {
   selectedProjects: projects,
-  // Keep the supplied spelling until the Khmer name is confirmed.
-  name: 'Miok Dane',
+  name: 'មុិៈ ដានេ',
   role: 'អ្នកអភិវឌ្ឍន៍កម្មវិធីទូរស័ព្ទ',
   tagline:
     'អ្នកអភិវឌ្ឍន៍គេហទំព័រផ្តោតលើ Backend ដោយបង្កើត RESTful APIs ប្រព័ន្ធផ្ទៀងផ្ទាត់អត្តសញ្ញាណដែលមានសុវត្ថិភាព និងមូលដ្ឋានទិន្នន័យទំនាក់ទំនងជាមួយ Node.js, Laravel, Vue.js, MySQL និង PostgreSQL។',
