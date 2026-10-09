@@ -4,7 +4,7 @@ import type { TeamMemberEnglish } from '../types.ts';
 export const en = {
   name: 'Miok Dane',
   role: 'Mobile Developer',
-  badge: 'Mobile Developer | Backend-Focused Web Developer',
+  badge: 'Mobile | Web Developer',
   tagline:
     'Backend-focused web developer building RESTful APIs, secure authentication, and relational databases using Node.js, Laravel, Vue.js, MySQL, and PostgreSQL.',
   bio: 'Motivated backend-focused web developer with hands-on experience building RESTful APIs, secure authentication, and relational database schemas using Node.js, Laravel, Vue.js, MySQL, and PostgreSQL. Comfortable working in Agile teams and delivering full-stack features under deadline pressure. Eager to apply and grow these skills within a professional IT environment.',
