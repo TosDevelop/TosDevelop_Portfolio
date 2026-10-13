@@ -1,7 +1,7 @@
 import { TEAM_MEMBERS } from '../data/team/index.ts';
 import { PROJECTS_DATA } from '../data/projects/index.ts';
 import { APP_TABS, getPagePath, type AppTab } from './navigation.ts';
-import { SITE_NAME } from './site.ts';
+import { SITE_NAME, TEAM_CONTACT } from './site.ts';
 
 export interface SeoPage {
   path: string;
@@ -79,6 +79,8 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
       url: `${baseUrl}/`,
       logo: `${baseUrl}/tosdevelop-logo.png`,
       description: pageContent.home[1],
+      sameAs: [TEAM_CONTACT.github],
+      email: TEAM_CONTACT.email,
     },
     {
       '@type': 'WebSite',

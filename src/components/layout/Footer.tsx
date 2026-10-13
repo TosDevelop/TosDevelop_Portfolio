@@ -2,7 +2,8 @@ import { PageLink } from '@/components/ui/PageLink';
 import { NAVIGATION_LINKS, type Navigate } from '@/config/navigation';
 import React from 'react';
 import { useLanguage } from '@/providers/LanguageContext';
-import { ArrowRight, Github, Linkedin, Send } from 'lucide-react';
+import { ArrowRight, Github, FolderGit2, Mail } from 'lucide-react';
+import { TEAM_CONTACT } from '@/config/site';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 
 interface FooterProps {
@@ -60,31 +61,32 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <p>{t.footer.copyright}</p>
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href={TEAM_CONTACT.github}
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
-              aria-label="GitHub"
+              aria-label={`TosDevelop — ${t.teamInfo.github}`}
+              title={t.teamInfo.github}
             >
               <Github className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com"
+              href={TEAM_CONTACT.repository}
               target="_blank"
               rel="noopener noreferrer"
               className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
-              aria-label="LinkedIn"
+              aria-label={`TosDevelop — ${t.teamInfo.repository}`}
+              title={t.teamInfo.repository}
             >
-              <Linkedin className="w-4 h-4" />
+              <FolderGit2 className="w-4 h-4" />
             </a>
             <a
-              href="https://t.me"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`mailto:${TEAM_CONTACT.email}`}
               className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
-              aria-label="Telegram"
+              aria-label={`TosDevelop — ${t.teamInfo.email}`}
+              title={t.teamInfo.email}
             >
-              <Send className="w-4 h-4" />
+              <Mail className="w-4 h-4" />
             </a>
           </div>
         </div>

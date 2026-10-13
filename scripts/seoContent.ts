@@ -2,7 +2,7 @@ import { TEAM_MEMBERS } from '../src/data/team/index.ts';
 import { PROJECTS_DATA } from '../src/data/projects/index.ts';
 import { SEO_PAGES, type SeoPage } from '../src/config/seo.ts';
 import { getPagePath } from '../src/config/navigation.ts';
-import { SITE_NAME } from '../src/config/site.ts';
+import { SITE_NAME, SITE_URL, TEAM_CONTACT } from '../src/config/site.ts';
 import { en } from '../src/data/translations/en.ts';
 import { EXPERTISE_DOMAINS } from '../src/data/expertise/index.ts';
 
@@ -48,6 +48,16 @@ export function renderSeoContent(page?: SeoPage) {
       <h2>Technologies</h2>${list(project.technologies)}`;
   } else if (page) {
     content = `<h1>${escapeHtml(page.title.split(' | ')[0])}</h1>${paragraph(page.description)}`;
+    if (page.tab === 'about' || page.tab === 'contact') {
+      content += `<section><h2>${escapeHtml(en.teamInfo.title)}</h2>${paragraph(en.teamInfo.description)}${paragraph(en.contact.locationVal)}<ul>${[
+        [TEAM_CONTACT.github, en.teamInfo.github],
+        [TEAM_CONTACT.repository, en.teamInfo.repository],
+        [`mailto:${TEAM_CONTACT.email}`, en.teamInfo.email],
+        [SITE_URL, en.teamInfo.website],
+      ]
+        .map(([url, label]) => `<li>${link(url, label)}</li>`)
+        .join('')}</ul></section>`;
+    }
     if (page.tab === 'about') {
       content += `<section><h2>${escapeHtml(en.about.missionTitle)}</h2>${paragraph(en.about.missionDesc)}</section>
         <section><h2>${escapeHtml(en.about.visionTitle)}</h2>${paragraph(en.about.visionDesc)}</section>

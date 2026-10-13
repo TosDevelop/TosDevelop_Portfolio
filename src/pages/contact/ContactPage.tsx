@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { SITE_NAME } from '@/config/site';
+import { SITE_NAME, TEAM_CONTACT } from '@/config/site';
+import { TeamInfoSection } from '@/components/sections/TeamInfoSection';
 import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
@@ -8,7 +9,7 @@ import { isEmailConfigured, sendContactEmail } from '@/services/contactEmail';
 import { notifyTelegram } from '@/services/contactTelegram';
 import { Mail, MapPin, Send, Info, Users, CheckCircle2, X } from 'lucide-react';
 
-const generalContactEmail = 'tosdevelop2026@gmail.com';
+const generalContactEmail = TEAM_CONTACT.email;
 const emailConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '',
   publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '',
@@ -88,6 +89,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
         </p>
       </div>
 
+      <TeamInfoSection />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Left Column (5 cols): General Contact & Direct Member List */}
         <div className="lg:col-span-5 space-y-6">

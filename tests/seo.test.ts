@@ -6,7 +6,7 @@ import {
   findSeoPage,
   getStructuredData,
 } from '../src/config/seo.ts';
-import { SITE_URL } from '../src/config/site.ts';
+import { SITE_URL, TEAM_CONTACT } from '../src/config/site.ts';
 import { getPagePath } from '../src/config/navigation.ts';
 import { renderSeoHead } from '../scripts/seoPlugin.ts';
 import { escapeHtml, renderSeoContent } from '../scripts/seoContent.ts';
@@ -14,6 +14,26 @@ import { TEAM_MEMBERS } from '../src/data/team/index.ts';
 import { PROJECTS_DATA } from '../src/data/projects/index.ts';
 import { EXPERTISE_DOMAINS } from '../src/data/expertise/index.ts';
 import { en } from '../src/data/translations/en.ts';
+
+test('team contact information appears in initial content and organization schema', () => {
+  for (const path of ['/about/', '/contact/']) {
+    const html = renderSeoContent(findSeoPage(path));
+    for (const url of [
+      TEAM_CONTACT.github,
+      TEAM_CONTACT.repository,
+      `mailto:${TEAM_CONTACT.email}`,
+      SITE_URL,
+    ]) {
+      assert.ok(html.includes(`href="${url}"`));
+    }
+    assert.ok(html.includes(escapeHtml(en.teamInfo.description)));
+  }
+  const organization = getStructuredData(SITE_URL)['@graph'].find(
+    (item) => item['@type'] === 'Organization',
+  )!;
+  assert.deepEqual(organization.sameAs, [TEAM_CONTACT.github]);
+  assert.equal(organization.email, TEAM_CONTACT.email);
+});
 
 test('team projects stay empty while member portfolios remain available', () => {
   assert.equal(PROJECTS_DATA.length, 0);

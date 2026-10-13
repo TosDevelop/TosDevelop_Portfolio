@@ -213,6 +213,15 @@ export const en = {
       'Tell us about yourself or your organization, what you need, and any relevant timeline or project details.',
     sendEmailBtn: 'Send message',
   },
+  teamInfo: {
+    title: 'Connect with TosDevelop',
+    description:
+      'We are a student technology team at Passerelles Numériques Cambodia, based in Phnom Penh. Explore our GitHub or get in touch about learning and collaboration.',
+    github: 'GitHub organization',
+    repository: 'Portfolio source code',
+    email: 'Team email',
+    website: 'Our website',
+  },
   footer: {
     tagline: 'Learning, building and growing through technology.',
     desc: 'A student technology team portfolio presenting practical experience across development, QA, planning, data and infrastructure.',
