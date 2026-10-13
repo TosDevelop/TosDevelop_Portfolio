@@ -25,6 +25,7 @@ export const EXPERTISE_SHARED = {
       'serey-phem',
       'reaksmey-san',
       'sokha-rathana',
+      'dane-miok',
     ],
   },
   'backend-apis': {
@@ -44,6 +45,7 @@ export const EXPERTISE_SHARED = {
       'serey-phem',
       'reaksmey-san',
       'sokha-rathana',
+      'dane-miok',
     ],
   },
   'databases-data': {
@@ -55,6 +57,7 @@ export const EXPERTISE_SHARED = {
       'serey-phem',
       'reaksmey-san',
       'sokha-rathana',
+      'dane-miok',
     ],
   },
   'ui-ux-design': {
@@ -70,12 +73,12 @@ export const EXPERTISE_SHARED = {
   'collaboration-planning': {
     iconName: 'CalendarCheck',
     technologies: ['Git', 'GitHub', 'Jira'],
-    relatedMemberIds: ['vichet-sat', 'ya-phorn', 'reaksmey-san'],
+    relatedMemberIds: ['vichet-sat', 'ya-phorn', 'reaksmey-san', 'dane-miok'],
   },
   'deployment-delivery': {
     iconName: 'Cloud',
     technologies: ['AWS EC2', 'Linux', 'Vercel', 'Jenkins'],
-    relatedMemberIds: ['ya-phorn', 'reaksmey-san'],
+    relatedMemberIds: ['ya-phorn', 'reaksmey-san', 'dane-miok'],
   },
   'ai-assisted-development': {
     iconName: 'Sparkles',
