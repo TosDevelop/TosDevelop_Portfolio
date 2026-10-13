@@ -1,25 +1,14 @@
-import React, { useRef, useState } from 'react';
+import type React from 'react';
+import { useContactForm } from './useContactForm';
 import { SITE_NAME, TEAM_CONTACT } from '@/config/site';
 import { TeamInfoSection } from '@/components/sections/TeamInfoSection';
 import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
 import { PageLink } from '@/components/ui/PageLink';
-import { isEmailConfigured, sendContactEmail } from '@/services/contactEmail';
-import { notifyTelegram } from '@/services/contactTelegram';
 import { Mail, MapPin, Send, Info, Users, CheckCircle2, X } from 'lucide-react';
 
 const generalContactEmail = TEAM_CONTACT.email;
-const emailConfig = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ?? '',
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? '',
-  templateId:
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
-    import.meta.env.VITE_EMAILJS_TEMPLATE ||
-    '',
-};
-const emailReady = isEmailConfigured(emailConfig);
-
 interface ContactPageProps {
   onSelectMember: (memberId: string) => void;
 }
@@ -27,50 +16,24 @@ interface ContactPageProps {
 export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
   const { language, t } = useLanguage();
 
-  const [selectedRecipient, setSelectedRecipient] = useState('team');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState<
-    'idle' | 'sending' | 'success' | 'error'
-  >('idle');
-  const sending = useRef(false);
-  const recipient = TEAM_MEMBERS.find(
-    (member) => member.id === selectedRecipient,
-  );
-  const targetEmail = recipient?.contact.email || generalContactEmail;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (sending.current || !emailReady) return;
-    sending.current = true;
-    setStatus('sending');
-    try {
-      await sendContactEmail(emailConfig, {
-        to_email: targetEmail,
-        to_name: recipient?.name ?? SITE_NAME,
-        full_name: fullName.trim(),
-        email: email.trim(),
-        subject: subject.trim(),
-        message: message.trim(),
-      });
-      setStatus('success');
-      setSubject('');
-      setMessage('');
-      await notifyTelegram({
-        recipientId: selectedRecipient,
-        fullName: fullName.trim(),
-        email: email.trim(),
-        subject: subject.trim(),
-        message: message.trim(),
-      });
-    } catch {
-      setStatus('error');
-    } finally {
-      sending.current = false;
-    }
-  };
+  const {
+    selectedRecipient,
+    setSelectedRecipient,
+    fullName,
+    setFullName,
+    email,
+    setEmail,
+    subject,
+    setSubject,
+    message,
+    setMessage,
+    status,
+    setStatus,
+    recipient,
+    targetEmail,
+    emailReady,
+    handleSubmit,
+  } = useContactForm();
 
   return (
     <div className="py-10 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

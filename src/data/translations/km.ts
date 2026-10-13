@@ -129,6 +129,8 @@ export const km = {
     },
     education: 'ការអប់រំ',
     selectedProjects: 'គម្រោងដែលបានជ្រើសរើស',
+    showMore: 'បង្ហាញបន្ថែម',
+    showLess: 'បង្ហាញតិច',
     repository: 'កូដប្រភព',
     liveDemo: 'មើលគម្រោងផ្ទាល់',
     linkUnavailable: 'មិនទាន់មានតំណភ្ជាប់',

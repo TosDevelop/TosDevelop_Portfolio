@@ -67,6 +67,40 @@ export function findSeoPage(pathname: string) {
   return SEO_PAGES.find((page) => page.path === normalized);
 }
 
+const SOCIAL_HOSTS = new Set([
+  'github.com',
+  'linkedin.com',
+  'www.linkedin.com',
+  'facebook.com',
+  'www.facebook.com',
+]);
+
+function isProfileUrl(value: string | undefined): value is string {
+  if (!value) return false;
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === 'https:' &&
+      !(SOCIAL_HOSTS.has(url.hostname) && url.pathname === '/')
+    );
+  } catch {
+    return false;
+  }
+}
+
+function getPageSchemaType(
+  page: SeoPage,
+  isMember: boolean,
+  isProject: boolean,
+) {
+  if (isMember) return 'ProfilePage';
+  if (page.tab === 'about') return 'AboutPage';
+  if (page.tab === 'contact') return 'ContactPage';
+  if (!isProject && ['team', 'projects', 'expertise'].includes(page.tab))
+    return 'CollectionPage';
+  return 'WebPage';
+}
+
 export function getStructuredData(siteUrl: string, page?: SeoPage) {
   const baseUrl = siteUrl.replace(/\/+$/, '');
   const organizationId = `${baseUrl}/#organization`;
@@ -94,16 +128,8 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
     const url = `${baseUrl}${page.path}`;
     const member = TEAM_MEMBERS.find((item) => item.id === page.memberId);
     const project = PROJECTS_DATA.find((item) => item.id === page.projectId);
-    graph.push({
-      '@type': member
-        ? 'ProfilePage'
-        : page.tab === 'about'
-          ? 'AboutPage'
-          : page.tab === 'contact'
-            ? 'ContactPage'
-            : ['team', 'projects', 'expertise'].includes(page.tab) && !project
-              ? 'CollectionPage'
-              : 'WebPage',
+    const webPage: Record<string, unknown> = {
+      '@type': getPageSchemaType(page, Boolean(member), Boolean(project)),
       '@id': `${url}#webpage`,
       url,
       name: page.title,
@@ -114,7 +140,9 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
       ...(page.path !== '/'
         ? { breadcrumb: { '@id': `${url}#breadcrumb` } }
         : {}),
-    });
+    };
+    graph.push(webPage);
+
     if (member) {
       graph.push({
         '@type': 'Person',
@@ -137,26 +165,7 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
           member.contact.github,
           member.contact.linkedin,
           member.contact.facebook,
-        ].filter((value): value is string => {
-          if (!value) return false;
-          try {
-            const url = new URL(value);
-            return (
-              url.protocol === 'https:' &&
-              !(
-                [
-                  'github.com',
-                  'linkedin.com',
-                  'www.linkedin.com',
-                  'facebook.com',
-                  'www.facebook.com',
-                ].includes(url.hostname) && url.pathname === '/'
-              )
-            );
-          } catch {
-            return false;
-          }
-        }),
+        ].filter(isProfileUrl),
       });
     }
     if (project) {
@@ -185,7 +194,6 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
               path: getPagePath('projects', undefined, item.id),
             }));
       const listId = `${url}#list`;
-      const webPage = graph.find((item) => item['@id'] === `${url}#webpage`)!;
       webPage.mainEntity = { '@id': listId };
       graph.push({
         '@type': 'ItemList',

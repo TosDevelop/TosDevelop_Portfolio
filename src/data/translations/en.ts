@@ -127,6 +127,8 @@ export const en = {
     },
     education: 'Education',
     selectedProjects: 'Selected Projects',
+    showMore: 'Show more',
+    showLess: 'Show less',
     repository: 'Repository',
     liveDemo: 'Live Demo',
     linkUnavailable: 'Link not available yet',

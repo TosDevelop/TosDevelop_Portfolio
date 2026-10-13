@@ -82,14 +82,19 @@ src/
 - Edit portfolio content and translations in `data/`; content contracts live in `types/`.
 - Team profiles live in `data/team/<member-name>/` (for example, `data/team/reaksmey-san/`). Edit `en.ts` for English profile text, `km.ts` for Khmer text, and `shared.ts` for photos, contact details, and technical skills. Each member's `index.ts` combines these files. Add or reorder members in `data/team/index.ts`; keep existing IDs stable so profile links continue to work.
 - Each member's projects live in `data/team/<member-name>/projects/en.ts` and `projects/km.ts`. Edit project descriptions, technologies, repository URLs, and live demo URLs there; keep the same project order in both languages.
-- Website case studies and expertise content live in `data/projects/` and `data/expertise/`, with `en.ts`, `km.ts`, and `shared.ts` in each folder. Each folder's `index.ts` combines the content for the UI and SEO.
+- The Projects page is reserved for shared team work and currently shows an empty state. Add future team projects in `data/projects/index.ts`; individual projects belong in each member's profile.
+- Expertise content lives in `data/expertise/`, with `en.ts`, `km.ts`, and `shared.ts` combined by `index.ts` for the UI and SEO.
 - Technology icon mappings live in `data/technologies/index.ts`; SVG assets live in `assets/technologies/`. Shared locale helpers live in `data/localization.ts`.
 - Locale files use matching field names (such as `title` in both languages). The adapters restore the existing `title`/`titleKm` format. Optional Khmer translations remain optional so the existing English fallbacks continue to work; untranslated resume sections remain in the English content file.
 - Edit English UI text in `data/translations/en.ts` and Khmer UI text in `data/translations/km.ts`. The shared `index.ts` combines them for the language provider, and TypeScript checks that Khmer has the same translation keys as English. `km` is the language code used by the app for Khmer.
-- Use `@/` for imports across folders; it resolves to `src/` in TypeScript and Vite. Relative imports are fine within one page folder.
+- Use `@/` for browser imports across folders; it resolves to `src/` in TypeScript and Vite. Keep relative `.ts` imports in shared configuration and data consumed by Node build scripts. Relative imports are also fine within one page folder.
 - Add destinations in `config/navigation.ts`, then render the new page in `App.tsx`. Header/footer links derive from the shared definitions.
 - Keep navigation state in `hooks/useNavigation.ts` and provider composition in `providers/AppProviders.tsx`.
 - Reuse `CategoryFilter` for typed category selection.
+- Contact form state and submission logic live in `pages/contact/useContactForm.ts`; `ContactPage.tsx` contains the page layout. Email and Telegram requests remain in `services/`.
+- `components/layout/WaterBackground.tsx` manages canvas resizing, visibility, and animation timing. Edit the ribbon drawing in `waterRenderer.ts`; the hero placement centers the effect in the hero section.
+
+TypeScript uses strict checking and rejects unused locals and parameters. Keep shared types in `types/`, give helpers one clear responsibility, and run Prettier before submitting changes.
 
 Navigation uses real page URLs and browser history. Refresh, direct links, and back/forward navigation preserve the selected page or profile. Use `PageLink` for internal navigation so links are crawlable and support opening in a new tab. Theme and language preferences persist in local storage. Contact submissions use EmailJS with optional server-side Telegram alerts; direct email links still use `mailto:`.
 
@@ -116,6 +121,8 @@ Run `npm run build` followed by `npm run test:seo` to verify routes, metadata, s
 | `npm run lint`         | Alias for type checking; no separate linter is configured   |
 | `npm run build`        | Create the production site in `dist/`                       |
 | `npm run preview`      | Preview the production build                                |
+| `npm test`             | Run all tests (build first for generated SEO pages)         |
+| `npm run check`        | Check formatting and types, build, then run all tests       |
 | `npm run clean`        | Remove generated `dist/` output on Windows, macOS, or Linux |
 
-Run type checking and a production build before submitting changes. Deploy the generated `dist/` directory to a static hosting service.
+Run `npm run check` before submitting changes. Tests cover contact email, Telegram alerts and callbacks, and generated SEO pages; network requests are mocked. Deploy the generated `dist/` directory to a static hosting service.

@@ -2,7 +2,7 @@ import { MemberCardActions } from '@/components/ui/MemberCardActions';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import React, { useState } from 'react';
 import { TEAM_MEMBERS } from '@/data/team';
-import { TeamCategory, TeamMember } from '@/types/index';
+import type { TeamCategory } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
 import { Avatar } from '@/components/ui/Avatar';
 import { JobAvailability } from '@/components/ui/JobAvailability';

@@ -1,14 +1,7 @@
 import type { Navigate } from '@/config/navigation';
 import React from 'react';
 import { useLanguage } from '@/providers/LanguageContext';
-import {
-  Target,
-  Compass,
-  HeartHandshake,
-  Shield,
-  Sparkles,
-  CheckCircle2,
-} from 'lucide-react';
+import { Target, Compass, CheckCircle2 } from 'lucide-react';
 import { HowWeWorkSection } from '@/components/sections/HowWeWorkSection';
 import { CtaSection } from '@/components/sections/CtaSection';
 import { TeamInfoSection } from '@/components/sections/TeamInfoSection';

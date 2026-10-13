@@ -1,4 +1,5 @@
 import { ProjectLinks } from '@/components/ui/ProjectLinks';
+import { ExpandableDescription } from '@/components/ui/ExpandableDescription';
 import React from 'react';
 import { TeamMember } from '@/types/index';
 import { useLanguage } from '@/providers/LanguageContext';
@@ -9,12 +10,6 @@ import linkedinLogo from '@/assets/technologies/linkedin.svg';
 import cambodiaFlag from '@/assets/flags/kh.svg';
 import englishFlag from '@/assets/flags/gb.svg';
 
-const languageFlags: Record<string, string> = {
-  Khmer: cambodiaFlag,
-  English: englishFlag,
-  ភាសាខ្មែរ: cambodiaFlag,
-  ភាសាអង់គ្លេស: englishFlag,
-};
 import {
   ArrowLeft,
   Download,
@@ -31,6 +26,12 @@ import {
   Facebook,
 } from 'lucide-react';
 
+const languageFlags: Record<string, string> = {
+  Khmer: cambodiaFlag,
+  English: englishFlag,
+  ភាសាខ្មែរ: cambodiaFlag,
+  ភាសាអង់គ្លេស: englishFlag,
+};
 interface TeamMemberDetailProps {
   member: TeamMember;
   onBack: () => void;
@@ -433,9 +434,11 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {exp.description}
-                    </p>
+                    <ExpandableDescription
+                      key={exp.description}
+                      text={exp.description}
+                      className="text-xs sm:text-sm"
+                    />
 
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {exp.technologies.map((tItem, tIdx) => (
@@ -521,9 +524,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                       </span>
                     </div>
 
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {p.description}
-                    </p>
+                    <ExpandableDescription
+                      key={p.description}
+                      text={p.description}
+                    />
 
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {p.technologies.map((tech, tIdx) => (
@@ -535,8 +539,6 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
                       repoUrl={p.repoUrl}
                       repositories={p.repositories}
                       liveUrl={p.link}
-                      caseStudyUrl={p.caseStudyUrl}
-                      showCaseStudy
                       className="mt-auto border-t border-slate-100 pt-3 dark:border-slate-700"
                     />
                   </div>
