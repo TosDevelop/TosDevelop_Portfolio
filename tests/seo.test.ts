@@ -15,6 +15,17 @@ import { PROJECTS_DATA } from '../src/data/projects/index.ts';
 import { EXPERTISE_DOMAINS } from '../src/data/expertise/index.ts';
 import { en } from '../src/data/translations/en.ts';
 
+test('team projects stay empty while member portfolios remain available', () => {
+  assert.equal(PROJECTS_DATA.length, 0);
+  assert.ok(!SEO_PAGES.some((page) => page.projectId));
+  assert.ok(TEAM_MEMBERS.some((member) => member.selectedProjects.length > 0));
+  const html = renderSeoContent(findSeoPage('/projects/'));
+  assert.ok(html.includes(escapeHtml(en.projects.emptyTitle)));
+  assert.ok(html.includes(escapeHtml(en.projects.emptyDescription)));
+  assert.ok(!existsSync('dist/projects/farm-management-system/index.html'));
+  assert.equal(findSeoPage('/projects/farm-management-system/'), undefined);
+});
+
 test('initial About and Expertise content matches the visible sections', () => {
   const about = renderSeoContent(findSeoPage('/about/'));
   for (const text of [

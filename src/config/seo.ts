@@ -30,8 +30,8 @@ const pageContent: Record<AppTab, [string, string]> = {
     'Explore TosDevelop expertise in frontend and backend development, databases, UI/UX design, testing, project planning, cloud deployment, and AI-assisted development.',
   ],
   projects: [
-    'Projects & Case Studies',
-    'Discover TosDevelop projects and case studies, including the technologies, challenges, solutions, and lessons behind our practical technology experience.',
+    'Team Projects',
+    'A space for projects created together by the TosDevelop team. We have not completed a shared project yet; our team projects will appear here when ready.',
   ],
   contact: [
     'Contact Our Team',

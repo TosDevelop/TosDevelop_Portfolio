@@ -33,7 +33,7 @@ export const en = {
     sub: 'We bring together frontend and backend development, UI/UX design, testing, project planning, databases and deployment. Explore our individual profiles and the projects featured in this portfolio.',
     stat1Label: 'Team members',
     stat2Label: 'Skill categories',
-    stat3Label: 'Featured case studies',
+    stat3Label: 'Team projects',
     stat4Label: 'Skills & tools',
   },
   whatWeDo: {
@@ -150,10 +150,12 @@ export const en = {
       'Browse the languages, frameworks, platforms and tools used across our team’s work.',
   },
   projects: {
-    kicker: 'PROJECTS & EXPERIENCE',
-    title: 'Work that turns learning into evidence.',
-    subtitle:
-      '7 curated case studies combine professional experience, internships and academic projects documented in the team CV pack.',
+    kicker: 'TEAM PROJECTS',
+    title: 'What we build together.',
+    subtitle: 'A space for projects created together by the TosDevelop team.',
+    emptyTitle: 'No team projects yet',
+    emptyDescription:
+      'We haven’t completed a project together yet. Our shared work will appear here when it’s ready.',
     filters: {
       All: 'All',
       Web: 'Web',

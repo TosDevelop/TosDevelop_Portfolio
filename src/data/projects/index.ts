@@ -1,14 +1,5 @@
-import type { ProjectCaseStudy } from '../../types/index.ts';
-import { withKhmerSuffix } from '../localization.ts';
-import { PROJECTS_EN } from './en.ts';
-import { PROJECTS_KM } from './km.ts';
-import { PROJECTS_SHARED } from './shared.ts';
+﻿import type { ProjectCaseStudy } from '../../types/index.ts';
 
-const ids = Object.keys(PROJECTS_EN) as (keyof typeof PROJECTS_EN)[];
-
-export const PROJECTS_DATA: ProjectCaseStudy[] = ids.map((id) => ({
-  id,
-  ...PROJECTS_SHARED[id],
-  ...PROJECTS_EN[id],
-  ...withKhmerSuffix(PROJECTS_KM[id]),
-}));
+// Only projects completed together as TosDevelop belong in this catalog.
+// Individual experience remains in each member's selectedProjects.
+export const PROJECTS_DATA: ProjectCaseStudy[] = [];

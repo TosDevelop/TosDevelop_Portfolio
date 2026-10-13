@@ -11,15 +11,8 @@ import { PageSeo } from '@/components/seo/PageSeo';
 import { PageLink } from '@/components/ui/PageLink';
 
 export default function App() {
-  const {
-    page,
-    currentTab,
-    selectedMemberId,
-    selectedProjectId,
-    setSelectedMemberId,
-    setSelectedProjectId,
-    navigate,
-  } = useNavigation();
+  const { page, currentTab, selectedMemberId, setSelectedMemberId, navigate } =
+    useNavigation();
   const selectMember = (memberId: string) => navigate('team', memberId);
 
   const content = (() => {
@@ -52,13 +45,7 @@ export default function App() {
       case 'expertise':
         return <ExpertisePage onSelectMember={selectMember} />;
       case 'projects':
-        return (
-          <ProjectsPage
-            selectedProjectId={selectedProjectId}
-            onSelectProject={setSelectedProjectId}
-            onSelectMember={selectMember}
-          />
-        );
+        return <ProjectsPage />;
       case 'contact':
         return <ContactPage onSelectMember={selectMember} />;
     }

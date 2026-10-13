@@ -57,7 +57,10 @@ export function renderSeoContent(page?: SeoPage) {
     if (['home', 'team', 'contact'].includes(page.tab)) {
       content += `<h2>Our team</h2>${TEAM_MEMBERS.map((item) => `<article><h3>${link(getPagePath('team', item.id), item.name)}</h3>${paragraph(item.role)}${paragraph(item.tagline)}</article>`).join('')}`;
     }
-    if (['home', 'projects'].includes(page.tab)) {
+    if (page.tab === 'projects' && PROJECTS_DATA.length === 0) {
+      content += `<h2>${escapeHtml(en.projects.emptyTitle)}</h2>${paragraph(en.projects.emptyDescription)}`;
+    }
+    if (['home', 'projects'].includes(page.tab) && PROJECTS_DATA.length > 0) {
       content += `<h2>Project portfolio</h2>${PROJECTS_DATA.map((item) => `<article><h3>${link(getPagePath('projects', undefined, item.id), item.title)}</h3>${paragraph(item.tagline)}</article>`).join('')}`;
     }
     if (page.tab === 'expertise') {
