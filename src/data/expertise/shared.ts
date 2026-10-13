@@ -16,10 +16,8 @@ export const EXPERTISE_SHARED = {
       'TypeScript',
       'React.js',
       'Vue.js',
-      'Nuxt.js',
       'Tailwind CSS',
       'Bootstrap',
-      'SASS',
     ],
     relatedMemberIds: [
       'ya-phorn',
@@ -37,8 +35,6 @@ export const EXPERTISE_SHARED = {
       'Node.js',
       'Laravel',
       'Express.js',
-      'Flask',
-      'Django',
       'REST API',
       'OAuth',
     ],
@@ -52,15 +48,7 @@ export const EXPERTISE_SHARED = {
   },
   'databases-data': {
     iconName: 'Database',
-    technologies: [
-      'SQL',
-      'MySQL',
-      'PostgreSQL',
-      'SQLite',
-      'SQL Server',
-      'Firebase',
-      'Power BI',
-    ],
+    technologies: ['SQL', 'MySQL', 'PostgreSQL', 'SQL Server', 'Firebase'],
     relatedMemberIds: [
       'ya-phorn',
       'vichet-sat',
@@ -81,19 +69,12 @@ export const EXPERTISE_SHARED = {
   },
   'collaboration-planning': {
     iconName: 'CalendarCheck',
-    technologies: ['Git', 'GitHub', 'Jira', 'Trello'],
+    technologies: ['Git', 'GitHub', 'Jira'],
     relatedMemberIds: ['vichet-sat', 'ya-phorn', 'reaksmey-san'],
   },
   'deployment-delivery': {
     iconName: 'Cloud',
-    technologies: [
-      'AWS EC2',
-      'Linux',
-      'Cloudflare',
-      'Netlify',
-      'Vercel',
-      'Jenkins',
-    ],
+    technologies: ['AWS EC2', 'Linux', 'Vercel', 'Jenkins'],
     relatedMemberIds: ['ya-phorn', 'reaksmey-san'],
   },
   'ai-assisted-development': {
