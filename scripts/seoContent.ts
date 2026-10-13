@@ -3,6 +3,8 @@ import { PROJECTS_DATA } from '../src/data/projects/index.ts';
 import { SEO_PAGES, type SeoPage } from '../src/config/seo.ts';
 import { getPagePath } from '../src/config/navigation.ts';
 import { SITE_NAME } from '../src/config/site.ts';
+import { en } from '../src/data/translations/en.ts';
+import { EXPERTISE_DOMAINS } from '../src/data/expertise/index.ts';
 
 export const escapeHtml = (value: string) =>
   value.replace(
@@ -46,22 +48,30 @@ export function renderSeoContent(page?: SeoPage) {
       <h2>Technologies</h2>${list(project.technologies)}`;
   } else if (page) {
     content = `<h1>${escapeHtml(page.title.split(' | ')[0])}</h1>${paragraph(page.description)}`;
-    if (['home', 'team', 'about', 'contact'].includes(page.tab)) {
+    if (page.tab === 'about') {
+      content += `<section><h2>${escapeHtml(en.about.missionTitle)}</h2>${paragraph(en.about.missionDesc)}</section>
+        <section><h2>${escapeHtml(en.about.visionTitle)}</h2>${paragraph(en.about.visionDesc)}</section>
+        <section><h2>${escapeHtml(en.about.valuesTitle)}</h2>${paragraph(en.about.valuesDesc)}</section>
+        <section><h2>${escapeHtml(en.howWeWork.title)}</h2>${paragraph(en.howWeWork.desc)}<ol>${en.howWeWork.steps.map((step) => `<li><h3>${escapeHtml(step.title)}</h3>${paragraph(step.desc)}</li>`).join('')}</ol></section>`;
+    }
+    if (['home', 'team', 'contact'].includes(page.tab)) {
       content += `<h2>Our team</h2>${TEAM_MEMBERS.map((item) => `<article><h3>${link(getPagePath('team', item.id), item.name)}</h3>${paragraph(item.role)}${paragraph(item.tagline)}</article>`).join('')}`;
     }
     if (['home', 'projects'].includes(page.tab)) {
       content += `<h2>Project portfolio</h2>${PROJECTS_DATA.map((item) => `<article><h3>${link(getPagePath('projects', undefined, item.id), item.title)}</h3>${paragraph(item.tagline)}</article>`).join('')}`;
     }
     if (page.tab === 'expertise') {
-      content += list([
-        ...new Set(
-          TEAM_MEMBERS.flatMap((item) =>
-            item.technicalSkills.flatMap((group) =>
-              group.skills.map((skill) => skill.name),
-            ),
-          ),
-        ),
-      ]);
+      content += EXPERTISE_DOMAINS.map(
+        (domain) =>
+          `<section><h2>${escapeHtml(domain.title)}</h2>${paragraph(domain.description)}${list(domain.technologies)}<h3>${escapeHtml(en.expertise.relatedMembers)}</h3><ul>${domain.relatedMemberIds
+            .flatMap((id) => {
+              const member = TEAM_MEMBERS.find((item) => item.id === id);
+              return member
+                ? [`<li>${link(getPagePath('team', id), member.name)}</li>`]
+                : [];
+            })
+            .join('')}</ul></section>`,
+      ).join('');
     }
     if (page.tab === 'contact') {
       content +=

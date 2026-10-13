@@ -1,5 +1,5 @@
-import { SITE_NAME } from '@/config/site';
-import { TEAM_MEMBERS } from '@/data/team';
+import { SITE_NAME } from '../../config/site.ts';
+import { TEAM_MEMBERS } from '../team/index.ts';
 
 const teamCount = TEAM_MEMBERS.length;
 

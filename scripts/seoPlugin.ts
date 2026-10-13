@@ -20,7 +20,8 @@ export function renderSeoHead(page?: SeoPage) {
     <meta name="description" content="${escapeHtml(description)}" />
     <meta name="robots" content="${page ? 'index, follow, max-image-preview:large' : 'noindex, follow'}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="${page?.memberId ? 'profile' : 'website'}" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:image" content="${image}" />

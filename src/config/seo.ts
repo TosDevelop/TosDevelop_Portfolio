@@ -99,11 +99,14 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
           ? 'AboutPage'
           : page.tab === 'contact'
             ? 'ContactPage'
-            : 'WebPage',
+            : ['team', 'projects', 'expertise'].includes(page.tab) && !project
+              ? 'CollectionPage'
+              : 'WebPage',
       '@id': `${url}#webpage`,
       url,
       name: page.title,
       description: page.description,
+      inLanguage: 'en',
       isPartOf: { '@id': websiteId },
       ...(member || project ? { mainEntity: { '@id': `${url}#entity` } } : {}),
       ...(page.path !== '/'
@@ -119,6 +122,39 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
         jobTitle: member.role,
         description: member.bio,
         memberOf: { '@id': organizationId },
+        alternateName: member.nameKm,
+        knowsAbout: [
+          ...new Set(
+            member.technicalSkills.flatMap((group) =>
+              group.skills.map((skill) => skill.name),
+            ),
+          ),
+        ],
+        sameAs: [
+          member.contact.portfolio,
+          member.contact.github,
+          member.contact.linkedin,
+          member.contact.facebook,
+        ].filter((value): value is string => {
+          if (!value) return false;
+          try {
+            const url = new URL(value);
+            return (
+              url.protocol === 'https:' &&
+              !(
+                [
+                  'github.com',
+                  'linkedin.com',
+                  'www.linkedin.com',
+                  'facebook.com',
+                  'www.facebook.com',
+                ].includes(url.hostname) && url.pathname === '/'
+              )
+            );
+          } catch {
+            return false;
+          }
+        }),
       });
     }
     if (project) {
@@ -129,6 +165,36 @@ export function getStructuredData(siteUrl: string, page?: SeoPage) {
         url,
         description: project.tagline,
         keywords: project.technologies.join(', '),
+      });
+    }
+    if (
+      !member &&
+      !project &&
+      (page.tab === 'team' || page.tab === 'projects')
+    ) {
+      const items =
+        page.tab === 'team'
+          ? TEAM_MEMBERS.map((item) => ({
+              name: item.name,
+              path: getPagePath('team', item.id),
+            }))
+          : PROJECTS_DATA.map((item) => ({
+              name: item.title,
+              path: getPagePath('projects', undefined, item.id),
+            }));
+      const listId = `${url}#list`;
+      const webPage = graph.find((item) => item['@id'] === `${url}#webpage`)!;
+      webPage.mainEntity = { '@id': listId };
+      graph.push({
+        '@type': 'ItemList',
+        '@id': listId,
+        numberOfItems: items.length,
+        itemListElement: items.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: item.name,
+          url: `${baseUrl}${item.path}`,
+        })),
       });
     }
     if (page.path !== '/') {

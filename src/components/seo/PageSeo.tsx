@@ -38,6 +38,7 @@ export function PageSeo({ page }: { page: SeoPage | undefined }) {
       page ? 'index, follow, max-image-preview:large' : 'noindex, follow',
     );
     updateMeta('og:title', title, true);
+    updateMeta('og:type', page?.memberId ? 'profile' : 'website', true);
     updateMeta('og:description', description, true);
     updateMeta('twitter:title', title);
     updateMeta('twitter:description', description);

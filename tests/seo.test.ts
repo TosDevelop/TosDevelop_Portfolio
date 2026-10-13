@@ -12,6 +12,111 @@ import { renderSeoHead } from '../scripts/seoPlugin.ts';
 import { escapeHtml, renderSeoContent } from '../scripts/seoContent.ts';
 import { TEAM_MEMBERS } from '../src/data/team/index.ts';
 import { PROJECTS_DATA } from '../src/data/projects/index.ts';
+import { EXPERTISE_DOMAINS } from '../src/data/expertise/index.ts';
+import { en } from '../src/data/translations/en.ts';
+
+test('initial About and Expertise content matches the visible sections', () => {
+  const about = renderSeoContent(findSeoPage('/about/'));
+  for (const text of [
+    en.about.missionTitle,
+    en.about.missionDesc,
+    en.about.visionTitle,
+    en.about.visionDesc,
+    ...en.howWeWork.steps.flatMap((step) => [step.title, step.desc]),
+  ]) {
+    assert.ok(about.includes(escapeHtml(text)), text);
+  }
+  const expertise = renderSeoContent(findSeoPage('/expertise/'));
+  for (const domain of EXPERTISE_DOMAINS) {
+    for (const text of [
+      domain.title,
+      domain.description,
+      ...domain.technologies,
+    ]) {
+      assert.ok(expertise.includes(escapeHtml(text)), text);
+    }
+    for (const id of domain.relatedMemberIds) {
+      if (TEAM_MEMBERS.some((member) => member.id === id)) {
+        assert.ok(expertise.includes(`href="${getPagePath('team', id)}"`));
+      }
+    }
+  }
+  for (const removed of [
+    'Nuxt.js',
+    'SASS',
+    'Flask',
+    'Django',
+    'SQLite',
+    'Power BI',
+    'Trello',
+    'Cloudflare',
+    'Netlify',
+  ]) {
+    assert.ok(!expertise.includes(`<li>${removed}</li>`));
+  }
+});
+
+test('listing schema links to the published collection without treating details as collections', () => {
+  for (const tab of ['team', 'projects'] as const) {
+    const page = findSeoPage(`/${tab}/`)!;
+    const graph = getStructuredData(SITE_URL, page)['@graph'];
+    const collection = graph.find(
+      (item) => item['@type'] === 'CollectionPage',
+    )!;
+    const list = graph.find((item) => item['@type'] === 'ItemList')!;
+    assert.deepEqual(collection.mainEntity, { '@id': list['@id'] });
+    const details = SEO_PAGES.filter(
+      (item) => item.tab === tab && (item.memberId || item.projectId),
+    );
+    assert.equal(list.numberOfItems, details.length);
+    assert.deepEqual(
+      (list.itemListElement as { url: string; position: number }[]).map(
+        (item) => [item.position, item.url],
+      ),
+      details.map((item, index) => [index + 1, `${SITE_URL}${item.path}`]),
+    );
+    for (const detail of details) {
+      assert.ok(
+        !getStructuredData(SITE_URL, detail)['@graph'].some(
+          (item) => item['@type'] === 'CollectionPage',
+        ),
+      );
+    }
+  }
+});
+
+test('profile schema uses real skills and excludes placeholder social links', () => {
+  for (const member of TEAM_MEMBERS) {
+    const page = findSeoPage(getPagePath('team', member.id))!;
+    const person = getStructuredData(SITE_URL, page)['@graph'].find(
+      (item) => item['@type'] === 'Person',
+    )!;
+    assert.equal(person.alternateName, member.nameKm);
+    assert.deepEqual(person.knowsAbout, [
+      ...new Set(
+        member.technicalSkills.flatMap((group) =>
+          group.skills.map((skill) => skill.name),
+        ),
+      ),
+    ]);
+    assert.ok(
+      (person.sameAs as string[]).every(
+        (url) =>
+          !/^https:\/\/(www\.)?(github|linkedin|facebook)\.com\/?$/.test(url),
+      ),
+    );
+    if (member.contact.portfolio)
+      assert.ok((person.sameAs as string[]).includes(member.contact.portfolio));
+    assert.ok(
+      renderSeoHead(page).includes('property="og:type" content="profile"'),
+    );
+  }
+  assert.ok(
+    renderSeoHead(SEO_PAGES[0]).includes(
+      'property="og:type" content="website"',
+    ),
+  );
+});
 
 test('all listing and detail URLs resolve uniquely, including non-trailing-slash links', () => {
   assert.equal(
