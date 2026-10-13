@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 aria-current={isActive ? 'page' : undefined}
-                className={`relative rounded-lg py-2.5 uppercase tracking-wide outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors whitespace-nowrap ${
+                className={`nav-link relative rounded-lg py-2.5 uppercase tracking-wide outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors whitespace-nowrap ${
                   isActive
                     ? 'text-indigo-600 dark:text-indigo-400'
                     : 'text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-300'

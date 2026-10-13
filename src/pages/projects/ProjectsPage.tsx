@@ -17,6 +17,7 @@ export function ProjectsPage() {
         </p>
       </header>
       <section
+        data-reveal
         aria-labelledby="projects-empty-title"
         className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center dark:border-slate-700 dark:bg-slate-900"
       >

@@ -87,7 +87,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
       </button>
 
       {/* Profile Header Banner Card */}
-      <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+      <div
+        data-reveal
+        className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8"
+      >
         {/* Large Portrait Avatar */}
         <div className="flex-shrink-0 w-36 h-48 sm:w-44 sm:h-56 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-sm">
           <Avatar
@@ -240,7 +243,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
         {/* Left Column (4 cols) */}
         <div className="lg:col-span-4 space-y-6">
           {/* About Bio */}
-          <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-3">
+          <div
+            data-reveal
+            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-3"
+          >
             <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white uppercase">
               {t.team.aboutMember}
             </h2>
@@ -250,7 +256,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           </div>
 
           {/* Contact Details */}
-          <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+          <div
+            data-reveal
+            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4"
+          >
             <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white uppercase">
               {t.team.contact}
             </h2>
@@ -297,7 +306,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           </div>
 
           {/* Languages & Soft Skills */}
-          <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+          <div
+            data-reveal
+            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4"
+          >
             <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white uppercase">
               {t.team.languages}
             </h2>
@@ -350,7 +362,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
         {/* Right Column (8 cols) */}
         <div className="lg:col-span-8 space-y-8">
           {/* Technical Skills Card */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
+          <div
+            data-reveal
+            className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6"
+          >
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                 <FolderGit2 className="w-4 h-4" />
@@ -378,7 +393,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
 
           {/* Experience Timeline */}
           {details.experience.length > 0 && (
-            <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
+            <div
+              data-reveal
+              className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6"
+            >
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <Briefcase className="w-4 h-4" />
@@ -432,7 +450,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
 
           {/* Education Card */}
           {details.education.length > 0 && (
-            <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
+            <div
+              data-reveal
+              className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6"
+            >
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <GraduationCap className="w-4 h-4" />
@@ -467,7 +488,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
 
           {/* Selected Projects */}
           {details.selectedProjects.length > 0 && (
-            <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
+            <div
+              data-reveal
+              className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6"
+            >
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <FolderGit2 className="w-4 h-4" />
@@ -524,7 +548,10 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
           {/* Additional Learning */}
           {details.additionalLearning &&
             details.additionalLearning.length > 0 && (
-              <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+              <div
+                data-reveal
+                className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4"
+              >
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                     <BookOpen className="w-4 h-4" />

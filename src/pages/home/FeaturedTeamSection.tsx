@@ -18,7 +18,10 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30">
+    <section
+      data-reveal
+      className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
@@ -49,7 +52,7 @@ export const FeaturedTeamSection: React.FC<FeaturedTeamSectionProps> = ({
           {TEAM_MEMBERS.map((member) => (
             <div
               key={member.id}
-              className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
+              className="hover-lift flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
             >
               {/* Photo Area with Top Badge */}
               <div className="relative aspect-[4/4.5] bg-slate-100 dark:bg-slate-800 overflow-hidden">

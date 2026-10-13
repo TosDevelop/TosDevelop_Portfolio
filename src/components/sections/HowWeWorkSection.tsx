@@ -14,7 +14,10 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200/60 dark:border-slate-800">
+    <section
+      data-reveal
+      className="py-16 md:py-24 border-b border-slate-200/60 dark:border-slate-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Heading & About button */}

@@ -1,6 +1,7 @@
 import { AppProviders } from '@/providers/AppProviders';
 import { useNavigation } from '@/hooks/useNavigation';
 import { AppLayout } from '@/components/layout/AppLayout';
+import { PageMotion } from '@/components/layout/PageMotion';
 import { AboutPage } from '@/pages/about/AboutPage';
 import { ContactPage } from '@/pages/contact/ContactPage';
 import { ExpertisePage } from '@/pages/expertise/ExpertisePage';
@@ -55,7 +56,7 @@ export default function App() {
     <AppProviders>
       <PageSeo page={page} />
       <AppLayout currentTab={currentTab} onNavigate={navigate}>
-        {content}
+        <PageMotion key={page?.path ?? 'not-found'}>{content}</PageMotion>
       </AppLayout>
     </AppProviders>
   );

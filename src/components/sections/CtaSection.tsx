@@ -12,7 +12,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-16">
+    <section data-reveal className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-blue-600 dark:bg-blue-600 text-white p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl shadow-blue-500/20">
           <div className="space-y-2 max-w-2xl">

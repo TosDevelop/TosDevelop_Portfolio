@@ -80,7 +80,7 @@ export const ExpertisePage: React.FC<ExpertisePageProps> = ({
       </div>
 
       {/* Expertise categories */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="stagger-enter grid grid-cols-1 md:grid-cols-2 gap-6">
         {EXPERTISE_DOMAINS.map((domain) => {
           const linkedMembers = domain.relatedMemberIds
             .map((id) => TEAM_MEMBERS.find((m) => m.id === id))
@@ -89,7 +89,7 @@ export const ExpertisePage: React.FC<ExpertisePageProps> = ({
           return (
             <div
               key={domain.id}
-              className="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all space-y-6 flex flex-col justify-between"
+              className="hover-lift p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all space-y-6 flex flex-col justify-between"
             >
               <div className="space-y-4">
                 {/* Header Icon + Title */}
@@ -192,6 +192,7 @@ export const ExpertisePage: React.FC<ExpertisePageProps> = ({
         <div className="space-y-6">
           {EXPERTISE_DOMAINS.map((domain) => (
             <section
+              data-reveal
               key={domain.id}
               aria-labelledby={`tools-${domain.id}`}
               className="space-y-3"

@@ -73,11 +73,14 @@ export const TeamPage: React.FC<TeamPageProps> = ({
       />
 
       {/* Member Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        key={activeCategory}
+        className="stagger-enter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
         {filteredMembers.map((member) => (
           <div
             key={member.id}
-            className="flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
+            className="hover-lift flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200"
           >
             {/* Portrait Image Area */}
             <div className="relative aspect-[4/4.8] bg-slate-100 dark:bg-slate-800 overflow-hidden">

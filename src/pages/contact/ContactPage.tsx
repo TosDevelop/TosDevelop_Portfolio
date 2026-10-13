@@ -92,7 +92,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
         {/* Left Column (5 cols): General Contact & Direct Member List */}
         <div className="lg:col-span-5 space-y-6">
           {/* General Team Info Card */}
-          <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+          <div
+            data-reveal
+            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4"
+          >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                 <Users className="w-5 h-5" />
@@ -137,7 +140,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
           </div>
 
           {/* Contact a specific member list */}
-          <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+          <div
+            data-reveal
+            className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4"
+          >
             <h2 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white uppercase">
               {t.contact.contactSpecific}
             </h2>
@@ -180,7 +186,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
 
         {/* Right Column (7 cols): Message Draft Form */}
         <div className="lg:col-span-7">
-          <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6">
+          <div
+            data-reveal
+            className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-6"
+          >
             <div className="space-y-1">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                 {t.contact.sendMessage}

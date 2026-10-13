@@ -28,7 +28,10 @@ export const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800">
+    <section
+      data-reveal
+      className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="max-w-3xl space-y-3">

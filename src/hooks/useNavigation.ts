@@ -17,7 +17,8 @@ export function useNavigation() {
     if (window.location.pathname !== path)
       window.history.pushState(null, '', path);
     setPage(findSeoPage(path));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Start the new page at the top instead of animating the old scroll offset.
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return {
