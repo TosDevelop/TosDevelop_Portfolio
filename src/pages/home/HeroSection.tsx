@@ -7,6 +7,7 @@ import { TEAM_MEMBERS } from '@/data/team';
 import { HeroTeamGrid } from '@/pages/home/HeroTeamGrid';
 import { ArrowRight, Users } from 'lucide-react';
 import { Avatar } from '@/components/ui/Avatar';
+import { WaterBackground } from '@/components/layout/WaterBackground';
 
 interface HeroSectionProps {
   onNavigate: Navigate;
@@ -16,7 +17,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-slate-200/60 dark:border-slate-800">
+    <section className="relative isolate overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-slate-200/60 dark:border-slate-800">
+      <WaterBackground placement="hero" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
           {/* Left Column: Headline & Action */}

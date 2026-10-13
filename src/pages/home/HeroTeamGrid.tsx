@@ -42,58 +42,60 @@ export function HeroTeamGrid({
         </span>
       </div>
 
-      <div className="relative space-y-6">
-        {rows.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="flex items-start justify-center gap-2 sm:gap-3"
-          >
-            {row.map((member, index) => {
-              const name = language === 'km' ? member.nameKm : member.name;
-              const role = language === 'km' ? member.roleKm : member.role;
+      <div className="relative isolate">
+        <div className="space-y-6">
+          {rows.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              className="flex items-start justify-center gap-2 sm:gap-3"
+            >
+              {row.map((member, index) => {
+                const name = language === 'km' ? member.nameKm : member.name;
+                const role = language === 'km' ? member.roleKm : member.role;
 
-              return (
-                <PageLink
-                  key={member.id}
-                  tab="team"
-                  memberId={member.id}
-                  onClick={() => onSelectMember(member.id)}
-                  aria-label={`${t.team.viewProfile}: ${name}`}
-                  title={`${name} — ${role}`}
-                  style={{
-                    marginTop: Math.abs(index - (row.length - 1) / 2) * 24,
-                  }}
-                  className="group min-w-0 flex-1 basis-0 max-w-[6.5rem] rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3"
-                >
-                  <div className="relative aspect-[1/3] lg:aspect-[3/8]">
-                    <div className="absolute inset-y-0 -inset-x-0.5 overflow-hidden rounded-full border-[3px] border-white bg-slate-200 shadow-lg shadow-slate-900/10 transition-shadow duration-300 group-hover:shadow-xl sm:-inset-x-1 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/25">
-                      <Avatar
-                        src={member.image}
-                        alt={name}
-                        name={member.name}
-                        size="hero"
-                        className="[&_img]:object-center"
-                      />
-                      <span
-                        className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-950/60 to-transparent"
-                        aria-hidden="true"
-                      />
-                      <span className="absolute bottom-3 left-1/2 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-sm transition-colors group-hover:bg-blue-600 sm:bottom-4 sm:h-7 sm:w-7">
-                        <ArrowUpRight
-                          className="h-3.5 w-3.5"
+                return (
+                  <PageLink
+                    key={member.id}
+                    tab="team"
+                    memberId={member.id}
+                    onClick={() => onSelectMember(member.id)}
+                    aria-label={`${t.team.viewProfile}: ${name}`}
+                    title={`${name} — ${role}`}
+                    style={{
+                      marginTop: Math.abs(index - (row.length - 1) / 2) * 24,
+                    }}
+                    className="group min-w-0 flex-1 basis-0 max-w-[6.5rem] rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3"
+                  >
+                    <div className="relative aspect-[1/3] lg:aspect-[3/8]">
+                      <div className="absolute inset-y-0 -inset-x-0.5 overflow-hidden rounded-full border-[3px] border-white bg-slate-200 shadow-lg shadow-slate-900/10 transition-shadow duration-300 group-hover:shadow-xl sm:-inset-x-1 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/25">
+                        <Avatar
+                          src={member.image}
+                          alt={name}
+                          name={member.name}
+                          size="hero"
+                          className="[&_img]:object-center"
+                        />
+                        <span
+                          className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-950/60 to-transparent"
                           aria-hidden="true"
                         />
-                      </span>
+                        <span className="absolute bottom-3 left-1/2 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-sm transition-colors group-hover:bg-blue-600 sm:bottom-4 sm:h-7 sm:w-7">
+                          <ArrowUpRight
+                            className="h-3.5 w-3.5"
+                            aria-hidden="true"
+                          />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <p className="mt-3 break-words text-center text-[9px] font-semibold leading-relaxed text-slate-700 sm:text-[10px] dark:text-slate-200">
-                    {name}
-                  </p>
-                </PageLink>
-              );
-            })}
-          </div>
-        ))}
+                    <p className="mt-3 break-words text-center text-[9px] font-semibold leading-relaxed text-slate-700 sm:text-[10px] dark:text-slate-200">
+                      {name}
+                    </p>
+                  </PageLink>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="relative mt-8 flex items-end justify-between gap-4 border-t border-slate-200/80 pt-5 dark:border-slate-800">

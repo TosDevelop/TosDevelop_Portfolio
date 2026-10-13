@@ -3,6 +3,7 @@ import type { AppTab, Navigate } from '@/config/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { BackToTop } from '@/components/ui/BackToTop';
+import { WaterBackground } from '@/components/layout/WaterBackground';
 
 type AppLayoutProps = PropsWithChildren<{
   currentTab: AppTab;
@@ -17,7 +18,10 @@ export function AppLayout({
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <Navbar currentTab={currentTab} onNavigate={onNavigate} />
-      <main className="flex-1">{children}</main>
+      <main className="page-surface flex-1" data-page={currentTab}>
+        {currentTab !== 'home' && <WaterBackground />}
+        {children}
+      </main>
       <Footer onNavigate={onNavigate} />
       <BackToTop />
     </div>
