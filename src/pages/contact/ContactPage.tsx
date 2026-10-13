@@ -142,7 +142,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
               {t.contact.contactSpecific}
             </h2>
 
-            <div className="space-y-2 max-h-[360px] overflow-y-auto pr-1">
+            <div className="space-y-2">
               {TEAM_MEMBERS.map((member) => (
                 <PageLink
                   key={member.id}
