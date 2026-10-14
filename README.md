@@ -1,128 +1,225 @@
-# TosDevelop — PNC Student Team Portfolio
+﻿# TosDevelop
 
-A React + TypeScript portfolio for the TosDevelop team at Passerelles Numériques Cambodia, with English/Khmer content and light/dark themes. Built with Vite, Tailwind CSS, and Lucide icons.
+A bilingual portfolio for the student technology team at **Passerelles Numériques Cambodia (PNC)**, based in Phnom Penh.
 
-## Getting started
+[Live website](https://tos-develop-portfolio.vercel.app/) · [GitHub organization](https://github.com/TosDevelop)
 
-Use Node.js 22.12+ (or Node.js 20.19+ within the 20.x release line) and npm.
+## Contents
+
+- [Overview](#overview)
+- [Quick start](#quick-start)
+- [Configuration](#configuration)
+- [Project structure](#project-structure)
+- [Updating content](#updating-content)
+- [Development commands](#development-commands)
+- [Telegram integration](#telegram-integration)
+- [Deployment and SEO](#deployment-and-seo)
+
+## Overview
+
+- English and Khmer content, with saved language and theme preferences.
+- Member profiles with skills, experience, education, projects, and contact links.
+- Dedicated pages for the team, expertise, shared projects, about, and contact.
+- EmailJS contact forms with optional Telegram notifications for the team inbox.
+- Direct page URLs, browser history navigation, and generated metadata for each route.
+
+**Stack:** React, TypeScript, Vite, Tailwind CSS, and Lucide icons. Vercel hosts the static site and Telegram API functions.
+
+## Quick start
+
+**Requirements:** Node.js 22.12+ (or 20.19+ within the 20.x release line) and npm.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-The development server runs at http://localhost:3000. Copy `.env.example` to `.env` and fill in the EmailJS public configuration to enable contact email sending. Restart the development server after changing these values.
+Open [localhost:3000](http://localhost:3000).
 
-### Telegram contact alerts
+The portfolio runs without external service credentials. To enable contact email and optional Telegram features, copy [.env.example](.env.example) to `.env`, fill in the relevant values, and restart the development server.
 
-Visitors can email the team inbox (`tosdevelop2026@gmail.com`) or any individual member using the recipient selector. Set the EmailJS template's **To Email** field to `{{to_email}}` and **Reply-To** to `{{email}}`. Only team-inbox submissions trigger a Telegram group notification through `/api/telegram-alert`, after EmailJS accepts the email. Individual member messages are not forwarded to Telegram. Alerts include the sender name and email, subject, and a message preview. Telegram failures do not change email success or cause automatic email retries.
+## Configuration
+
+| Variable                  | Used for                               | Visibility           |
+| ------------------------- | -------------------------------------- | -------------------- |
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS service                        | Public browser value |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key                     | Public browser value |
+| `VITE_EMAILJS_TEMPLATE`   | EmailJS template ID                    | Public browser value |
+| `TELEGRAM_BOT_TOKEN`      | Optional Telegram alerts and callbacks | Server only          |
+| `TELEGRAM_CHAT_ID`        | Destination team group                 | Server only          |
+| `TELEGRAM_WEBHOOK_SECRET` | Deployed language-button callbacks     | Server only          |
+
+Keep private credentials out of version control. Never prefix Telegram settings with `VITE_`: Vite exposes those variables to the browser. Add the same required values in Vercel and redeploy for production.
+
+### Contact email
+
+1. Configure an EmailJS service and template. The [email template](templates/emailjs-contact.html) is available as a starting point.
+2. Set the template's **To Email** field to `{{to_email}}` and **Reply-To** to `{{email}}`.
+3. Fill in the three `VITE_EMAILJS_*` variables.
+
+The form lets visitors choose the team inbox or an individual member. Missing EmailJS configuration disables form sending; direct `mailto:` links remain available.
+
+## Project structure
+
+```text
+TosDevelop_Portfolio/
+├── api/                    # Vercel entry points for Telegram endpoints
+├── server/                 # Server-only Telegram handlers
+├── scripts/                # SEO generation, dev middleware, bot CLI
+├── src/
+│   ├── assets/             # Photos, CVs, logos, flags, technology icons
+│   ├── components/         # Shared layout, sections, UI, and SEO
+│   ├── config/             # Site identity, navigation, and SEO settings
+│   ├── data/               # Team, projects, expertise, and translations
+│   ├── hooks/              # Navigation and other reusable hooks
+│   ├── pages/              # Home, about, team, expertise, projects, contact
+│   ├── providers/          # Language and theme contexts
+│   ├── services/           # Browser-side email and Telegram requests
+│   ├── styles/             # Global styles
+│   ├── types/              # Shared TypeScript content models
+│   ├── App.tsx             # Application composition and page rendering
+│   └── main.tsx            # React entry point
+├── templates/              # Email template
+├── tests/                  # Contact, Telegram, and SEO tests
+├── .env.example            # Environment variable reference
+├── vercel.json             # Hosting configuration
+└── vite.config.ts          # Build and development configuration
+```
+
+Keep `api/` at the project root for Vercel function discovery. The `server/` handlers are shared by production functions, development middleware, and bot tooling.
+
+## Updating content
+
+All paths below are relative to the repository root.
+
+| Change                              | Location                                                         |
+| ----------------------------------- | ---------------------------------------------------------------- |
+| Site name, public URL, team contact | [src/config/site.ts](src/config/site.ts)                         |
+| Page titles and descriptions        | [src/config/seo.ts](src/config/seo.ts)                           |
+| Navigation destinations             | [src/config/navigation.ts](src/config/navigation.ts)             |
+| Member order and registration       | [src/data/team/index.ts](src/data/team/index.ts)                 |
+| Individual member profiles          | `src/data/team/<member-id>/`                                     |
+| Shared team projects                | [src/data/projects/index.ts](src/data/projects/index.ts)         |
+| Expertise content                   | `src/data/expertise/`                                            |
+| English and Khmer UI text           | `src/data/translations/en.ts`, `km.ts`                           |
+| Technology icon mappings            | [src/data/technologies/index.ts](src/data/technologies/index.ts) |
+| Shared content types                | [src/types/index.ts](src/types/index.ts)                         |
+
+### Member profiles
+
+Each member has a dedicated folder:
+
+```text
+src/data/team/<member-id>/
+├── en.ts                   # English profile and resume content
+├── km.ts                   # Khmer profile and resume content
+├── shared.ts               # Photo, contact details, skills, categories
+├── index.ts                # Combines shared and localized content
+└── projects/
+    ├── en.ts               # English project summaries and links
+    └── km.ts               # Khmer project summaries and links
+```
+
+Keep member IDs stable so existing profile links continue to work. Maintain the same project order in both languages. Individual projects belong in member profiles; the Projects page is reserved for work completed together as TosDevelop and currently shows an empty state.
+
+Locale files use matching field names, such as `title` in both languages. Adapters produce the `title` / `titleKm` fields used by the UI. Optional Khmer resume fields fall back to English. UI translation keys are checked by TypeScript; the app uses `km` for Khmer.
+
+### UI and application code
+
+- Keep page-specific components in `src/pages/<page>/` and reusable components in `src/components/`.
+- Use `PageLink` for internal navigation to preserve crawlable URLs and new-tab support. Register destinations in `src/config/navigation.ts` and render pages in `src/App.tsx`.
+- Edit contact form behavior in `src/pages/contact/useContactForm.ts`, layout in `ContactPage.tsx`, and browser requests in `src/services/`.
+- Edit the animated background in `src/components/layout/WaterBackground.tsx` and its drawing logic in `waterRenderer.ts`.
+- Use `@/` for browser imports across folders. Keep relative `.ts` imports in configuration and data consumed by Node build scripts.
+
+## Development commands
+
+| Command                                   | Purpose                                               |
+| ----------------------------------------- | ----------------------------------------------------- |
+| `npm run dev`                             | Start development server on port 3000                 |
+| `npm run build`                           | Generate production output in `dist/`                 |
+| `npm run preview`                         | Preview the production build locally                  |
+| `npm run typecheck`                       | Check TypeScript without emitting files               |
+| `npm run lint`                            | Alias for type checking; no separate linter           |
+| `npm run format`                          | Format project files with Prettier                    |
+| `npm run format:check`                    | Check formatting without changing files               |
+| `npm test`                                | Run all tests; build first for generated SEO pages    |
+| `npm run test:seo`                        | Test generated routes and metadata; build first       |
+| `npm run check`                           | Check formatting and types, build, then run all tests |
+| `npm run clean`                           | Remove generated `dist/` output                       |
+| `npm run telegram:poll`                   | Handle Telegram language buttons locally              |
+| `npm run telegram:webhook -- <https-url>` | Register the deployed Telegram webhook                |
+
+Run `npm run check` before submitting code changes. TypeScript uses strict checking and rejects unused locals and parameters. Tests cover contact email, Telegram alerts and callbacks, and generated SEO pages; external requests are mocked.
+
+## Telegram integration
+
+Telegram is optional. Only messages sent to the **team inbox** trigger a group alert, after EmailJS accepts the email. Individual member messages are not forwarded.
+
+Alerts include the sender's name and email, subject, and a message preview. Telegram failures do not change email success or trigger automatic email retries.
+
+### Set up group alerts
 
 1. Create a bot with [BotFather](https://t.me/BotFather) using `/newbot`.
-2. Add the bot to your team group and send a command addressed to it, or open the bot privately and press Start.
-3. Obtain that chat's ID from the Telegram Bot API `getUpdates` result (`message.chat.id`). Do not share the bot token or commit it.
-4. Fill in `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `.env`. Add the same server-only variables to the Vercel project and redeploy. Never use a `VITE_` prefix for these settings.
-5. Invite all team members to the Telegram group. All alerts use the one `TELEGRAM_CHAT_ID`; no per-member bots or chat IDs are needed. The bot needs permission to send messages in that group.
+2. Add it to the team group and send a command addressed to it.
+3. Obtain the group's ID from the Telegram Bot API `getUpdates` response: `message.chat.id`.
+4. Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `.env` and Vercel.
+5. Invite team members and ensure the bot can send messages in the group.
 
-`npm run dev` serves the Telegram endpoint through a development middleware using the same handler as Vercel. Keep the server-only Telegram settings in `.env` and restart the dev server after changes. On Vercel, configure the variables in the project settings and deploy the `api/` and `server/` files. Missing Telegram configuration disables alerts without disabling email.
+All alerts use one group ID. During development, `npm run dev` serves `/api/telegram-alert` through middleware using the same handler as Vercel. Missing Telegram configuration disables alerts without disabling email.
 
-This is a public contact-notification endpoint. It validates fields and rejects cross-origin browser requests; an Origin header is not authentication, and the endpoint cannot independently verify EmailJS delivery. Enable a Vercel Firewall rate-limit rule for `/api/telegram-alert` before exposing alerts publicly. Automated tests mock Telegram and do not send messages.
+The alert endpoint validates fields and rejects cross-origin browser requests, but an Origin header is not authentication and it cannot independently verify EmailJS delivery. Configure a Vercel Firewall rate-limit rule for `/api/telegram-alert` before exposing alerts publicly.
 
-References: [Telegram Bot API](https://core.telegram.org/bots/api#sendmessage), [Vercel Node.js Functions](https://vercel.com/docs/functions/runtimes/node-js).
+### Language buttons
 
-### Choose an alert's language in the group
+New alerts include **🇰🇭 ភាសាខ្មែរ** and **🇬🇧 English** buttons. Any group member can change an alert's labels for everyone; names, subjects, and message text retain their original language. This does not change future alerts or older messages without buttons.
 
-New alerts include **🇰🇭 ភាសាខ្មែរ** and **🇬🇧 English** buttons. Any group member can switch that alert's labels for everyone. Sender names, subjects and message text stay in their original language. This does not set a default for future alerts. Old alerts without buttons are unchanged.
-
-For local development, leave `npm run dev` running and open a second terminal:
+**Local development:** keep `npm run dev` running and start a second terminal:
 
 ```bash
 npm run telegram:poll
 ```
 
-Keep that terminal running to handle button clicks. Run only one poller for the bot. It refuses to start if a deployed webhook is already active and never removes an existing webhook automatically.
+Run only one poller per bot. It refuses to start while a deployed webhook is active and never removes a webhook automatically.
 
-For Vercel, set `TELEGRAM_WEBHOOK_SECRET` to a random secret in both `.env` and Vercel (alongside the bot token and group ID), deploy the updated code, stop any local poller, then run:
+**Production:** set the same `TELEGRAM_WEBHOOK_SECRET` in `.env` and Vercel, deploy, stop any local poller, then register the endpoint:
 
 ```bash
 npm run telegram:webhook -- https://tos-develop-portfolio.vercel.app/api/telegram-webhook
 ```
 
-This registers the deployed endpoint with Telegram. The server authenticates Telegram callbacks using the secret header and only edits alerts from this bot in the configured group. No database is needed: Telegram includes the existing message in each button callback. See [Telegram webhooks](https://core.telegram.org/bots/api#setwebhook).
+Use a random secret containing only letters, digits, underscores, or hyphens (1–256 characters). The server checks Telegram's secret header and only edits this bot's alerts in the configured group. Callbacks include the existing message, so no database is required.
 
-## Structure
+References: [Telegram Bot API](https://core.telegram.org/bots/api#sendmessage) · [Telegram webhooks](https://core.telegram.org/bots/api#setwebhook)
 
-```text
-src/
-├── App.tsx                 # Application composition and page rendering
-├── components/
-│   ├── layout/             # AppLayout, Navbar, Footer
-│   ├── sections/           # Sections reused across pages
-│   └── ui/                 # Avatar, BrandLogo, TechIcon, CategoryFilter
-├── config/                 # Site branding and shared navigation definitions
-├── data/                   # Team, projects, expertise, translations
-├── hooks/                  # Reusable hooks, including navigation state
-├── pages/
-│   ├── about/
-│   ├── contact/
-│   ├── expertise/
-│   ├── home/
-│   ├── projects/
-│   └── team/
-├── providers/              # Provider composition and language/theme contexts
-├── styles/                 # Global styles
-├── types/                  # Shared content models
-└── main.tsx                # React entry point
+## Deployment and SEO
+
+### Vercel
+
+The repository's [vercel.json](vercel.json) configures:
+
+| Setting          | Value            |
+| ---------------- | ---------------- |
+| Framework        | Vite             |
+| Build command    | `npm run build`  |
+| Output directory | `dist`           |
+| URL style        | Trailing slashes |
+
+Deploy the repository with its root `api/` entry points and `server/` handlers to retain Telegram functionality. Configure environment variables in the Vercel project before deploying. A static-only upload of `dist/` serves the portfolio but does not deploy those API functions.
+
+### Generated pages and metadata
+
+The build generates HTML for each page, member profile, and registered project, plus `robots.txt`, `sitemap.xml`, and a `noindex` 404 page. Each route has its own title, description, canonical URL, social metadata, and structured data.
+
+Keep the generated route directories when deploying. Do not rewrite every URL to the homepage: that discards route-specific metadata. If the domain changes, update `SITE_URL` in `src/config/site.ts` and rebuild.
+
+Each generated page includes an English content summary and crawlable navigation before React starts, so content remains readable without JavaScript. Structured data updates during client navigation. English and Khmer share URLs, so no separate language alternates are advertised.
+
+To validate the generated output:
+
+```bash
+npm run build
+npm run test:seo
 ```
 
-## Where to make changes
-
-- Set the brand and public URL in `config/site.ts`. Edit page titles and descriptions in `config/seo.ts`; the build generates HTML metadata from this configuration.
-- Keep page-specific components alongside their page in `pages/<page>/`.
-- Put reusable UI in `components/ui/`, shared page sections in `components/sections/`, and the site shell in `components/layout/`.
-- Edit portfolio content and translations in `data/`; content contracts live in `types/`.
-- Team profiles live in `data/team/<member-name>/` (for example, `data/team/reaksmey-san/`). Edit `en.ts` for English profile text, `km.ts` for Khmer text, and `shared.ts` for photos, contact details, and technical skills. Each member's `index.ts` combines these files. Add or reorder members in `data/team/index.ts`; keep existing IDs stable so profile links continue to work.
-- Each member's projects live in `data/team/<member-name>/projects/en.ts` and `projects/km.ts`. Edit project descriptions, technologies, repository URLs, and live demo URLs there; keep the same project order in both languages.
-- The Projects page is reserved for shared team work and currently shows an empty state. Add future team projects in `data/projects/index.ts`; individual projects belong in each member's profile.
-- Expertise content lives in `data/expertise/`, with `en.ts`, `km.ts`, and `shared.ts` combined by `index.ts` for the UI and SEO.
-- Technology icon mappings live in `data/technologies/index.ts`; SVG assets live in `assets/technologies/`. Shared locale helpers live in `data/localization.ts`.
-- Locale files use matching field names (such as `title` in both languages). The adapters restore the existing `title`/`titleKm` format. Optional Khmer translations remain optional so the existing English fallbacks continue to work; untranslated resume sections remain in the English content file.
-- Edit English UI text in `data/translations/en.ts` and Khmer UI text in `data/translations/km.ts`. The shared `index.ts` combines them for the language provider, and TypeScript checks that Khmer has the same translation keys as English. `km` is the language code used by the app for Khmer.
-- Use `@/` for browser imports across folders; it resolves to `src/` in TypeScript and Vite. Keep relative `.ts` imports in shared configuration and data consumed by Node build scripts. Relative imports are also fine within one page folder.
-- Add destinations in `config/navigation.ts`, then render the new page in `App.tsx`. Header/footer links derive from the shared definitions.
-- Keep navigation state in `hooks/useNavigation.ts` and provider composition in `providers/AppProviders.tsx`.
-- Reuse `CategoryFilter` for typed category selection.
-- Contact form state and submission logic live in `pages/contact/useContactForm.ts`; `ContactPage.tsx` contains the page layout. Email and Telegram requests remain in `services/`.
-- `components/layout/WaterBackground.tsx` manages canvas resizing, visibility, and animation timing. Edit the ribbon drawing in `waterRenderer.ts`; the hero placement centers the effect in the hero section.
-
-TypeScript uses strict checking and rejects unused locals and parameters. Keep shared types in `types/`, give helpers one clear responsibility, and run Prettier before submitting changes.
-
-Navigation uses real page URLs and browser history. Refresh, direct links, and back/forward navigation preserve the selected page or profile. Use `PageLink` for internal navigation so links are crawlable and support opening in a new tab. Theme and language preferences persist in local storage. Contact submissions use EmailJS with optional server-side Telegram alerts; direct email links still use `mailto:`.
-
-## SEO and hosting
-
-The public URL is `https://tos-develop-portfolio.vercel.app/`. The build generates an HTML entry for each page, team profile, and project with its own title, description, canonical URL, Open Graph/Twitter metadata, and organization structured data. It also generates `robots.txt`, `sitemap.xml`, and a `404.html` marked `noindex`.
-
-`vercel.json` serves this static Vite output with consistent trailing-slash URLs. Keep the generated route directories when deploying; do not rewrite all URLs to the home page, because that would discard their individual metadata. If the domain changes, update `SITE_URL` and rebuild.
-
-Each generated HTML body includes a visible English content summary and crawlable navigation, using the same member and project data as the interactive pages. React replaces this initial content when it starts; the summary remains readable if JavaScript is unavailable. Structured data describes the organization, website, current page, member or project, and breadcrumbs, and updates during client navigation. English and Khmer currently share URLs, so no separate language alternates are advertised.
-
-After deploying, verify the public URL in Google Search Console, submit `/sitemap.xml`, and use URL Inspection on the homepage and a member page. Check the live rendered content and request indexing. The local build cannot submit indexing requests or confirm Google's indexing status. SEO changes do not guarantee rankings.
-
-Run `npm run build` followed by `npm run test:seo` to verify routes, metadata, sitemap coverage, and unknown-page handling.
-
-## Commands
-
-| Command                | Purpose                                                     |
-| ---------------------- | ----------------------------------------------------------- |
-| `npm run dev`          | Start the development server on port 3000                   |
-| `npm run typecheck`    | Check TypeScript without emitting files                     |
-| `npm run format`       | Format source and project files with Prettier               |
-| `npm run format:check` | Check formatting without changing files                     |
-| `npm run lint`         | Alias for type checking; no separate linter is configured   |
-| `npm run build`        | Create the production site in `dist/`                       |
-| `npm run preview`      | Preview the production build                                |
-| `npm test`             | Run all tests (build first for generated SEO pages)         |
-| `npm run check`        | Check formatting and types, build, then run all tests       |
-| `npm run clean`        | Remove generated `dist/` output on Windows, macOS, or Linux |
-
-Run `npm run check` before submitting changes. Tests cover contact email, Telegram alerts and callbacks, and generated SEO pages; network requests are mocked. Deploy the generated `dist/` directory to a static hosting service.
+After deployment, verify the site in Google Search Console, submit `/sitemap.xml`, and inspect the homepage and a member page. Local checks validate output; they do not confirm search indexing or rankings.
