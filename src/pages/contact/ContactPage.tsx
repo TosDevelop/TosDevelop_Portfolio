@@ -52,7 +52,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
         </p>
       </div>
 
-      <TeamInfoSection />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Left Column (5 cols): General Contact & Direct Member List */}
         <div className="lg:col-span-5 space-y-6">
@@ -364,6 +363,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onSelectMember }) => {
           </div>
         </div>
       </div>
+      <TeamInfoSection />
     </div>
   );
 };

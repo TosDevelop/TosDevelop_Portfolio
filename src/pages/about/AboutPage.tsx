@@ -4,7 +4,6 @@ import { useLanguage } from '@/providers/LanguageContext';
 import { Target, Compass, CheckCircle2 } from 'lucide-react';
 import { HowWeWorkSection } from '@/components/sections/HowWeWorkSection';
 import { CtaSection } from '@/components/sections/CtaSection';
-import { TeamInfoSection } from '@/components/sections/TeamInfoSection';
 
 interface AboutPageProps {
   onNavigate: Navigate;
@@ -62,7 +61,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <TeamInfoSection />
         {/* Mission & Vision 2-Column Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Mission */}
