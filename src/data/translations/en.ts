@@ -95,7 +95,7 @@ export const en = {
   },
   about: {
     kicker: 'ABOUT THE TEAM',
-    title: 'A student team turning learning into practical experience.',
+    title: 'Learning together. Building real things.',
     subtitle:
       'We are a PNC student technology team with different professional directions but a shared commitment to learning by building, testing and improving real solutions.',
     missionKicker: 'MISSION',
@@ -109,7 +109,52 @@ export const en = {
     valuesKicker: 'OUR VALUES',
     valuesTitle: 'The habits behind our work',
     valuesDesc:
-      'A professional portfolio is not only about tools. These values shape how we communicate, build and improve together.',
+      'Small habits make a stronger team. Here’s how we support each other and keep moving forward.',
+    valueExampleLabel: 'See it in practice',
+    values: [
+      {
+        title: 'Better together',
+        desc: 'We share what we know, ask for help, and make room for everyone to contribute.',
+        example:
+          'When someone gets stuck, we work through the problem together and share what we learned with the rest of the team.',
+      },
+      {
+        title: 'Listen with respect',
+        desc: 'Every perspective deserves a chance to be heard.',
+        example:
+          'In a review, we listen before responding and focus feedback on the work, with clear suggestions for improvement.',
+      },
+      {
+        title: 'Stay open to change',
+        desc: 'We learn new things and adjust when a better path appears.',
+        example:
+          'When a requirement changes, we revisit the plan together and agree on what to keep, change, or try next.',
+      },
+      {
+        title: 'Keep each other in the loop',
+        desc: 'Clear updates and honest questions keep us connected.',
+        example:
+          'We share what is finished, what comes next, and where we need help, so small blockers do not become surprises.',
+      },
+      {
+        title: 'Solve it step by step',
+        desc: 'We turn tricky problems into smaller, manageable pieces.',
+        example:
+          'For a bug, we reproduce the issue, check one possible cause at a time, and verify that the fix solves the original problem.',
+      },
+      {
+        title: 'Ask why',
+        desc: 'We explore the options before choosing a solution.',
+        example:
+          'Before adding a tool or feature, we ask what it helps users do and whether a simpler approach would work.',
+      },
+      {
+        title: 'Make time for what matters',
+        desc: 'We set realistic priorities and leave room to review.',
+        example:
+          'We break a deadline into smaller milestones and raise delays early so we can adjust the workload together.',
+      },
+    ],
   },
   team: {
     kicker: 'OUR TEAM',
