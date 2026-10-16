@@ -5,7 +5,7 @@ export const en = {
   role: 'Enterprise Applications & Software Development Engineer',
   tagline:
     'Software development professional focused on building practical applications and improving business workflows.',
-  badge: 'Enterprise Applications | Software Development',
+  badge: 'Software Developer',
   bio: 'Enterprise Applications & Software Development Engineer and Web Programming student at Passerelles Numériques Cambodia (PNC). Hands-on experience with Vue.js, JavaScript, React.js, PHP, Laravel, Node.js, REST APIs, and MySQL. Has worked on full-stack applications involving authentication, role-based access control, CRUD workflows, and database integration. Interested in developing reliable business applications, learning enterprise systems, and solving real operational problems through software.',
   languages: [
     { language: 'Khmer', level: 'Native' },
