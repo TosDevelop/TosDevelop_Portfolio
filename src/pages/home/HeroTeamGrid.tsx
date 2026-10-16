@@ -5,6 +5,7 @@ import { SITE_NAME } from '@/config/site';
 import { TEAM_MEMBERS } from '@/data/team';
 import { useLanguage } from '@/providers/LanguageContext';
 import type { TeamMember } from '@/types/index';
+import type { CSSProperties } from 'react';
 
 interface HeroTeamGridProps {
   onSelectMember: (memberId: string) => void;
@@ -47,7 +48,7 @@ export function HeroTeamGrid({
           {rows.map((row, rowIndex) => (
             <div
               key={rowIndex}
-              className="flex items-start justify-center gap-2 sm:gap-3"
+              className="grid grid-cols-3 items-start gap-x-4 gap-y-5 sm:flex sm:justify-center sm:gap-3"
             >
               {row.map((member, index) => {
                 const name = language === 'km' ? member.nameKm : member.name;
@@ -61,12 +62,14 @@ export function HeroTeamGrid({
                     onClick={() => onSelectMember(member.id)}
                     aria-label={`${t.team.viewProfile}: ${name}`}
                     title={`${name} — ${role}`}
-                    style={{
-                      marginTop: Math.abs(index - (row.length - 1) / 2) * 24,
-                    }}
-                    className="group min-w-0 flex-1 basis-0 max-w-[6.5rem] rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3"
+                    style={
+                      {
+                        '--portrait-offset': `${Math.abs(index - (row.length - 1) / 2) * 24}px`,
+                      } as CSSProperties
+                    }
+                    className="group w-full min-w-0 max-w-[6.5rem] justify-self-center sm:mt-[var(--portrait-offset)] sm:flex-1 sm:basis-0 rounded-full outline-offset-4 transition-transform duration-300 focus-visible:outline-2 focus-visible:outline-blue-500 motion-safe:hover:-translate-y-3 motion-safe:focus-visible:-translate-y-3"
                   >
-                    <div className="relative aspect-[1/3] lg:aspect-[3/8]">
+                    <div className="relative mx-auto w-full max-w-18 aspect-[3/8] sm:max-w-none sm:aspect-[1/3] lg:aspect-[3/8]">
                       <div className="absolute inset-y-0 -inset-x-0.5 overflow-hidden rounded-full border-[3px] border-white bg-slate-200 shadow-lg shadow-slate-900/10 transition-shadow duration-300 group-hover:shadow-xl sm:-inset-x-1 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/25">
                         <Avatar
                           src={member.image}
@@ -87,7 +90,7 @@ export function HeroTeamGrid({
                         </span>
                       </div>
                     </div>
-                    <p className="mt-3 break-words text-center text-[9px] font-semibold leading-relaxed text-slate-700 sm:text-[10px] dark:text-slate-200">
+                    <p className="mt-3 break-words text-center text-xs font-semibold leading-relaxed text-slate-700 sm:text-[10px] dark:text-slate-200">
                       {name}
                     </p>
                   </PageLink>

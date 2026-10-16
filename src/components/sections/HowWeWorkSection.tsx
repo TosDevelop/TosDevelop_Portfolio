@@ -95,7 +95,7 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({
             <MousePointer2 aria-hidden="true" className="h-3.5 w-3.5" />
             {t.howWeWork.interactionHint}
           </p>
-          <ol className="isolate grid rounded-2xl bg-white px-5 py-7 sm:px-8 lg:grid-cols-5 lg:px-10 lg:py-0 dark:bg-slate-900">
+          <ol className="workflow-path isolate grid rounded-2xl bg-white px-4 py-6 sm:px-8 xl:px-10 xl:py-8 dark:bg-slate-900">
             {t.howWeWork.steps.map((step, index) => {
               const { Icon, color, text } =
                 stepStyles[index % stepStyles.length];
@@ -103,12 +103,17 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({
               return (
                 <li
                   key={step.num}
-                  style={{ '--step-color': color } as React.CSSProperties}
-                  className="relative flex items-center gap-5 pb-8 last:pb-0 lg:block lg:min-h-80 lg:pb-0"
+                  style={
+                    {
+                      '--step-color': color,
+                      '--step-column': index + 1,
+                    } as React.CSSProperties
+                  }
+                  className={`workflow-step relative flex items-start gap-3 pb-8 last:pb-0 sm:gap-5 ${isUpper ? 'workflow-step--upper' : 'workflow-step--lower'}`}
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute -z-10 bottom-0 left-[42px] top-16 w-1 bg-[var(--step-color)] last:hidden lg:bottom-auto lg:left-1/2 lg:top-40 lg:h-1.5 lg:w-full"
+                    className="workflow-connector absolute -z-10 bottom-0 left-[42px] top-16 w-1 bg-[var(--step-color)]"
                     style={
                       index === t.howWeWork.steps.length - 1
                         ? { display: 'none' }
@@ -126,19 +131,17 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({
                     onClick={() =>
                       setActiveStep(activeStep === index ? null : index)
                     }
-                    className={`group relative flex h-22 w-22 shrink-0 cursor-pointer items-center justify-center rounded-full border-[6px] border-[var(--step-color)] bg-white p-1.5 transition-[transform,box-shadow] duration-300 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--step-color)_35%,transparent)] motion-safe:hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--step-color)] motion-reduce:transition-none lg:absolute lg:left-1/2 lg:h-28 lg:w-28 lg:-translate-x-1/2 dark:bg-slate-900 ${activeStep === index ? 'ring-4 ring-[var(--step-color)]/20 shadow-lg' : ''} ${isUpper ? 'lg:top-[51px]' : 'lg:top-40'}`}
+                    className={`workflow-circle group relative flex h-22 w-22 shrink-0 cursor-pointer items-center justify-center rounded-full border-[6px] border-[var(--step-color)] bg-white p-1.5 transition-[transform,box-shadow] duration-300 hover:shadow-[0_8px_30px_color-mix(in_srgb,var(--step-color)_35%,transparent)] motion-safe:hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--step-color)] motion-reduce:transition-none xl:h-28 xl:w-28 dark:bg-slate-900 ${activeStep === index ? 'ring-4 ring-[var(--step-color)]/20 shadow-lg' : ''}`}
                   >
                     <div className="flex h-full w-full items-center justify-center rounded-full border border-slate-200 bg-slate-50 shadow-inner dark:border-slate-700 dark:bg-slate-800">
                       <Icon
                         aria-hidden="true"
-                        className="h-8 w-8 text-[var(--step-color)] transition-transform duration-300 motion-safe:group-hover:-rotate-12 motion-reduce:transition-none lg:h-10 lg:w-10"
+                        className="h-8 w-8 text-[var(--step-color)] transition-transform duration-300 motion-safe:group-hover:-rotate-12 motion-reduce:transition-none xl:h-10 xl:w-10"
                         strokeWidth={1.6}
                       />
                     </div>
                   </button>
-                  <div
-                    className={`min-w-0 space-y-2 lg:absolute lg:inset-x-0 lg:px-3 lg:text-center ${isUpper ? 'lg:top-44' : 'lg:bottom-44'}`}
-                  >
+                  <div className="workflow-copy min-w-0 space-y-2 xl:px-3 xl:text-center">
                     <h3 className={`text-sm font-bold ${text}`}>
                       <span className="mr-2 text-[10px] tabular-nums opacity-75">
                         {step.num}
@@ -176,14 +179,14 @@ export const HowWeWorkSection: React.FC<HowWeWorkSectionProps> = ({
                 >
                   <X aria-hidden="true" className="h-4 w-4" />
                 </button>
-                <div className="flex items-start gap-4 pr-7">
+                <div className="flex flex-col items-start gap-4 sm:flex-row">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800">
                     <selectedStyle.Icon
                       aria-hidden="true"
                       className="h-6 w-6 text-[var(--step-color)]"
                     />
                   </div>
-                  <div className="max-w-3xl space-y-2">
+                  <div className="min-w-0 max-w-3xl space-y-2 sm:pr-7">
                     <p
                       className={`text-xs font-semibold ${selectedStyle.text}`}
                     >

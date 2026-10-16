@@ -100,7 +100,7 @@ export const StatsSection: React.FC<{ onNavigate: Navigate }> = ({
               <PageLink
                 tab={tab}
                 onClick={() => onNavigate(tab)}
-                className="group flex h-full flex-col gap-2 bg-white p-5 transition-colors hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-500 sm:p-6 dark:bg-slate-900 dark:hover:bg-blue-950/50 dark:focus-visible:bg-blue-950/50"
+                className="group flex h-full min-w-0 flex-col gap-2 bg-white p-4 transition-colors hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-500 sm:p-6 dark:bg-slate-900 dark:hover:bg-blue-950/50 dark:focus-visible:bg-blue-950/50"
               >
                 <span className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:text-sm dark:text-slate-400">
                   <Icon

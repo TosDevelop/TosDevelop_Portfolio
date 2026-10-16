@@ -111,10 +111,10 @@ export const TeamPage: React.FC<TeamPageProps> = ({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={t.team.searchPlaceholder}
-              className="h-11 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-3 text-sm text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="h-11 w-full min-w-0 rounded-xl border border-slate-200 bg-white pl-10 pr-3 text-base sm:text-sm text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             />
           </label>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p
               role="status"
               className="text-xs text-slate-500 dark:text-slate-400"

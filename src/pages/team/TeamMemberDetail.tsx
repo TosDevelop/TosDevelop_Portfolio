@@ -104,7 +104,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
         </div>
 
         {/* Member Info & Action Buttons */}
-        <div className="flex-1 space-y-4 text-center md:text-left">
+        <div className="min-w-0 w-full flex-1 space-y-4 text-center md:text-left">
           <div className="space-y-1.5">
             <span className="text-[11px] font-bold tracking-wider uppercase text-blue-600 dark:text-blue-400">
               PNC STUDENT TEAM
@@ -114,7 +114,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
               {language !== 'km' && member.nameKm && (
                 <span
                   lang="km"
-                  className="ml-3 text-lg font-normal tracking-normal text-slate-400 [word-spacing:0.3em]"
+                  className="mt-2 block text-lg font-normal tracking-normal text-slate-400 [word-spacing:0.3em] sm:mt-0 sm:ml-3 sm:inline"
                 >
                   ({member.nameKm})
                 </span>
@@ -242,7 +242,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
       {/* Two-Column Grid: Left (Bio, Contact, Soft Skills) / Right (Technical Skills, Experience, Education, Projects) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column (4 cols) */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="min-w-0 lg:col-span-4 space-y-6">
           {/* About Bio */}
           <div
             data-reveal
@@ -361,7 +361,7 @@ export const TeamMemberDetail: React.FC<TeamMemberDetailProps> = ({
         </div>
 
         {/* Right Column (8 cols) */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="min-w-0 lg:col-span-8 space-y-8">
           {/* Technical Skills Card */}
           <div
             data-reveal

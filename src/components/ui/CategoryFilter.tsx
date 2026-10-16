@@ -19,7 +19,7 @@ export function CategoryFilter<T extends string>({
           type="button"
           aria-pressed={value === category}
           onClick={() => onChange(category)}
-          className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
+          className={`min-h-11 max-w-full px-3 sm:px-4 py-2 rounded-lg text-xs font-semibold transition-colors cursor-pointer break-words focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${
             value === category
               ? 'bg-blue-600 text-white shadow-xs'
               : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'

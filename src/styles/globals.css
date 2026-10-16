@@ -61,6 +61,58 @@
   }
 }
 
+/* Shared rows grow with translated text instead of clipping fixed-height steps. */
+@media (min-width: 1280px) {
+  .workflow-path {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: minmax(8rem, auto) minmax(8rem, auto);
+  }
+  .workflow-step {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 1 / span 2;
+    grid-column: var(--step-column);
+    gap: 0;
+    padding-bottom: 0;
+  }
+  .workflow-circle {
+    grid-column: 1;
+    justify-self: center;
+  }
+  .workflow-step--upper .workflow-circle {
+    grid-row: 1;
+    align-self: end;
+  }
+  .workflow-step--lower .workflow-circle {
+    grid-row: 2;
+    align-self: start;
+  }
+  .workflow-copy {
+    grid-column: 1;
+    padding-block: 1.25rem;
+    overflow-wrap: anywhere;
+  }
+  .workflow-step--upper .workflow-copy {
+    grid-row: 2;
+    align-self: start;
+  }
+  .workflow-step--lower .workflow-copy {
+    grid-row: 1;
+    align-self: end;
+  }
+  .workflow-connector {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    top: auto;
+    bottom: -3px;
+    left: 50%;
+    width: 100%;
+    height: 6px;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);

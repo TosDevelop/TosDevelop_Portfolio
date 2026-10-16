@@ -30,14 +30,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Navigation Links & Action */}
           <div className="flex flex-col xl:flex-row items-start xl:items-center gap-6 xl:gap-10">
-            <nav className="flex flex-wrap gap-5 text-xs font-medium text-slate-600 dark:text-slate-300">
+            <nav className="flex flex-wrap gap-x-5 gap-y-1 text-xs font-medium text-slate-600 dark:text-slate-300">
               {NAVIGATION_LINKS.filter((link) => link.id !== 'home').map(
                 (link) => (
                   <PageLink
                     tab={link.id}
                     key={link.id}
                     onClick={() => onNavigate(link.id)}
-                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="inline-flex min-h-11 items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {t.nav[link.labelKey]}
                   </PageLink>
@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               href={TEAM_CONTACT.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded hover:text-slate-900 dark:hover:text-white transition-colors"
               aria-label={`TosDevelop — ${t.teamInfo.github}`}
               title={t.teamInfo.github}
             >
@@ -74,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               href={TEAM_CONTACT.repository}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded hover:text-slate-900 dark:hover:text-white transition-colors"
               aria-label={`TosDevelop — ${t.teamInfo.repository}`}
               title={t.teamInfo.repository}
             >
@@ -82,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </a>
             <a
               href={`mailto:${TEAM_CONTACT.email}`}
-              className="p-1.5 rounded hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="flex h-11 w-11 items-center justify-center rounded hover:text-slate-900 dark:hover:text-white transition-colors"
               aria-label={`TosDevelop — ${t.teamInfo.email}`}
               title={t.teamInfo.email}
             >

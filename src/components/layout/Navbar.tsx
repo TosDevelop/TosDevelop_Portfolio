@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
         {/* Desktop Navigation Links */}
         <nav
           aria-label="Main navigation"
-          className="hidden xl:flex items-center justify-center gap-8 text-sm font-semibold"
+          className="hidden xl:flex items-center justify-center gap-6 2xl:gap-8 text-sm font-semibold"
         >
           {navLinks.map((link) => {
             const isActive = currentTab === link.id;
