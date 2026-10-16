@@ -158,10 +158,16 @@ export const en = {
   },
   team: {
     kicker: 'OUR TEAM',
-    title: `${teamCount} people. Different paths. One shared portfolio.`,
+    title: 'Meet the people behind the work.',
+    searchPlaceholder: 'Search by name, role, or skill',
+    resultsLabel: 'Members shown',
+    resetFilters: 'Reset filters',
+    noResults: 'No teammates found just yet.',
+    searchHelp:
+      'Try another name or skill, or reset the filters to see everyone.',
     viewAllMembers: `View all ${teamCount} members`,
     subtitle:
-      'Open any profile to see verified experience, education, technical skills, projects, contact information and CV access where supplied.',
+      'Different strengths, shared curiosity. Get to know our team, explore what we enjoy building, and find the skills you’re looking for.',
     filters: {
       All: 'All',
       Development: 'Development',
