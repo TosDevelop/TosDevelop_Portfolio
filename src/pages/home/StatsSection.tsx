@@ -1,4 +1,5 @@
 import React from 'react';
+import { Users, Layers, FolderGit2, Wrench, Code2 } from 'lucide-react';
 import { useLanguage } from '@/providers/LanguageContext';
 import { TEAM_MEMBERS } from '@/data/team';
 import { EXPERTISE_DOMAINS, ALL_TECH_BADGES } from '@/data/expertise';
@@ -12,66 +13,91 @@ export const StatsSection: React.FC = () => {
     ).format(count);
 
   const stats = [
-    { number: formatCount(TEAM_MEMBERS.length), label: t.stats.stat1Label },
+    {
+      number: formatCount(TEAM_MEMBERS.length),
+      label: t.stats.stat1Label,
+      Icon: Users,
+    },
     {
       number: formatCount(EXPERTISE_DOMAINS.length),
       label: t.stats.stat2Label,
+      Icon: Layers,
     },
-    { number: formatCount(PROJECTS_DATA.length), label: t.stats.stat3Label },
+    {
+      number: formatCount(PROJECTS_DATA.length),
+      label: t.stats.stat3Label,
+      Icon: FolderGit2,
+    },
     {
       number: formatCount(
         new Set(ALL_TECH_BADGES.map((badge) => badge.name.trim().toLowerCase()))
           .size,
       ),
       label: t.stats.stat4Label,
+      Icon: Wrench,
     },
   ];
 
   return (
     <section
       data-reveal
+      aria-labelledby="team-overview-heading"
       className="py-16 md:py-20 border-b border-slate-200/60 dark:border-slate-800"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Header */}
-        <div className="max-w-3xl space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            {t.stats.headline}
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            {t.stats.sub}
-          </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Header */}
+          <div className="max-w-3xl space-y-3">
+            <h2
+              id="team-overview-heading"
+              className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+            >
+              {t.stats.headline}
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              {t.stats.sub}
+            </p>
+          </div>
+
+          {/* What We Do Callout */}
+          <div className="flex items-start gap-4 rounded-2xl bg-blue-50/70 p-5 sm:p-6 dark:bg-blue-950/25">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 dark:bg-blue-900/50 dark:text-blue-300">
+              <Code2 aria-hidden="true" className="h-5 w-5" />
+            </div>
+            <div className="space-y-2">
+              <span className="text-[11px] font-bold tracking-wider uppercase text-blue-700 dark:text-blue-400 block">
+                {t.whatWeDo.kicker}
+              </span>
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                {t.whatWeDo.title}
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+                {t.whatWeDo.desc}
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* 4 Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {stats.map((stat, idx) => (
+        {/* Compact team overview */}
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-4 dark:border-slate-800 dark:bg-slate-800">
+          {stats.map(({ number, label, Icon }) => (
             <div
-              key={idx}
-              className="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+              key={label}
+              className="flex flex-col gap-2 bg-white p-5 sm:p-6 dark:bg-slate-900"
             >
-              <div className="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 font-mono tabular-nums tracking-tight">
-                {stat.number}
-              </div>
-              <div className="mt-2 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
-                {stat.label}
-              </div>
+              <dt className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:text-sm dark:text-slate-400">
+                <Icon
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 text-blue-500 dark:text-blue-400"
+                />
+                {label}
+              </dt>
+              <dd className="text-2xl font-bold tracking-tight tabular-nums text-slate-900 sm:text-3xl dark:text-white">
+                {number}
+              </dd>
             </div>
           ))}
-        </div>
-
-        {/* What We Do Callout */}
-        <div className="p-6 sm:p-8 rounded-xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 space-y-2">
-          <span className="text-[11px] font-bold tracking-wider uppercase text-blue-700 dark:text-blue-400 block">
-            {t.whatWeDo.kicker}
-          </span>
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-            {t.whatWeDo.title}
-          </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
-            {t.whatWeDo.desc}
-          </p>
-        </div>
+        </dl>
       </div>
     </section>
   );

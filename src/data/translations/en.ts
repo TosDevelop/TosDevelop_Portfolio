@@ -29,8 +29,8 @@ export const en = {
     centerBadgeSub: `${teamCount} perspectives, working together`,
   },
   stats: {
-    headline: `${teamCount} developers. One team.`,
-    sub: 'We bring together frontend and backend development, UI/UX design, testing, project planning, databases and deployment. Explore our individual profiles and the projects featured in this portfolio.',
+    headline: `${teamCount} people. Building together.`,
+    sub: 'We’re a team of PNC students who enjoy turning ideas into useful websites and apps. We share what we know, learn from each other, and grow with every project.',
     stat1Label: 'Team members',
     stat2Label: 'Skill categories',
     stat3Label: 'Team projects',
@@ -38,39 +38,52 @@ export const en = {
   },
   whatWeDo: {
     kicker: 'WHAT WE DO',
-    title: 'Design, build, test and deploy web applications',
-    desc: 'Our work includes responsive interfaces, REST APIs, databases and management systems. We use design tools, version control and project planning to support development and collaboration.',
+    title: 'From a first idea to a working app',
+    desc: 'We design clear interfaces, build the features behind them, and test the details together. Our focus is simple: make things useful and easy to use.',
   },
   howWeWork: {
     kicker: 'HOW WE WORK',
-    title: 'A simple, disciplined delivery flow',
-    desc: 'Our process keeps teamwork visible from understanding the problem to validating and delivering the result.',
-    learnMore: 'About our approach',
+    title: 'Good things happen one step at a time.',
+    desc: 'We ask questions, make a plan, and build together. Feedback helps us improve along the way.',
+    learnMore: 'Get to know us',
+    interactionHint: 'Curious about a step? Tap a circle to explore.',
+    closeDetails: 'Close step details',
+    detailLabel: 'A closer look',
     steps: [
       {
         num: '01',
-        title: 'Understand',
-        desc: 'Clarify the goal, users and practical requirements.',
+        title: 'Listen & learn',
+        detail:
+          'We talk through who will use the app, what they need, and where they get stuck. We collect questions and examples so everyone starts with the same understanding.',
+        desc: 'Start with the people, the problem, and what would help.',
       },
       {
         num: '02',
         title: 'Plan',
-        desc: 'Break work into deliverable tasks and responsibilities.',
+        detail:
+          'We sketch the main screens, choose the essential features, and split the work into manageable tasks. Each person knows what to work on and how it fits into the bigger picture.',
+        desc: 'Break the idea into small tasks everyone can follow.',
       },
       {
         num: '03',
-        title: 'Build',
-        desc: 'Implement clean, maintainable and testable solutions.',
+        title: 'Build together',
+        detail:
+          'We connect the interface, application logic, and data one feature at a time. Sharing progress and reviewing each other’s code helps us solve problems and learn together.',
+        desc: 'Bring designs to life and help each other along the way.',
       },
       {
         num: '04',
-        title: 'Validate',
-        desc: 'Test workflows, fix issues and review the user experience.',
+        title: 'Test & improve',
+        detail:
+          'We walk through the app as a user, check different screen sizes, and try the things that could go wrong. Then we use feedback to fix bugs and make confusing interactions clearer.',
+        desc: 'Try it out, share feedback, and work through the details.',
       },
       {
         num: '05',
-        title: 'Deliver',
-        desc: 'Deploy, document and learn from the results.',
+        title: 'Share & grow',
+        detail:
+          'We prepare the app for release, write useful setup notes, and share the result. Looking back at what worked and what was difficult helps us improve our next project.',
+        desc: 'Launch the work and take what we learn into the next project.',
       },
     ],
   },
