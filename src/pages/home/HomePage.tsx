@@ -11,7 +11,7 @@ export function HomePage({ onNavigate }: { onNavigate: Navigate }) {
     <>
       <HeroSection onNavigate={onNavigate} />
       <TechMarquee />
-      <StatsSection />
+      <StatsSection onNavigate={onNavigate} />
       <HowWeWorkSection onNavigate={onNavigate} />
       <FeaturedTeamSection onNavigate={onNavigate} />
       <CtaSection onNavigate={onNavigate} />

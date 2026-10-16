@@ -1,11 +1,22 @@
 import React from 'react';
-import { Users, Layers, FolderGit2, Wrench, Code2 } from 'lucide-react';
+import {
+  Users,
+  Layers,
+  FolderGit2,
+  Wrench,
+  Code2,
+  ArrowUpRight,
+} from 'lucide-react';
+import { PageLink } from '@/components/ui/PageLink';
+import type { Navigate } from '@/config/navigation';
 import { useLanguage } from '@/providers/LanguageContext';
 import { TEAM_MEMBERS } from '@/data/team';
 import { EXPERTISE_DOMAINS, ALL_TECH_BADGES } from '@/data/expertise';
 import { PROJECTS_DATA } from '@/data/projects';
 
-export const StatsSection: React.FC = () => {
+export const StatsSection: React.FC<{ onNavigate: Navigate }> = ({
+  onNavigate,
+}) => {
   const { t, language } = useLanguage();
   const formatCount = (count: number) =>
     new Intl.NumberFormat(
@@ -17,16 +28,19 @@ export const StatsSection: React.FC = () => {
       number: formatCount(TEAM_MEMBERS.length),
       label: t.stats.stat1Label,
       Icon: Users,
+      tab: 'team',
     },
     {
       number: formatCount(EXPERTISE_DOMAINS.length),
       label: t.stats.stat2Label,
       Icon: Layers,
+      tab: 'expertise',
     },
     {
       number: formatCount(PROJECTS_DATA.length),
       label: t.stats.stat3Label,
       Icon: FolderGit2,
+      tab: 'projects',
     },
     {
       number: formatCount(
@@ -35,8 +49,9 @@ export const StatsSection: React.FC = () => {
       ),
       label: t.stats.stat4Label,
       Icon: Wrench,
+      tab: 'expertise',
     },
-  ];
+  ] as const;
 
   return (
     <section
@@ -79,25 +94,32 @@ export const StatsSection: React.FC = () => {
         </div>
 
         {/* Compact team overview */}
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-4 dark:border-slate-800 dark:bg-slate-800">
-          {stats.map(({ number, label, Icon }) => (
-            <div
-              key={label}
-              className="flex flex-col gap-2 bg-white p-5 sm:p-6 dark:bg-slate-900"
-            >
-              <dt className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:text-sm dark:text-slate-400">
-                <Icon
-                  aria-hidden="true"
-                  className="h-4 w-4 shrink-0 text-blue-500 dark:text-blue-400"
-                />
-                {label}
-              </dt>
-              <dd className="text-2xl font-bold tracking-tight tabular-nums text-slate-900 sm:text-3xl dark:text-white">
-                {number}
-              </dd>
-            </div>
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 md:grid-cols-4 dark:border-slate-800 dark:bg-slate-800">
+          {stats.map(({ number, label, Icon, tab }) => (
+            <li key={label}>
+              <PageLink
+                tab={tab}
+                onClick={() => onNavigate(tab)}
+                className="group flex h-full flex-col gap-2 bg-white p-5 transition-colors hover:bg-blue-50 focus-visible:bg-blue-50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-500 sm:p-6 dark:bg-slate-900 dark:hover:bg-blue-950/50 dark:focus-visible:bg-blue-950/50"
+              >
+                <span className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:text-sm dark:text-slate-400">
+                  <Icon
+                    aria-hidden="true"
+                    className="h-4 w-4 shrink-0 text-blue-500 dark:text-blue-400"
+                  />
+                  {label}
+                </span>
+                <span className="flex items-center justify-between gap-2 text-2xl font-bold tracking-tight tabular-nums text-slate-900 sm:text-3xl dark:text-white">
+                  {number}
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:text-blue-600 motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5 dark:group-hover:text-blue-400"
+                  />
+                </span>
+              </PageLink>
+            </li>
           ))}
-        </dl>
+        </ul>
       </div>
     </section>
   );
